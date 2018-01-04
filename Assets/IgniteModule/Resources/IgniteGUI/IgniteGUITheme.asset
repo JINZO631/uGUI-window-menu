@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b3601a859514d40a25987d55e041a9, type: 3}
+  m_Name: IgniteGUITheme
+  m_EditorClassIdentifier: 
+  foreground: {r: 0, g: 1, b: 1, a: 1}
+  labelHighlightedColor: {r: 1, g: 1, b: 1, a: 0.5}
+  buttonColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  buttonTransitionColor:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  toggleEnable: {r: 0, g: 1, b: 0, a: 1}
+  toggleDisable: {r: 0.5294118, g: 0.5294118, b: 0.5294118, a: 1}
+  sliderBackbround: {r: 0, g: 0.2708418, b: 0.3602941, a: 1}
+  sliderHandle: {r: 0, g: 0.566, b: 1, a: 0.528}
+  sliderText: {r: 0.7058823, g: 0.7058823, b: 0.7058823, a: 1}
+  scrollBackGround: {r: 0, g: 0.2708418, b: 0.3602941, a: 1}
+  scrollBar: {r: 0.58823526, g: 0.58823526, b: 0.58823526, a: 0.484}
+  scrollHandle: {r: 1, g: 1, b: 1, a: 0.584}
+  foldOutBackground: {r: 0, g: 0.2708418, b: 0.3602941, a: 1}
