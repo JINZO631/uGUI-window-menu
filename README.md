@@ -33,4 +33,4 @@ IgniteWindow.Create("ExampleWindow")
             .AddButton("ButtonC", _ => Debug.Log("OnClick ButtonC"));
 ```
 
-![image](https://github.com/JINZO631/uGUI-window-menu/blob/master/image/window.png)
+![image](https://github.com/JINZO631/uGUI-window-menu/blob/master/image/window.PNG)
