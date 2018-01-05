@@ -33,7 +33,10 @@ namespace IgniteModule.UI
 
         public void SetTheme(IIgniteGUITheme theme)
         {
-
+            label.color = theme.Font;
+            templateLabel.color = theme.Font;
+            image.color = theme.DropdownColor;
+            templateBackground.color = theme.DropdownBackground;
         }
 
         public IObservable<Unit> OnSelected()
