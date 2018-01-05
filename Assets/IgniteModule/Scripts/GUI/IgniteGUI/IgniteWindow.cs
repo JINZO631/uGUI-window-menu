@@ -18,11 +18,13 @@ namespace IgniteModule.UI
         [SerializeField] Image headerImage;
         [SerializeField] TextMeshProUGUI headerName;
         [SerializeField] Toggle toggle;
-        [SerializeField] Button killButton;
+        [SerializeField] Button closeButton;
         [SerializeField] RectTransform arrow;
         [SerializeField] Transform content;
         [SerializeField] VerticalLayoutGroup layoutGroup;
         [SerializeField] GameObject dragArea;
+        [SerializeField] Draggable draggable;
+        [SerializeField] VariableSizePanel variablePanel;
 
         public string HeaderName
         {
@@ -71,14 +73,6 @@ namespace IgniteModule.UI
 
         protected override void Start()
         {
-            if (Size == null)
-            {
-                Size = IgniteGUISizeDefault.Instance;
-            }
-            if (Theme == null)
-            {
-                Theme = IgniteGUITheme.Default;
-            }
             height = RectTransform.sizeDelta.y;
 
             toggle.OnValueChangedAsObservable()
@@ -103,7 +97,7 @@ namespace IgniteModule.UI
                        .Where(l => l[1] <= 250)
                        .Subscribe(_ => toggle.isOn = !toggle.isOn);
 
-            killButton.OnClickAsObservable()
+            closeButton.OnClickAsObservable()
                       .Subscribe(_ => Kill());
 
             this.OnBeginDragAsObservable()
@@ -128,7 +122,7 @@ namespace IgniteModule.UI
             // 閉じる前のheightを保存
             height = RectTransform.sizeDelta.y;
             dragArea.SetActive(false);
-            RectTransform.DOSizeDelta(new Vector2(RectTransform.sizeDelta.x, Size.HeaderHeight), 0.1f).SetEase(Ease.OutQuint)
+            RectTransform.DOSizeDelta(new Vector2(RectTransform.sizeDelta.x, Size.ElementHeight), 0.1f).SetEase(Ease.OutQuint)
                          .OnStart(() => tweening = true)
                          .OnComplete(() => tweening = false);
             arrow.DORotate(Vector3.zero, 0.1f).SetEase(Ease.OutQuint);
@@ -143,7 +137,7 @@ namespace IgniteModule.UI
             arrow.DORotate(new Vector3(0f, 0f, -90f), 0.1f).SetEase(Ease.OutQuint);
         }
 
-        public static IgniteWindow Create(string name, Vector2? anchoredPosition = null, Vector2? size = null)
+        public static IgniteWindow Create(string name, Vector2? anchoredPosition = null, Vector2? size = null, bool hideCloseButton = false, bool fixedSize = false, bool fixedPosition = false)
         {
             var window = Instantiate(Resources.Load<GameObject>("IgniteGUI/Prefab/Window")).GetComponent<IgniteWindow>();
             IgniteGUI.AddWindow(window.GetInstanceID(), window);
@@ -165,6 +159,37 @@ namespace IgniteModule.UI
             if (size.HasValue)
             {
                 window.RectTransform.sizeDelta = size.Value;
+            }
+            else
+            {
+                window.RectTransform.sizeDelta = window.Size.WindowSize;
+            }
+
+            // size
+            window.headerImage.rectTransform.SetSizeDelta(y: window.Size.ElementHeight);
+            window.headerName.fontSize = window.Size.FontSize;
+
+            // theme
+            window.headerImage.color = window.Theme.WindowHeader;
+            window.headerName.color = window.Theme.Font;
+            window.image.color = window.Theme.WindowBackground;
+            window.closeButton.targetGraphic.color = window.Theme.WindowCloseButton;
+            window.closeButton.colors = window.Theme.WindowCloseButtonTransitionColor;
+
+            // setting
+            if (hideCloseButton)
+            {
+                window.closeButton.gameObject.SetActive(false);
+            }
+
+            if (fixedPosition)
+            {
+                window.draggable.enabled = false;
+            }
+
+            if (fixedSize)
+            {
+                window.variablePanel.enabled = false;
             }
 
             return window;

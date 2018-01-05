@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UniRx;
 using UniRx.Triggers;
 
@@ -10,7 +11,13 @@ namespace IgniteModule.UI
     public class IgniteDropdown : UIMonoBehaviour, IIgniteGUIElement
     {
         [SerializeField] TMP_Dropdown dropdown;
-        [SerializeField] Transform template;
+        [SerializeField] Image image;
+        [SerializeField] TextMeshProUGUI label;
+        [SerializeField] TextMeshProUGUI arrow;
+
+        [SerializeField] RectTransform templateItem;
+        [SerializeField] TextMeshProUGUI templateLabel;
+        [SerializeField] Image templateBackground;
 
         public string ID { get; private set; }
         public IgniteWindow Window { get; private set; }
@@ -18,7 +25,10 @@ namespace IgniteModule.UI
 
         public void SetSize(IIgniteGUISize size)
         {
-
+            RectTransform.SetSizeDelta(y: size.ElementHeight);
+            label.fontSize = size.FontSize;
+            templateItem.SetSizeDelta(y: size.ElementHeight);
+            templateLabel.fontSize = size.FontSize;
         }
 
         public void SetTheme(IIgniteGUITheme theme)

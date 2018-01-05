@@ -23,6 +23,7 @@ namespace IgniteModule.UI
             image.ObserveEveryValueChanged(img => img.rectTransform.sizeDelta.x)
                  .Subscribe(x => RectTransform.SetSizeDelta(x)).AddTo(this);
             RectTransform.SetSizeDelta(image.rectTransform.rect.width, size.ElementHeight);
+            image.rectTransform.SetSizeDelta(y: size.ElementHeight);
             text.fontSize = size.FontSize;
         }
 

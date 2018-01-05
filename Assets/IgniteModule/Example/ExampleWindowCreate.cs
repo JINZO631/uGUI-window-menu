@@ -6,7 +6,7 @@ public class ExampleWindowCreate : MonoBehaviour
 {
     private void Start()
     {
-        IgniteWindow.Create("ExampleWindow")
+        IgniteWindow.Create("ExampleWindow", hideCloseButton: false, fixedPosition: false)
                     .AddLabel("Label")
                     .AddButton("Button", _ => Debug.Log("OnClick"))
                     .AddSlider("Slider", v => Debug.LogFormat("Slider:{0}", v))

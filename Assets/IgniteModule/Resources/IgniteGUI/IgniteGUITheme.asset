@@ -11,8 +11,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b3601a859514d40a25987d55e041a9, type: 3}
   m_Name: IgniteGUITheme
   m_EditorClassIdentifier: 
-  foreground: {r: 0, g: 1, b: 1, a: 1}
-  labelHighlightedColor: {r: 1, g: 1, b: 1, a: 0.5}
+  font: {r: 1, g: 1, b: 1, a: 1}
+  windowHeader: {r: 0.084775075, g: 0.13564014, b: 0.2352941, a: 1}
+  windowBackground: {r: 0.084775075, g: 0.13564014, b: 0.2352941, a: 0.466}
+  windowCloseButton: {r: 1, g: 0.6911765, b: 0.6911765, a: 0.503}
+  windowCloseButtonTransitionColor:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  labelHighlightedColor: {r: 1, g: 0.6, b: 0, a: 0.5}
   buttonColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   buttonTransitionColor:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -29,4 +39,6 @@ MonoBehaviour:
   scrollBackGround: {r: 0, g: 0.2708418, b: 0.3602941, a: 1}
   scrollBar: {r: 0.58823526, g: 0.58823526, b: 0.58823526, a: 0.484}
   scrollHandle: {r: 1, g: 1, b: 1, a: 0.584}
+  dropdownColor: {r: 0, g: 0.2708418, b: 0.3602941, a: 1}
+  dropdownBackground: {r: 0, g: 0.566, b: 1, a: 0.528}
   foldOutBackground: {r: 0, g: 0.2708418, b: 0.3602941, a: 1}

@@ -9,8 +9,21 @@ namespace IgniteModule.UI
         static IgniteGUITheme defaultInstance;
         public static IgniteGUITheme Default { get { return defaultInstance != null ? defaultInstance : (defaultInstance = Resources.Load<IgniteGUITheme>("IgniteGUI/IgniteGUITheme")); } }
 
-        [SerializeField] Color foreground = Color.white;
-        public Color Font { get { return foreground; } }
+        [SerializeField] Color font = Color.white;
+        public Color Font { get { return font; } }
+
+        [Header("Window")]
+        [SerializeField] Color windowHeader;
+        public Color WindowHeader { get { return windowHeader; } }
+
+        [SerializeField] Color windowBackground;
+        public Color WindowBackground { get { return windowBackground; } }
+
+        [SerializeField] Color windowCloseButton;
+        public Color WindowCloseButton { get { return windowCloseButton; } }
+
+        [SerializeField] ColorBlock windowCloseButtonTransitionColor;
+        public ColorBlock WindowCloseButtonTransitionColor { get { return windowCloseButtonTransitionColor; } }
 
         [Header("Label")]
         [SerializeField] Color labelHighlightedColor = new Color(1, 1, 1, 0.5f);
@@ -49,6 +62,13 @@ namespace IgniteModule.UI
 
         [SerializeField] Color scrollHandle;
         public Color ScrollHandle { get { return scrollHandle; } }
+
+        [Header("Dropdown")]
+        [SerializeField] Color dropdownColor;
+        public Color DropdownColor { get { return dropdownColor; } }
+
+        [SerializeField] Color dropdownBackground;
+        public Color DropdownBackground { get { return dropdownBackground; } }
 
         [Header("FoldOut")]
         [SerializeField] Color foldOutBackground;

@@ -83,7 +83,7 @@ namespace IgniteModule.UI
 
         public static IIgniteGUIGroup AddSlider(this IIgniteGUIGroup group, string label, Action<float> onValueChanged = null, Action<IObservable<float>> doSubscribe = null, float minValue = 0f, float maxValue = 1f, bool wholeNumbers = false, string id = "")
         {
-            return group.Add(IgniteHorizontalGroup.Create(group).AddSlider(onValueChanged, doSubscribe, minValue, maxValue, wholeNumbers, id).AddLabel(label) as IgniteHorizontalGroup);
+            return group.Add(IgniteHorizontalGroup.Create(group).AddLabel(label).AddSlider(onValueChanged, doSubscribe, minValue, maxValue, wholeNumbers, id) as IgniteHorizontalGroup);
         }
     }
 }

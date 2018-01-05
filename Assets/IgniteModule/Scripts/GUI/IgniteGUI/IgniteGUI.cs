@@ -75,7 +75,7 @@ namespace IgniteModule.UI
         static IIgniteGUISize size;
         public static IIgniteGUISize Size
         {
-            get { return size != null ? size : (size = IgniteGUISizeDefault.Instance); }
+            get { return size != null ? size : (size = IgniteGUISize.Default); }
             set { size = value; }
         }
 

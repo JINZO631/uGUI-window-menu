@@ -23,7 +23,6 @@ namespace IgniteModule.UI
             {
                 RectTransform.SetSizeDelta(y: scrollHeight.Value);
             }
-            scrollbar.rectTransform.SetSizeDelta(y: size.ScrollbarHeight);
         }
 
         public override void SetTheme(IIgniteGUITheme theme)

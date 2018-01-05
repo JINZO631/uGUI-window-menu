@@ -12,6 +12,7 @@ namespace IgniteModule.UI
 
         public override void SetSize(IIgniteGUISize size)
         {
+            RectTransform.SetSizeDelta(y: size.ElementHeight);
         }
 
         public override void SetTheme(IIgniteGUITheme theme)

@@ -14,9 +14,6 @@ namespace IgniteModule.UI
         [SerializeField] RectOffset padding;
         public RectOffset Padding { get { return padding; } }
 
-        [SerializeField] float headerHeight;
-        public float HeaderHeight { get { return headerHeight; } }
-
         [SerializeField] float fontSize;
         public float FontSize { get { return fontSize; } }
 

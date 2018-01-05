@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 114098831780621070}
   - component: {fileID: 114590915713940730}
   m_Layer: 5
-  m_Name: KillButton
+  m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 114238106722006612}
   - component: {fileID: 114516742997318188}
   - component: {fileID: 114351968769643826}
-  - component: {fileID: 114179093248842990}
+  - component: {fileID: 114265409439270622}
   m_Layer: 5
   m_Name: Window
   m_TagString: Untagged
@@ -248,8 +248,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: '>'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 17a818414b11a4045b75f0fd7530f7bf, type: 2}
-  m_sharedMaterial: {fileID: 21183005576559128, guid: 17a818414b11a4045b75f0fd7530f7bf,
+  m_fontAsset: {fileID: 11400000, guid: 01347ba87b8361e4aa92b85a9abaaeb7, type: 2}
+  m_sharedMaterial: {fileID: 21183005576559128, guid: 01347ba87b8361e4aa92b85a9abaaeb7,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -427,20 +427,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114179093248842990
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1893518018574454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e527073f7157f746a26a34efde25738, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dragArea: {fileID: 114738596476937548}
-  minSize: {x: 100, y: 100}
-  maxSize: {x: 1280, y: 720}
 --- !u!114 &114232641002058156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -462,8 +448,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Window
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 17a818414b11a4045b75f0fd7530f7bf, type: 2}
-  m_sharedMaterial: {fileID: 21183005576559128, guid: 17a818414b11a4045b75f0fd7530f7bf,
+  m_fontAsset: {fileID: 11400000, guid: 01347ba87b8361e4aa92b85a9abaaeb7, type: 2}
+  m_sharedMaterial: {fileID: 21183005576559128, guid: 01347ba87b8361e4aa92b85a9abaaeb7,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -581,6 +567,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114265409439270622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893518018574454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01e9f54218fa7eb4e8398337fb309941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragArea: {fileID: 114738596476937548}
+  minSize: {x: 100, y: 100}
+  maxSize: {x: 1920, y: 1080}
 --- !u!114 &114324457181232952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -638,11 +638,13 @@ MonoBehaviour:
   headerImage: {fileID: 114175929387250634}
   headerName: {fileID: 114232641002058156}
   toggle: {fileID: 114818139255596914}
-  killButton: {fileID: 114098831780621070}
+  closeButton: {fileID: 114098831780621070}
   arrow: {fileID: 224925352746399316}
   content: {fileID: 224429325650996866}
   layoutGroup: {fileID: 114432600209680672}
   dragArea: {fileID: 1466493734389162}
+  draggable: {fileID: 114351968769643826}
+  variablePanel: {fileID: 114265409439270622}
 --- !u!114 &114432600209680672
 MonoBehaviour:
   m_ObjectHideFlags: 1

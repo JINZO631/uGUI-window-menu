@@ -17,7 +17,6 @@ MonoBehaviour:
     m_Right: 5
     m_Top: 5
     m_Bottom: 5
-  headerHeight: 15
   fontSize: 11
   elementHeight: 15
   toggleSize: {x: 13, y: 13}

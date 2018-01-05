@@ -7,6 +7,12 @@ namespace IgniteModule.UI
     {
         Color Font { get; }
 
+        // Window
+        Color WindowHeader { get; }
+        Color WindowBackground { get; }
+        Color WindowCloseButton { get; }
+        ColorBlock WindowCloseButtonTransitionColor { get; }
+
         // Label
         Color LabelHighlitedColor { get; }
 
@@ -27,6 +33,10 @@ namespace IgniteModule.UI
         Color ScrollBackground { get;}
         Color Scrollbar { get; }
         Color ScrollHandle { get; }
+
+        // Dropdown
+        Color DropdownColor { get; }
+        Color DropdownBackground { get; }
 
         // FoldOut
         Color FoldOutBackground { get; }

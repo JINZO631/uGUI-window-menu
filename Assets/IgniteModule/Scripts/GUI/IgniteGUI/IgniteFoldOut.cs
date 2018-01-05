@@ -116,11 +116,6 @@ namespace IgniteModule.UI
                   });
 
             headerImage.OnPointerClickAsObservable()
-                       .TimeInterval()
-                       .Select(t => t.Interval.TotalMilliseconds)
-                       .Buffer(2, 1)
-                       .Where(l => l[0] > 250)
-                       .Where(l => l[1] <= 250)
                        .Subscribe(_ => toggle.isOn = !toggle.isOn);
         }
 
