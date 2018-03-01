@@ -6,6 +6,21 @@ namespace IgniteModule
 {
     public static partial class TMProExtensions
     {
+        public static IDisposable SubscribeToText(this IObservable<string> source, TextMeshProUGUI text)
+        {
+            return source.SubscribeWithState(text, (v, t) => t.text = v);
+        }
+
+        public static IDisposable SubscribeToText<T>(this IObservable<T> source, TextMeshProUGUI text)
+        {
+            return source.SubscribeWithState(text, (v, t) => t.text = v.ToString());
+        }
+
+        public static IDisposable SubscribeToText<T>(this IObservable<T> source, TextMeshProUGUI text, Func<T, string> selector)
+        {
+            return source.SubscribeWithState2(text, selector, (v, t, s) => t.text = s(v));
+        }
+
         public static IObservable<string> OnValueChangedAsObservable(this TMP_InputField inputField)
         {
             return Observable.CreateWithState<string, TMP_InputField>(inputField, (i, observer) =>

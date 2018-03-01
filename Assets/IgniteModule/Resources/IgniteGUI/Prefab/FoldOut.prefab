@@ -153,6 +153,8 @@ MonoBehaviour:
   headerImage: {fileID: 114955031058241162}
   layoutGroup: {fileID: 114727355026490854}
   sizeFitter: {fileID: 114149791071361026}
+  headerToggle: {fileID: 224708064298331988}
+  headerHorizontalGroup: {fileID: 114267254129626572}
 --- !u!114 &114065214989485208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -504,7 +506,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!114 &114506466874419236
 MonoBehaviour:
   m_ObjectHideFlags: 1

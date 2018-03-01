@@ -17,7 +17,15 @@ namespace IgniteModule.UI
 
         void SetTheme(IIgniteGUITheme theme);
 
+        void SetParent(IIgniteGUIGroup parent);
+
         IObservable<Unit> OnSelected();
+
+        IObservable<Unit> OnInitializeBeforeAsync();
+
+        IObservable<Unit> OnInitializeAsync();
+
+        IObservable<Unit> OnInitializeAfterAsync();
     }
 
     public interface IIgniteGUIElementGroup : IIgniteGUIElement, IIgniteGUIGroup

@@ -5,22 +5,30 @@ using UnityEngine;
 
 namespace IgniteModule.UI
 {
-    public abstract class IgniteGUIElementGroup : UIMonoBehaviour, IIgniteGUIElementGroup
+    public abstract class IgniteGUIElementGroup : IgniteGUIElement, IIgniteGUIElementGroup
     {
-        public string ID { get; protected set; }
-        public IgniteWindow Window { get; protected set; }
         public IIgniteGUIGroup Parent { get; protected set; }
         public IIgniteGUIGroup LastNestedGroup { get; protected set; }
 
-        protected virtual Transform Content { get { return Transform; } }
-        
-        public IIgniteGUIGroup Add(IIgniteGUIElement element)
-        {
-            element.RectTransform.SetParent(Content);
-            element.SetSize(Window.Size);
-            element.SetTheme(Window.Theme);
+        public virtual Transform Content { get { return Transform; } }
 
-            element.OnSelected().Subscribe(_ => Window.Select.Value = true).AddTo(this);
+        public override void SetParent(IIgniteGUIGroup parent)
+        {
+            base.SetParent(parent);
+            this.Parent = parent;
+        }
+        
+        public virtual IIgniteGUIGroup Add(IIgniteGUIElement element)
+        {
+            element.SetParent(this);
+
+            element.OnInitializeBeforeAsync()
+            .SubscribeWithState2(element, this, (_, e, g) =>
+            {
+                e.SetSize(g.Window.Size);
+                e.SetTheme(g.Window.Theme);
+                e.OnSelected().SubscribeWithState(g.Window, (__, window) => window.Select.Value = true).AddTo(g);
+            });
 
             var group = element as IIgniteGUIGroup;
             if (group != null)
@@ -40,11 +48,5 @@ namespace IgniteModule.UI
         {
             return Transform.GetComponentsInChildren<TElement>().FirstOrDefault(c => c.ID == id);
         }
-
-        public abstract IObservable<Unit> OnSelected();
-
-        public abstract void SetSize(IIgniteGUISize size);
-
-        public abstract void SetTheme(IIgniteGUITheme theme);
     }
 }

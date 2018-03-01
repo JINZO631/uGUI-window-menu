@@ -149,8 +149,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 17a818414b11a4045b75f0fd7530f7bf, type: 2}
-  m_sharedMaterial: {fileID: 21183005576559128, guid: 17a818414b11a4045b75f0fd7530f7bf,
+  m_fontAsset: {fileID: 11400000, guid: 01347ba87b8361e4aa92b85a9abaaeb7, type: 2}
+  m_sharedMaterial: {fileID: 21183005576559128, guid: 01347ba87b8361e4aa92b85a9abaaeb7,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

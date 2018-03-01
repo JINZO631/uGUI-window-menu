@@ -23,5 +23,8 @@ namespace IgniteModule.UI
 
         // InputField
         float InputFieldWidth { get; }
+
+        // Image 
+        float ImageHeight { get; }
     }
 }

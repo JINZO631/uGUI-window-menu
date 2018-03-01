@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 224662609414647584}
+  layoutGroup: {fileID: 114120430727203068}
 --- !u!224 &224265681694419290
 RectTransform:
   m_ObjectHideFlags: 1

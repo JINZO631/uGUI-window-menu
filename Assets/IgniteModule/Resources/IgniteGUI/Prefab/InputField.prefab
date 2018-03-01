@@ -480,6 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputField: {fileID: 114450514559744086}
+  background: {fileID: 114425640721823394}
 --- !u!222 &222392815473127574
 CanvasRenderer:
   m_ObjectHideFlags: 1

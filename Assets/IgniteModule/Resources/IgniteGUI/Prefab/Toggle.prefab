@@ -126,7 +126,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!114 &114546195544179688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -195,8 +195,6 @@ MonoBehaviour:
   toggle: {fileID: 114524239574274832}
   background: {fileID: 114584116327173032}
   checkmark: {fileID: 114546195544179688}
-  disableColor: {r: 0.4705882, g: 0.4705882, b: 0.4705882, a: 1}
-  enableColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!222 &222076958310495460
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -245,7 +243,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 15}
+  m_SizeDelta: {x: 15, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224923276753840684
 RectTransform:

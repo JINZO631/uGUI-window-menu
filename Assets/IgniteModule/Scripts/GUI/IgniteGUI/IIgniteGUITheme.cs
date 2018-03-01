@@ -17,8 +17,8 @@ namespace IgniteModule.UI
         Color LabelHighlitedColor { get; }
 
         // Button
-        Color ButtonColor { get; }
-        ColorBlock ButtonTransitionColor { get; }
+        Color Button { get; }
+        ColorBlock ButtonTransition { get; }
 
         // Toggle
         Color ToggleEnable { get; }
@@ -35,10 +35,21 @@ namespace IgniteModule.UI
         Color ScrollHandle { get; }
 
         // Dropdown
-        Color DropdownColor { get; }
+        Color DropdownFont { get; }
         Color DropdownBackground { get; }
+        Color DropdownOptionsFont { get; }
+        Color DropdownOptionsBackground { get; }
+        Color DropdownCheckmark { get; }
 
         // FoldOut
         Color FoldOutBackground { get; }
+
+        // InputField
+        Color InputFieldBackground { get; }
+        Color InputFieldFont { get; }
+        ColorBlock InputFieldTransition { get; }
+
+        // Image 
+        Color ImageBackground { get; }
     }
 }

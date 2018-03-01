@@ -7,6 +7,8 @@ namespace IgniteModule.UI
         IIgniteGUIGroup Parent { get; }
         IIgniteGUIGroup LastNestedGroup { get; }
 
+        Transform Content { get; }
+
         IgniteWindow Window { get; }
 
         IIgniteGUIGroup Add(IIgniteGUIElement element);

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a5baed18ee0554fb50824183de8cc3, type: 3}
+  m_Name: SizeA
+  m_EditorClassIdentifier: 
+  windowSize: {x: 200, y: 300}
+  padding:
+    m_Left: 5
+    m_Right: 5
+    m_Top: 5
+    m_Bottom: 5
+  fontSize: 14
+  elementHeight: 30
+  toggleSize: {x: 25, y: 25}
+  sliderWidth: 200
+  scrollbarHeight: 200
+  inputFieldWidth: 200
+  imageHeight: 200

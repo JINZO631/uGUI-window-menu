@@ -23,8 +23,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   labelHighlightedColor: {r: 1, g: 0.6, b: 0, a: 0.5}
-  buttonColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  buttonTransitionColor:
+  button: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  buttonTransition:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
@@ -39,6 +39,19 @@ MonoBehaviour:
   scrollBackGround: {r: 0, g: 0.2708418, b: 0.3602941, a: 1}
   scrollBar: {r: 0.58823526, g: 0.58823526, b: 0.58823526, a: 0.484}
   scrollHandle: {r: 1, g: 1, b: 1, a: 0.584}
-  dropdownColor: {r: 0, g: 0.2708418, b: 0.3602941, a: 1}
+  dropdownFont: {r: 0, g: 0.95862055, b: 1, a: 1}
   dropdownBackground: {r: 0, g: 0.566, b: 1, a: 0.528}
+  dropdownOptionsFont: {r: 0, g: 0.95862055, b: 1, a: 1}
+  dropdownOptionsBackground: {r: 0, g: 0.41810328, b: 0.71323526, a: 1}
+  dropdownCheckmark: {r: 0, g: 0.41911763, b: 0.054918915, a: 1}
   foldOutBackground: {r: 0, g: 0.2708418, b: 0.3602941, a: 1}
+  inputFieldFont: {r: 0, g: 0.83448267, b: 1, a: 1}
+  inputFieldBackground: {r: 0, g: 0.18919867, b: 0.30147058, a: 1}
+  inputFieldTransition:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.6827586, b: 0, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  imageBackground: {r: 0.23529412, g: 0.23529412, b: 0.23529412, a: 0.23529412}

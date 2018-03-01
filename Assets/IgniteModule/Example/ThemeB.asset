@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b3601a859514d40a25987d55e041a9, type: 3}
+  m_Name: ThemeB
+  m_EditorClassIdentifier: 
+  font: {r: 1, g: 1, b: 1, a: 1}
+  windowHeader: {r: 0, g: 0.5471698, b: 0.008314317, a: 1}
+  windowBackground: {r: 0.628504, g: 0.7830189, b: 0.5724902, a: 0.46666667}
+  windowCloseButton: {r: 1, g: 0.6901961, b: 0.6901961, a: 0.5019608}
+  windowCloseButtonTransitionColor:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  labelHighlightedColor: {r: 0, g: 1, b: 0.70177174, a: 0.5019608}
+  button: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  buttonTransition:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  toggleEnable: {r: 0, g: 0.46226418, b: 0.15294105, a: 1}
+  toggleDisable: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  sliderBackbround: {r: 0, g: 1, b: 0.16606593, a: 0.24313726}
+  sliderHandle: {r: 1, g: 1, b: 1, a: 1}
+  sliderText: {r: 0.66421795, g: 1, b: 0, a: 0.5254902}
+  scrollBackGround: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 0.5254902}
+  scrollBar: {r: 0.6220525, g: 1, b: 0.47450984, a: 0.5254902}
+  scrollHandle: {r: 0.005738247, g: 0.509434, b: 0, a: 1}
+  dropdownFont: {r: 1, g: 1, b: 1, a: 1}
+  dropdownBackground: {r: 0.30153078, g: 0.5283019, b: 0.30693388, a: 1}
+  dropdownOptionsFont: {r: 0.21698111, g: 0.19139372, b: 0.19139372, a: 1}
+  dropdownOptionsBackground: {r: 0.7642963, g: 1, b: 0.53333336, a: 1}
+  dropdownCheckmark: {r: 1, g: 0, b: 0.7260461, a: 1}
+  foldOutBackground: {r: 0.03604485, g: 0.509434, b: 0.077516556, a: 0}
+  inputFieldFont: {r: 0.47062102, g: 0.8980392, b: 0.32549024, a: 1}
+  inputFieldBackground: {r: 0.21146315, g: 0.4528302, b: 0.24535964, a: 0}
+  inputFieldTransition:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  imageBackground: {r: 0, g: 0.91796017, b: 1, a: 1}
