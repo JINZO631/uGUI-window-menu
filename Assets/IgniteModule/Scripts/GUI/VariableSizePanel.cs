@@ -24,8 +24,6 @@ namespace IgniteModule.UI
 
             dragArea
                 .OnDragAsObservable()
-                //.SkipUntil(OnDragAreaPointerEnter())
-                //.TakeUntil(OnDragAreaPointerExit())
                 .RepeatUntilDestroy(this)
                 .Subscribe(d =>
                 {
