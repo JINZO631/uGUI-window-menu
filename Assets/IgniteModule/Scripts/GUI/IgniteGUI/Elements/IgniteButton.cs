@@ -1,5 +1,4 @@
 using System;
-using TMPro;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +7,7 @@ namespace IgniteModule.UI
 {
     public class IgniteButton : IgniteGUIElement
     {
-        [SerializeField] TextMeshProUGUI text;
+        [SerializeField] Text text;
         [SerializeField] Button button;
         [SerializeField] Image image;
 
@@ -31,7 +30,7 @@ namespace IgniteModule.UI
 
             if (fontSize.HasValue)
             {
-                text.fontSize = fontSize.Value;
+                text.fontSize = (int)fontSize.Value;
             }
 
             RectTransform.SetSizeDelta(x: image.rectTransform.sizeDelta.x);

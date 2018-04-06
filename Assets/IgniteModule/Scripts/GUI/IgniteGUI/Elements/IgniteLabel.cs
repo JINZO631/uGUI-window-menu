@@ -1,5 +1,4 @@
 using System;
-using TMPro;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -10,11 +9,11 @@ namespace IgniteModule.UI
     public class IgniteLabel : IgniteGUIElement
     {
         [SerializeField] Image background;
-        [SerializeField] TextMeshProUGUI text;
+        [SerializeField] Text text;
         [SerializeField] Color backgroundColor;
 
         /// <summary> テキスト </summary>
-        public TextMeshProUGUI TextMesh { get { return text; } }
+        public Text TextMesh { get { return text; } }
 
         /// <summary> 表示テキスト </summary>
         public string Text
@@ -32,7 +31,7 @@ namespace IgniteModule.UI
         /// <summary> サイズ設定 </summary>
         public void SetSize(float fontSize)
         {
-            text.fontSize = fontSize;
+            text.fontSize = (int)fontSize;
             RectTransform.SetSizeDelta(x: text.rectTransform.sizeDelta.x);
         }
 

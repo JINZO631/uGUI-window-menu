@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using TMPro;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -10,17 +9,17 @@ namespace IgniteModule.UI
 {
     public class IgniteDropdown : IgniteGUIElement
     {
-        [SerializeField] TMP_Dropdown dropdown;
+        [SerializeField] Dropdown dropdown;
         [SerializeField] Image image;
-        [SerializeField] TextMeshProUGUI label;
-        [SerializeField] TextMeshProUGUI arrow;
+        [SerializeField] Text label;
+        [SerializeField] Image arrow;
         [SerializeField] RectTransform templateItem;
-        [SerializeField] TextMeshProUGUI templateLabel;
+        [SerializeField] Text templateLabel;
         [SerializeField] Image templateBackground;
         [SerializeField] Toggle templateToggle;
 
         /// <summary> ドロップダウン </summary>
-        public TMP_Dropdown Dropdown { get { return dropdown; } }
+        public Dropdown Dropdown { get { return dropdown; } }
         /// <summary> 選択中の項目(index) </summary>
         public ReadOnlyReactiveProperty<int> Value { get; private set; }
 
@@ -40,8 +39,8 @@ namespace IgniteModule.UI
             }
             if (fontSize.HasValue)
             {
-                label.fontSize = fontSize.Value;
-                templateLabel.fontSize = fontSize.Value;
+                label.fontSize = (int)fontSize.Value;
+                templateLabel.fontSize = (int)fontSize.Value;
             }
         }
 
@@ -54,7 +53,11 @@ namespace IgniteModule.UI
         /// <summary> テーマ設定 </summary>
         public void SetTheme(Color? fontColor = null, Color ? backgroundColor = null, Color? optionsFontColor = null, Color? optionsBackgroundColor = null, Color? checkmarkColor = null)
         {
-            if (fontColor.HasValue) label.color = fontColor.Value;
+            if (fontColor.HasValue)
+            {
+                label.color = fontColor.Value;
+                arrow.color = fontColor.Value;
+            }
             if (backgroundColor.HasValue) image.color = backgroundColor.Value;
             if (optionsFontColor.HasValue) templateLabel.color = optionsFontColor.Value;
             if (optionsBackgroundColor.HasValue) templateBackground.color = optionsBackgroundColor.Value;

@@ -38,7 +38,7 @@ namespace IgniteModule.UI
             set { windowCloseButton = value; }
         }
 
-        [SerializeField] ColorBlock windowCloseButtonTransitionColor = ColorBlock.defaultColorBlock;
+        [SerializeField] ColorBlock windowCloseButtonTransitionColor;
         public ColorBlock WindowCloseButtonTransitionColor
         {
             get { return windowCloseButtonTransitionColor; }
@@ -186,7 +186,7 @@ namespace IgniteModule.UI
             set { inputFieldBackground = value; }
         }
 
-        [SerializeField] ColorBlock inputFieldTransition = ColorBlock.defaultColorBlock;
+        [SerializeField] ColorBlock inputFieldTransition;
         public ColorBlock InputFieldTransition
         {
             get { return inputFieldTransition; }

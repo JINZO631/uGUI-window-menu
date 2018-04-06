@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 using UniRx.Triggers;
-using TMPro;
 using System;
 using DG.Tweening;
 using System.Linq;
@@ -11,8 +10,8 @@ namespace IgniteModule.UI
 {
     public class IgniteFoldOut : IgniteGUIElementGroup
     {
-        [SerializeField] TextMeshProUGUI headerName;
-        [SerializeField] RectTransform arrow;
+        [SerializeField] Text headerName;
+        [SerializeField] Image arrow;
         [SerializeField] RectTransform header;
         [SerializeField] RectTransform view;
         [SerializeField] RectTransform content;
@@ -47,7 +46,6 @@ namespace IgniteModule.UI
             if (height.HasValue)
             {
                 header.SetSizeDelta(y: height.Value);
-                arrow.SetSizeDelta(y: height.Value);
                 view.SetAnchoredPosition(y: -height.Value);
                 headerName.rectTransform.SetSizeDelta(y: height.Value);
                 headerToggle.SetSizeDelta(height.Value, height.Value);
@@ -56,7 +54,7 @@ namespace IgniteModule.UI
 
             if (fontSize.HasValue)
             {
-                headerName.fontSize = fontSize.Value;
+                headerName.fontSize = (int)fontSize.Value;
             }
 
             var foldoutParent = Parent as IgniteFoldOut;
@@ -82,7 +80,11 @@ namespace IgniteModule.UI
         /// <summary> テーマ設定 </summary>
         public void SetTheme(Color? fontColor = null, Color? backgroundColor = null)
         {
-            if (fontColor.HasValue) headerName.color = fontColor.Value;
+            if (fontColor.HasValue)
+            {
+                headerName.color = fontColor.Value;
+                arrow.color = fontColor.Value;
+            }
             if (backgroundColor.HasValue) headerImage.color = backgroundColor.Value;
         }
 
@@ -98,7 +100,7 @@ namespace IgniteModule.UI
             CalcContentHeight();
 
             // 矢印を回転
-            arrow.DORotate(new Vector3(0f, 0f, -90f), 0.1f).SetEase(Ease.OutQuint);
+            arrow.rectTransform.DORotate(new Vector3(0f, 0f, -90f), 0.1f).SetEase(Ease.OutQuint);
             // viewのRectTransformのサイズを変更することで子項目を表示する
             view.DOSizeDeltaY(height, 0.3f).SetEase(Ease.OutQuint)
                 .OnStart(() => toggle.enabled = false)  // トグル操作禁止
@@ -116,7 +118,7 @@ namespace IgniteModule.UI
         public void Close()
         {
             // 矢印を回転
-            arrow.DORotate(Vector3.zero, 0.1f).SetEase(Ease.OutQuint);
+            arrow.rectTransform.DORotate(Vector3.zero, 0.1f).SetEase(Ease.OutQuint);
             // viewのRectTransformのサイズを変更することで子項目を隠す
             view.DOSizeDeltaY(0f, 0.3f).SetEase(Ease.OutQuint)
                 .OnStart(() =>
@@ -190,7 +192,7 @@ namespace IgniteModule.UI
             var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/Prefab/FoldOut")).GetComponent<IgniteFoldOut>();
 
             instance.headerName.text = name;  // 名前を設定
-            instance.ID              = id;    // ID設定
+            instance.ID = id;    // ID設定
 
             // 初期化処理
             instance.OnInitializeAsync()

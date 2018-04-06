@@ -1,7 +1,6 @@
 using System;
 using DG.Tweening;
 using System.Linq;
-using TMPro;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -15,15 +14,17 @@ namespace IgniteModule.UI
 
         float height;
         BoolReactiveProperty select = new BoolReactiveProperty(false);
+        Subject<IIgniteGUITheme> onSetTheme = new Subject<IIgniteGUITheme>();
+        Subject<IIgniteGUISize> onSetSize = new Subject<IIgniteGUISize>();
         readonly Single onIniitalizeAsync = new Single();
         readonly Single onIniitalizeAfterAsync = new Single();
 
         [SerializeField] Image image;
         [SerializeField] Image headerImage;
-        [SerializeField] TextMeshProUGUI headerName;
+        [SerializeField] Text headerName;
+        [SerializeField] Image arrowImage;
         [SerializeField] LayoutElement headerLayoutElement;
         [SerializeField] RectTransform headerToggle;
-        [SerializeField] TextMeshProUGUI headerToggleText;
         [SerializeField] RectTransform headerWindowNameRect;
         [SerializeField] HorizontalLayoutGroup headerLayoutGroup;
         [SerializeField] Toggle toggle;
@@ -109,9 +110,22 @@ namespace IgniteModule.UI
             return onIniitalizeAsync;
         }
 
+        /// <summary> 初期化後 </summary>
         public IObservable<Unit> OnInitializeAfterAsync()
         {
             return onIniitalizeAfterAsync;
+        }
+
+        /// <summary> サイズ設定イベント </summary>
+        public IObservable<IIgniteGUISize> OnSetSize()
+        {
+            return onSetSize;
+        }
+
+        /// <summary> テーマ設定イベント </summary>
+        public IObservable<IIgniteGUITheme> OnSetTheme()
+        {
+            return onSetTheme;
         }
 
         /// <summary> 子を追加 </summary>
@@ -125,6 +139,8 @@ namespace IgniteModule.UI
                 e.SetSize(w.Size);
                 e.SetTheme(w.Theme);
                 e.OnSelected().SubscribeWithState(w, (__, window) => window.Select.Value = true).AddTo(w);
+                w.OnSetTheme().Subscribe(e.SetTheme);
+                w.OnSetSize().Subscribe(e.SetSize);
             });
 
             var group = element as IIgniteGUIGroup;
@@ -331,7 +347,7 @@ namespace IgniteModule.UI
             .SubscribeWithState(this, (_, i) =>
             {
                 var posX = Screen.width - i.RectTransform.sizeDelta.x;
-                var posY = i.RectTransform.sizeDelta.y - Screen.height ;
+                var posY = i.RectTransform.sizeDelta.y - Screen.height;
                 i.RectTransform.SetAnchoredPosition(posX, posY);
             });
 
@@ -342,13 +358,18 @@ namespace IgniteModule.UI
         public void SetTheme(IIgniteGUITheme theme)
         {
             SetTheme(theme.WindowHeader, theme.Font, theme.WindowBackground, theme.WindowCloseButton, theme.WindowCloseButtonTransitionColor);
+            onSetTheme.OnNext(theme);
         }
 
         /// <summary> テーマ設定 </summary>
         public void SetTheme(Color? headerColor = null, Color? fontColor = null, Color? backgroundColor = null, Color? closeButtonColor = null, ColorBlock? closeButtonColors = null)
         {
             if (headerColor.HasValue) headerImage.color = headerColor.Value;
-            if (fontColor.HasValue) headerName.color = fontColor.Value;
+            if (fontColor.HasValue)
+            {
+                headerName.color = fontColor.Value;
+                arrowImage.color = fontColor.Value;
+            }
             if (backgroundColor.HasValue) image.color = backgroundColor.Value;
             if (closeButtonColor.HasValue) closeButton.targetGraphic.color = closeButtonColor.Value;
             if (closeButtonColors.HasValue) closeButton.colors = closeButtonColors.Value;
@@ -358,18 +379,21 @@ namespace IgniteModule.UI
         public void SetSize(IIgniteGUISize size)
         {
             SetSize(size.WindowSize, size.FontSize, size.ElementHeight);
+            onSetSize.OnNext(size);
         }
 
         /// <summary> サイズ設定 </summary>
         public void SetSize(Vector2? windowSize = null, float? fontSize = null, float? headerHeight = null)
         {
             if (windowSize.HasValue) RectTransform.sizeDelta = windowSize.Value;
-            if (fontSize.HasValue) headerName.fontSize = fontSize.Value;
+            if (fontSize.HasValue)
+            {
+                headerName.fontSize = (int)fontSize.Value;
+            }
             if (headerHeight.HasValue)
             {
                 headerLayoutElement.minHeight = headerHeight.Value;
                 headerToggle.SetSizeDelta(headerHeight.Value, headerHeight.Value);
-                headerToggleText.rectTransform.SetSizeDelta(y: headerHeight.Value);
                 headerWindowNameRect.SetSizeDelta(y: headerHeight.Value);
                 headerLayoutGroup.padding.left = (int)headerHeight.Value;
                 headerLayoutGroup.padding.right = (int)headerHeight.Value;
@@ -388,9 +412,9 @@ namespace IgniteModule.UI
             window.UpdateAsObservable().Where(_ => window.Select.Value).ThrottleFirstFrame(30).Subscribe(_ => window.ContentFit());
 
             window.gameObject.name = name;                                     // GameObject名
-            window.HeaderName      = name;                                     // 表示するWindow名
-            window.Size            = size != null ? size : IgniteGUI.Size;     // 使用するサイズ設定
-            window.Theme           = theme != null ? theme : IgniteGUI.Theme;  // 使用するテーマ設定
+            window.HeaderName = name;                                     // 表示するWindow名
+            window.Size = size != null ? size : IgniteGUI.Size;     // 使用するサイズ設定
+            window.Theme = theme != null ? theme : IgniteGUI.Theme;  // 使用するテーマ設定
 
 
             window.OnInitializeAsync()

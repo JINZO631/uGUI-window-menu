@@ -1,5 +1,4 @@
 using System;
-using TMPro;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -9,11 +8,11 @@ namespace IgniteModule.UI
 {
     public class IgniteInputField : IgniteGUIElement
     {
-        [SerializeField] TMP_InputField inputField;
+        [SerializeField] InputField inputField;
         [SerializeField] Image background;
 
         /// <summary> InputField </summary>
-        public TMP_InputField InputField { get { return inputField; } }
+        public InputField InputField { get { return inputField; } }
         /// <summary> 入力された値 </summary>
         public ReadOnlyReactiveProperty<string> Value { get; private set; }
 
@@ -30,11 +29,11 @@ namespace IgniteModule.UI
             if (height.HasValue) RectTransform.SetSizeDelta(y: height.Value);
             if (fontSize.HasValue)
             {
-                InputField.textComponent.fontSize = fontSize.Value;
-                var placeholder = InputField.placeholder as TextMeshProUGUI;
+                InputField.textComponent.fontSize = (int)fontSize.Value;
+                var placeholder = InputField.placeholder as Text;
                 if (placeholder != null)
                 {
-                    placeholder.fontSize = fontSize.Value;
+                    placeholder.fontSize = (int)fontSize.Value;
                 }
             }
         }
@@ -65,14 +64,14 @@ namespace IgniteModule.UI
         }
 
         /// <summary> 生成 </summary>
-        public static IgniteInputField Create(Action<string> onEndEdit = null, TMP_InputField.CharacterValidation characterValidation = TMP_InputField.CharacterValidation.None, bool readOnly = false, Action<IgniteInputField> onInitialize = null, string id = "")
+        public static IgniteInputField Create(Action<string> onEndEdit = null, InputField.CharacterValidation characterValidation = InputField.CharacterValidation.None, bool readOnly = false, Action<IgniteInputField> onInitialize = null, string id = "")
         {
             // 生成
             var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/Prefab/InputField")).GetComponent<IgniteInputField>();
 
             instance.inputField.characterValidation = characterValidation;  // 許容する文字種類
-            instance.inputField.readOnly            = readOnly;             // 読み取り専用か
-            instance.ID                             = id;                   // ID設定
+            instance.inputField.readOnly = readOnly;             // 読み取り専用か
+            instance.ID = id;                   // ID設定
 
             // 初期化処理
             instance.OnInitializeAsync()
@@ -109,19 +108,19 @@ namespace IgniteModule.UI
     public static partial class IIgniteGUIGroupExtensions
     {
         /// <summary> InputField追加 </summary>
-        public static IIgniteGUIGroup AddInputField(this IIgniteGUIGroup group, Action<string> onEndEdit = null, TMP_InputField.CharacterValidation characterValidation = TMP_InputField.CharacterValidation.None, bool readOnly = false, Action<IgniteInputField> onInitialize = null, string id = "")
+        public static IIgniteGUIGroup AddInputField(this IIgniteGUIGroup group, Action<string> onEndEdit = null, InputField.CharacterValidation characterValidation = InputField.CharacterValidation.None, bool readOnly = false, Action<IgniteInputField> onInitialize = null, string id = "")
         {
             return group.Add(IgniteInputField.Create(onEndEdit, characterValidation, readOnly, onInitialize, id));
         }
 
         /// <summary> InputField追加 </summary>
-        public static IIgniteGUIGroup AddInputField(this IIgniteGUIGroup group, string label, Action<string> onEndEdit = null, TMP_InputField.CharacterValidation characterValidation = TMP_InputField.CharacterValidation.None, bool readOnly = false, Action<IgniteInputField> onInitialize = null, string id = "")
+        public static IIgniteGUIGroup AddInputField(this IIgniteGUIGroup group, string label, Action<string> onEndEdit = null, InputField.CharacterValidation characterValidation = InputField.CharacterValidation.None, bool readOnly = false, Action<IgniteInputField> onInitialize = null, string id = "")
         {
             return group.Add(IgniteHorizontalGroup.Create().AddLabel(label).AddInputField(onEndEdit, characterValidation, readOnly, onInitialize, id) as IgniteHorizontalGroup);
         }
 
         /// <summary> InputFiled追加(ボタン付き) </summary>
-        public static IIgniteGUIGroup AddInputFieldWithButton(this IIgniteGUIGroup group, string label, string buttonName, Action<string> onButtonClick, Action<string> onEndEdit = null, TMP_InputField.CharacterValidation characterValidation = TMP_InputField.CharacterValidation.None, bool readOnly = false, Action<IgniteInputField> onInitialize = null, string id = "")
+        public static IIgniteGUIGroup AddInputFieldWithButton(this IIgniteGUIGroup group, string label, string buttonName, Action<string> onButtonClick, Action<string> onEndEdit = null, InputField.CharacterValidation characterValidation = InputField.CharacterValidation.None, bool readOnly = false, Action<IgniteInputField> onInitialize = null, string id = "")
         {
             var inputField = IgniteInputField.Create(onEndEdit, characterValidation, readOnly, onInitialize, id);
             Action<Unit> buttonClick = _ => onButtonClick(inputField.Value.Value);

@@ -1,5 +1,4 @@
 using System;
-using TMPro;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -13,7 +12,7 @@ namespace IgniteModule.UI
         [SerializeField] Image background;
         [SerializeField] RectTransform handleSliderArea;
         [SerializeField] Image handle;
-        [SerializeField] TextMeshProUGUI text;
+        [SerializeField] Text text;
 
         /// <summary> スライダー </summary>
         public Slider Slider { get { return slider; } }
@@ -47,7 +46,7 @@ namespace IgniteModule.UI
 
             if (fontSize.HasValue)
             {
-                text.fontSize = fontSize.Value;
+                text.fontSize = (int)fontSize.Value;
             }
         }
 
@@ -75,12 +74,12 @@ namespace IgniteModule.UI
         public static IgniteSlider Create(Action<float> onValueChanged = null, float minValue = 0f, float maxValue = 1f, bool wholeNumbers = false, IObservable<float> observableValue = null, Action<IgniteSlider> onInitialize = null, string id = "")
         {
             // 生成
-            var instance =  Instantiate(Resources.Load<GameObject>("IgniteGUI/Prefab/Slider")).GetComponent<IgniteSlider>();
+            var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/Prefab/Slider")).GetComponent<IgniteSlider>();
 
-            instance.slider.minValue     = minValue;      // 最小値設定
-            instance.slider.maxValue     = maxValue;      // 最大値設定
+            instance.slider.minValue = minValue;      // 最小値設定
+            instance.slider.maxValue = maxValue;      // 最大値設定
             instance.slider.wholeNumbers = wholeNumbers;  // 整数のみかどうか設定
-            instance.ID                  = id;            // ID設定
+            instance.ID = id;            // ID設定
 
             // 初期化処理
             instance.OnInitializeAsync()
