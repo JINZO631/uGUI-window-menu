@@ -1,5 +1,4 @@
 using System;
-using DG.Tweening;
 using System.Linq;
 using UniRx;
 using UniRx.Triggers;
@@ -201,29 +200,22 @@ namespace IgniteModule.UI
         /// <summary> Windowを閉じる(折り畳み) </summary>
         public void Close()
         {
-            // 閉じる前のheightを保存
             height = RectTransform.sizeDelta.y;
-            // サイズ変更用のドラッグエリアを非表示
             dragArea.SetActive(false);
-            // Windowサイズ変更
-            RectTransform.DOSizeDelta(new Vector2(RectTransform.sizeDelta.x, Size.ElementHeight), TweenDuration).SetEase(Ease.OutQuint)
-                         .OnStart(() => toggle.enabled = false)
-                         .OnComplete(() => toggle.enabled = true);
-            // 矢印回転
-            arrow.DORotate(Vector3.zero, TweenDuration).SetEase(Ease.OutQuint);
+            toggle.enabled = false;
+
+            TweenUtil.Tween(RectTransform, new Vector2(RectTransform.sizeDelta.x, Size.ElementHeight), arrow, Quaternion.Euler(Vector3.zero), TweenDuration)
+                .Subscribe(_ => { }, () => toggle.enabled = true).AddTo(this);
         }
 
         /// <summary> Windowを開く(折り畳み解除) </summary>
         public void Open()
         {
-            // サイズ変更用のドラッグエリアを表示
             dragArea.SetActive(true);
-            // Windowサイズ変更
-            RectTransform.DOSizeDelta(new Vector2(RectTransform.sizeDelta.x, height), TweenDuration).SetEase(Ease.OutQuint)
-                         .OnStart(() => toggle.enabled = false)
-                         .OnComplete(() => toggle.enabled = true);
-            // 矢印回転
-            arrow.DORotate(new Vector3(0f, 0f, -90f), TweenDuration).SetEase(Ease.OutQuint);
+            toggle.enabled = false;
+
+            TweenUtil.Tween(RectTransform, new Vector2(RectTransform.sizeDelta.x, height), arrow, Quaternion.Euler(0f, 0f, -90f), TweenDuration)
+                .Subscribe(_ => { }, () => toggle.enabled = true).AddTo(this);
         }
 
         /// <summary> Windowサイズ変更 </summary>
