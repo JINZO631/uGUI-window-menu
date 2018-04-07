@@ -8,10 +8,6 @@ uGUIでシンプルなメニューを作成するライブラリ
 
 - UniRx https://github.com/neuecc/UniRx/blob/master/LICENSE
 
-- TextMeshPro https://assetstore.unity.com/packages/essentials/beta-projects/textmesh-pro-84126
-
-- DOTween http://dotween.demigiant.com/
-
 ## 使用方法
 
 https://github.com/JINZO631/uGUI-window-menu/blob/master/Assets/IgniteModule/Example/ExampleWindowCreate.cs
