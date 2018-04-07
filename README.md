@@ -6,7 +6,7 @@ uGUIでシンプルなメニューを作成するライブラリ
 
 動作に必要な外部のライブラリ等
 
-- UniRx https://github.com/neuecc/UniRx/blob/master/LICENSE
+- UniRx https://github.com/neuecc/UniRx
 
 ## 使用方法
 
