@@ -109,20 +109,6 @@ namespace IgniteModule.UI
                      toggle.enabled = true;
                  })
                  .AddTo(this);
-
-            //// 矢印を回転
-            //arrow.rectTransform.DORotate(new Vector3(0f, 0f, -90f), 0.1f).SetEase(Ease.OutQuint);
-            //// viewのRectTransformのサイズを変更することで子項目を表示する
-            //view.DOSizeDeltaY(height, 0.3f).SetEase(Ease.OutQuint)
-            //    .OnStart(() => toggle.enabled = false)  // トグル操作禁止
-            //    .OnUpdate(() => Window.SetLayout())  // 動作中Windowのレイアウトを更新する
-            //    .OnComplete(() =>
-            //    {
-            //        Window.SetLayout();
-            //        CalcContentHeight();
-            //        sizeFitter.enabled = true;
-            //        toggle.enabled = true; // トグル操作禁止を解除
-            //    });
         }
 
         /// <summary> 項目を閉じる </summary>
@@ -138,22 +124,6 @@ namespace IgniteModule.UI
                     toggle.enabled = true;
                 })
                  .AddTo(this);
-            //// 矢印を回転
-            //arrow.rectTransform.DORotate(Vector3.zero, 0.1f).SetEase(Ease.OutQuint);
-            //// viewのRectTransformのサイズを変更することで子項目を隠す
-            //view.DOSizeDeltaY(0f, 0.3f).SetEase(Ease.OutQuint)
-            //    .OnStart(() =>
-            //    {
-            //        sizeFitter.enabled = false;
-            //        toggle.enabled = false;  // トグル操作禁止
-            //    })
-            //    .OnUpdate(() => Window.SetLayout())  // 動作中Windowのレイアウトを更新する
-            //    .OnComplete(() =>
-            //    {
-            //        Window.SetLayout();
-            //        CalcContentHeight();
-            //        toggle.enabled = true; // トグル操作禁止を解除
-            //    });
         }
 
         /// <summary> 子要素の高さを計算 </summary>
