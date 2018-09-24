@@ -19,7 +19,7 @@ namespace IgniteModule
 
         void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
         {
-            backgroundImage.color = new Color(1, 1, 1, 0.5f);
+            backgroundImage.color = IgniteGUISettings.LabelHighlightColor;
         }
 
         void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
@@ -34,6 +34,7 @@ namespace IgniteModule
             instance.labelText.text = label;
             instance.labelText.font = IgniteGUISettings.Font;
             instance.labelText.fontSize = IgniteGUISettings.FontSize;
+            instance.labelText.color = IgniteGUISettings.FontColor;
 
             if (labelChangeEvent != null)
             {

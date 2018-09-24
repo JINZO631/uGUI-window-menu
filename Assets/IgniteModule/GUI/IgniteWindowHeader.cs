@@ -8,13 +8,14 @@ namespace IgniteModule.GUICore
 {
     public class IgniteWindowHeader : GUIMonoBehaviour, IPointerClickHandler
     {
-        [SerializeField] private Toggle toggle = null;
-        [SerializeField] private Text headerName = null;
-        [SerializeField] private Button killButton = null;
-        [SerializeField] private RectTransform arrowImageRect = null;
-        [SerializeField] private RectTransform toggleRect = null;
-        [SerializeField] private RectTransform killButtonRect = null;
-        [SerializeField] private HorizontalLayoutGroup headerLayoutGroup = null;
+        [SerializeField] Toggle toggle = null;
+        [SerializeField] Text headerName = null;
+        [SerializeField] Image headerImage = null;
+        [SerializeField] Button killButton = null;
+        [SerializeField] RectTransform arrowImageRect = null;
+        [SerializeField] RectTransform toggleRect = null;
+        [SerializeField] RectTransform killButtonRect = null;
+        [SerializeField] HorizontalLayoutGroup headerLayoutGroup = null;
 
         int clickCount;
         float lastTime;
@@ -57,6 +58,8 @@ namespace IgniteModule.GUICore
         {
             headerName.font = IgniteGUISettings.Font;
             headerName.fontSize = IgniteGUISettings.FontSize;
+            headerName.color = IgniteGUISettings.FontColor;
+            headerImage.color = IgniteGUISettings.WindowHeaderColor;
             SetHeight(IgniteGUISettings.ElementHeight);
 
             toggle.onValueChanged.AddListener(v =>

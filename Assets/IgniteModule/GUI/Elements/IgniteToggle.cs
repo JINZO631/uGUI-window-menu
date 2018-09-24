@@ -28,6 +28,8 @@ namespace IgniteModule
             var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/Toggle")).GetComponent<IgniteToggle>();
 
             instance.SetHeight(IgniteGUISettings.ElementHeight);
+            instance.backgroundImage.color = IgniteGUISettings.ToggleBackgroundColor;
+            instance.checkmarkImage.color = IgniteGUISettings.ToggleEnableColor;
             instance.toggle.isOn = defaultValue;
             instance.toggle.onValueChanged.AddListener(new UnityAction<bool>(onValueChanged));
             instance.toggle.onValueChanged.AddListener(v => instance.onSelected.Invoke());

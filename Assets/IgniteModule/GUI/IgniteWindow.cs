@@ -18,6 +18,8 @@ namespace IgniteModule
         [SerializeField] GameObject dragArea = null;
         [SerializeField] DraggableUI draggable = null;
         [SerializeField] VariableSizePanel variableSizePanel = null;
+        [SerializeField] Image backgroundImage = null;
+        [SerializeField] Image dragAreaImage = null;
 
         public IIgniteGUIGroup Parent => null;
 
@@ -76,6 +78,8 @@ namespace IgniteModule
 
             OnSelect.AddListener(() => Transform.SetAsLastSibling());
             variableSizePanel.OnSizeChange.AddListener(sizeDelta => scrollRect.SetSizeDelta(y: sizeDelta.y - IgniteGUISettings.ElementHeight));
+            backgroundImage.color = IgniteGUISettings.WindowContentColor;
+            dragAreaImage.color = IgniteGUISettings.WindowDragAreaColor;
         }
 
         void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)

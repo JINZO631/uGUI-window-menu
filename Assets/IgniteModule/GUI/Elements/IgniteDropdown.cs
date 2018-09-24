@@ -18,6 +18,7 @@ namespace IgniteModule
         [SerializeField] RectTransform templateCheckmarkRect = null;
         [SerializeField] RectTransform templateContentRect = null;
         [SerializeField] HorizontalLayoutGroup templateItemLayoutGroup = null;
+        [SerializeField] Image backgroundImage = null;
 
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
         {
@@ -41,10 +42,13 @@ namespace IgniteModule
         {
             var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/Dropdown")).GetComponent<IgniteDropdown>();
 
+            instance.backgroundImage.color = IgniteGUISettings.DropdownColor;
             instance.dropdown.captionText.font = IgniteGUISettings.Font;
             instance.dropdown.captionText.fontSize = IgniteGUISettings.FontSize;
+            instance.dropdown.captionText.color = IgniteGUISettings.FontColor;
             instance.templateLabel.font = IgniteGUISettings.Font;
             instance.templateLabel.fontSize = IgniteGUISettings.FontSize;
+            instance.templateLabel.color = IgniteGUISettings.FontColor;
             instance.dropdown.AddOptions(options.ToList());
             instance.dropdown.onValueChanged.AddListener(new UnityAction<int>(onValueChanged));
             instance.SetHeight(IgniteGUISettings.ElementHeight);

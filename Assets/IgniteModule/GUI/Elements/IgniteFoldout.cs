@@ -20,6 +20,8 @@ namespace IgniteModule
         [SerializeField] RectTransform arrowRect = null;
         [SerializeField] ContentSizeFitter sizeFitter = null;
         [SerializeField] VerticalLayoutGroup layoutGroup = null;
+        [SerializeField] Image backgroundImage = null;
+
         public override RectTransform Content => content;
 
         float height;
@@ -118,9 +120,11 @@ namespace IgniteModule
         {
             var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/Foldout")).GetComponent<IgniteFoldout>();
 
+            instance.backgroundImage.color = IgniteGUISettings.FoldoutColor;
             instance.nameText.text = name;
             instance.nameText.font = IgniteGUISettings.Font;
             instance.nameText.fontSize = IgniteGUISettings.FontSize;
+            instance.nameText.color = IgniteGUISettings.FontColor;
             instance.SetHeight(IgniteGUISettings.ElementHeight);
             instance.Initialize();
 

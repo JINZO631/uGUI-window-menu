@@ -11,6 +11,7 @@ namespace IgniteModule
     {
         [SerializeField] Slider slider = null;
         [SerializeField] RectTransform handleAreaRect = null;
+        [SerializeField] Image backgroundImage = null;
         [SerializeField] Image handleImage = null;
         [SerializeField] Text sliderValueText = null;
         [SerializeField] HorizontalLayoutGroup horizontalLayoutGroup = null;
@@ -33,8 +34,11 @@ namespace IgniteModule
             var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/Slider")).GetComponent<IgniteSlider>();
 
             instance.SetSize(IgniteGUISettings.ElementWidth, IgniteGUISettings.ElementHeight);
+            instance.backgroundImage.color = IgniteGUISettings.SliderBackgroundColor;
+            instance.handleImage.color = IgniteGUISettings.SliderHandleColor;
             instance.sliderValueText.font = IgniteGUISettings.Font;
             instance.sliderValueText.fontSize = IgniteGUISettings.FontSize;
+            instance.sliderValueText.color = IgniteGUISettings.FontColor;
             instance.slider.minValue = minValue;
             instance.slider.maxValue = maxValue;
             instance.slider.wholeNumbers = wholeNumbers;

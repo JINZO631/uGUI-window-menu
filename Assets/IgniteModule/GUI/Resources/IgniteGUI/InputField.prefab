@@ -55,6 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputField: {fileID: 2123932759485481124}
   placeHolderText: {fileID: 7690275315902568915}
+  backgroundImage: {fileID: 9126575748387783544}
 --- !u!222 &6292116517483701063
 CanvasRenderer:
   m_ObjectHideFlags: 0

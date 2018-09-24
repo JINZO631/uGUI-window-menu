@@ -131,8 +131,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 3073923705872434354}
-  backgroundImage: {fileID: 466144263709780907}
   handleAreaRect: {fileID: 8120347431176294378}
+  backgroundImage: {fileID: 466144263709780907}
   handleImage: {fileID: 6543613905745825791}
   sliderValueText: {fileID: 2473193324352094291}
   horizontalLayoutGroup: {fileID: 2849497981147168790}

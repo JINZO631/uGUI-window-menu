@@ -397,6 +397,7 @@ MonoBehaviour:
   templateCheckmarkRect: {fileID: 5625947930469669921}
   templateContentRect: {fileID: 1031566944815135959}
   templateItemLayoutGroup: {fileID: 5722175335765362175}
+  backgroundImage: {fileID: 900084488152375525}
 --- !u!222 &2210164353693458182
 CanvasRenderer:
   m_ObjectHideFlags: 0

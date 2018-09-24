@@ -28,7 +28,9 @@ namespace IgniteModule
             instance.buttonNameText.text = buttonName;
             instance.buttonNameText.font = IgniteGUISettings.Font;
             instance.buttonNameText.fontSize = IgniteGUISettings.FontSize;
+            instance.buttonNameText.color = IgniteGUISettings.FontColor;
             instance.backgroundImage.rectTransform.SetSizeDelta(y: IgniteGUISettings.ElementHeight);
+            instance.backgroundImage.color = IgniteGUISettings.ButtonColor;
             instance.RectTransform.SetSizeDelta(y: IgniteGUISettings.ElementHeight);
             instance.button.onClick.AddListener(new UnityAction(onClick));
             instance.StartCoroutine(instance.Fit());

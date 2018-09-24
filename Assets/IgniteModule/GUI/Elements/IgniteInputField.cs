@@ -11,6 +11,7 @@ namespace IgniteModule
     {
         [SerializeField] InputField inputField = null;
         [SerializeField] Text placeHolderText = null;
+        [SerializeField] Image backgroundImage = null;
 
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
         {
@@ -26,13 +27,16 @@ namespace IgniteModule
         {
             var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/InputField")).GetComponent<IgniteInputField>();
 
+            instance.backgroundImage.color = IgniteGUISettings.InputFieldColor;
             instance.inputField.characterValidation = characterValidation;
             instance.inputField.readOnly = readOnly;
             instance.SetSize(IgniteGUISettings.ElementWidth, IgniteGUISettings.ElementHeight);
             instance.inputField.textComponent.font = IgniteGUISettings.Font;
             instance.inputField.textComponent.fontSize = IgniteGUISettings.FontSize;
+            instance.inputField.textComponent.color = IgniteGUISettings.FontColor;
             instance.placeHolderText.font = IgniteGUISettings.Font;
             instance.placeHolderText.fontSize = IgniteGUISettings.FontSize;
+            instance.placeHolderText.color = IgniteGUISettings.FontColor;
 
             if (onValueChanged != null)
             {

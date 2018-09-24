@@ -279,6 +279,7 @@ MonoBehaviour:
   arrowRect: {fileID: 1746940046241706954}
   sizeFitter: {fileID: 6123285103668684497}
   layoutGroup: {fileID: 2161988112151515994}
+  backgroundImage: {fileID: 5319276216255517072}
 --- !u!1 &2861231983437708763
 GameObject:
   m_ObjectHideFlags: 0

@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -696,6 +696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggle: {fileID: 3179661044207965348}
   headerName: {fileID: 4510113517718124592}
+  headerImage: {fileID: 2590047427656408452}
   killButton: {fileID: 6879990629165075974}
   arrowImageRect: {fileID: 945500698887049218}
   toggleRect: {fileID: 5415628178858463383}
@@ -1007,6 +1008,8 @@ MonoBehaviour:
   dragArea: {fileID: 3070192999516967272}
   draggable: {fileID: 847887521859541457}
   variableSizePanel: {fileID: 7004426991880671598}
+  backgroundImage: {fileID: 8273378093398911887}
+  dragAreaImage: {fileID: 89768225360504052}
 --- !u!222 &4001629832106154953
 CanvasRenderer:
   m_ObjectHideFlags: 0
