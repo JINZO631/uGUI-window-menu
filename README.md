@@ -8,6 +8,9 @@ uGUIでシンプルなメニューを作成するライブラリ
 
 - Scripting Runtime Version .NET 4.x Equivalent
 
+## 導入
+[release](https://github.com/JINZO631/uGUI-window-menu/releases)にあるunitypackageをインポートしてください。
+
 ## WebGLのサンプル
 
 https://jinzo631.github.io/uGUI-window-menu/
