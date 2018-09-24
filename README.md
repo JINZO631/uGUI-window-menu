@@ -2,6 +2,8 @@
 
 uGUIでシンプルなメニューを作成するライブラリ
 
+![image](https://github.com/JINZO631/uGUI-window-menu/blob/master/image/ss01.gif)
+
 ## 環境
 
 - Scripting Runtime Version .NET 4.x Equivalent
