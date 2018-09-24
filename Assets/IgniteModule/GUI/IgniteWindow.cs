@@ -102,6 +102,14 @@ namespace IgniteModule
             RectTransform.DoSizeDeltaY(height, 0.3f);
         }
 
+        public void Clear()
+        {
+            foreach (Transform child in Content)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
         public void SetLayout()
         {
             contentLayoutGroup.SetLayoutVertical();

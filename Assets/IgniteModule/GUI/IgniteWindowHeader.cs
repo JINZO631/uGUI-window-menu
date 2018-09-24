@@ -40,7 +40,7 @@ namespace IgniteModule.GUICore
 
         public void SetName(string name)
         {
-            headerName.name = name;
+            headerName.text = name;
         }
 
         public void OnToggleValueChanged(Action<bool> onValueChanged)
