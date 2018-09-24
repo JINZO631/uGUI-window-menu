@@ -26,13 +26,15 @@ namespace IgniteModule
 
         void RegisterToggle(IIgniteGUIElement element)
         {
-            if (element is IgniteToggle toggle)
+            var toggle = element as IgniteToggle;
+            if (toggle != null)
             {
                 RegisterToggle(toggle);
                 return;
             }
 
-            if (element is IIgniteGUIGroup group)
+            var group = element as IIgniteGUIGroup;
+            if (group != null)
             {
                 var toggles = group.Content.GetComponentsInChildren<IgniteToggle>();
                 if (toggles != null)

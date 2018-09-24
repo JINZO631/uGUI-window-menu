@@ -23,7 +23,8 @@ namespace IgniteModule
 
             element.OnSelected(() => Window.IsSelected = true);
 
-            if (element is IIgniteGUIGroup group)
+            var group = element as IIgniteGUIGroup;
+            if (group != null)
             {
                 LastNestedGroup = group;
             }

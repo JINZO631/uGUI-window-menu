@@ -266,7 +266,6 @@ namespace ATweening
             }
         }
 
-        LinkedList<ISequenceable> playedList = new LinkedList<ISequenceable>();
         List<ISequenceable> playingList = new List<ISequenceable>();
 
         public void Flip()

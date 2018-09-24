@@ -48,24 +48,24 @@ namespace IgniteModule
                 GameObject.DontDestroyOnLoad(go);
 
                 return canvas;
-
-                EventSystem GetOrAddEventSystem()
-                {
-                    var eventSystem = GameObject.FindObjectOfType<EventSystem>();
-                    if (eventSystem != null)
-                    {
-                        return eventSystem;
-                    }
-
-                    Debug.Log("IgniteGUI EventSystem instantiate");
-
-                    var eventSystemGo = new GameObject("EventSystem");
-                    eventSystem = eventSystemGo.AddComponent<EventSystem>();
-                    eventSystemGo.AddComponent<StandaloneInputModule>();
-                    eventSystemGo.AddComponent<BaseInput>();
-                    return eventSystem;
-                }
             }
+        }
+
+        static EventSystem GetOrAddEventSystem()
+        {
+            var eventSystem = GameObject.FindObjectOfType<EventSystem>();
+            if (eventSystem != null)
+            {
+                return eventSystem;
+            }
+
+            Debug.Log("IgniteGUI EventSystem instantiate");
+
+            var eventSystemGo = new GameObject("EventSystem");
+            eventSystem = eventSystemGo.AddComponent<EventSystem>();
+            eventSystemGo.AddComponent<StandaloneInputModule>();
+            eventSystemGo.AddComponent<BaseInput>();
+            return eventSystem;
         }
 
         public static void AddWindow(int key, IgniteWindow window)
