@@ -6,6 +6,10 @@ uGUIでシンプルなメニューを作成するライブラリ
 
 - Scripting Runtime Version .NET 4.x Equivalent
 
+## WebGLのサンプル
+
+https://jinzo631.github.io/uGUI-window-menu/
+
 ## ライセンス
 
 - uGUI-window-menu [MIT License](https://github.com/JINZO631/uGUI-window-menu/blob/master/LICENSE)
