@@ -8,7 +8,7 @@ namespace IgniteModule.GUICore
         public static int FontSize { get; } = 14;
         public static Vector2 DefaultWindowSize { get; } = new Vector2(400f, 600f);
         public static float ElementHeight { get; } = 20f;
-        public static float ElementWidth { get; } = 100f;
+        public static float ElementWidth { get; } = 300f;
 
         public static Color FontColor { get; } = new Color32(224, 234, 247, 255);
         public static Color WindowHeaderColor { get; } = new Color32(12, 22, 33, 255);

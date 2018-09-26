@@ -42,6 +42,8 @@ public class Example : MonoBehaviour
                     .AddDropdown(v => logWindow.AddLabel("Dropdown Value: " + v), "option A", "option B", "option C")
                     .AddInputFiled(v => logWindow.AddLabel("InputField Value: " + v), v => logWindow.AddLabel("InptuField EndEdit:" + v), "Input", "PlaceHolder")
                     .AddInputFiled("InputField", v => logWindow.AddLabel("InputField Value: " + v), v => logWindow.AddLabel("InptuField EndEdit:" + v), "Input", "PlaceHolder")
+                    .AddInputFieldWithButton("OpenURL", url => Application.OpenURL(url), initialValue: "https://www.youtube.com/channel/UCmgWMQkenFc72QnYkdxdoKA")
+                    .AddInputFieldWithButton("ぽんぽこ", "OpenURL", url => Application.OpenURL(url), initialValue: "https://www.youtube.com/channel/UC1EB8moGYdkoZQfWHjh7Ivw")
         ;
     }
 }
