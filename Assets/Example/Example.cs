@@ -21,6 +21,7 @@ public class Example : MonoBehaviour
                     .AddButton("Clear LogWindow", () => logWindow.Clear())
                     .AddButton("CreateWindow", () => ExampleWindow())
                     .AddButton("ExampleButton", () => logWindow.AddLabel("Button Click"))
+                    .AddMonitoringLabel(() => System.DateTime.Now.ToString())
                     .AddButton("Label", "Labelbutton", () => logWindow.AddLabel("Button Click"))
                     .AddToggle(v => logWindow.AddLabel("Toggle: " + v))
                     .AddToggle("Label", v => logWindow.AddLabel("Toggle: " + v))
@@ -43,7 +44,6 @@ public class Example : MonoBehaviour
                     .AddInputFiled(v => logWindow.AddLabel("InputField Value: " + v), v => logWindow.AddLabel("InptuField EndEdit:" + v), "Input", "PlaceHolder")
                     .AddInputFiled("InputField", v => logWindow.AddLabel("InputField Value: " + v), v => logWindow.AddLabel("InptuField EndEdit:" + v), "Input", "PlaceHolder")
                     .AddInputFieldWithButton("OpenURL", url => Application.OpenURL(url), initialValue: "https://www.youtube.com/channel/UCmgWMQkenFc72QnYkdxdoKA")
-                    .AddInputFieldWithButton("ぽんぽこ", "OpenURL", url => Application.OpenURL(url), initialValue: "https://www.youtube.com/channel/UC1EB8moGYdkoZQfWHjh7Ivw")
         ;
     }
 }

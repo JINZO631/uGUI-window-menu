@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 using UnityEngine.Events;
+using System.Collections;
 
 namespace IgniteModule
 {
@@ -54,6 +55,23 @@ namespace IgniteModule
         public static IIgniteGUIGroup AddLabel(this IIgniteGUIGroup group, string label, UnityEvent<string> labelChangeEvent = null)
         {
             return group.Add(IgniteLabel.Create(label, labelChangeEvent));
+        }
+
+        public static IIgniteGUIGroup AddMonitoringLabel(this IIgniteGUIGroup group, Func<string> monitor)
+        {
+            var behaviour = (MonoBehaviour)group;
+            var labelChangeEvent = new IgniteLabel.LabelChangeEvent();
+            behaviour.StartCoroutine(MonitoringCoroutine(labelChangeEvent, monitor));
+            return group.AddLabel("", labelChangeEvent);
+        }
+
+        static IEnumerator MonitoringCoroutine(UnityEvent<string> labelChangeEvent, Func<string> monitor)
+        {
+            while (true)
+            {
+                labelChangeEvent.Invoke(monitor());
+                yield return null;
+            }
         }
     }
 }
