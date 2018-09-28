@@ -62,7 +62,7 @@ namespace ATweening
             return TweenCore<Vector3, Quaternion>(endValue, duration, getter, setter, TweenPlugin.Quaternion);
         }
 
-        private static ATweener<T1, T2> TweenCore<T1, T2>(T1 endValue, float duration, Func<T2> getter, Action<T2> setter, ITweenPlugin<T1, T2> plugin) where T2 : IEquatable<T2>
+        private static ATweener<T1, T2> TweenCore<T1, T2>(T1 endValue, float duration, Func<T2> getter, Action<T2> setter, ITweenPlugin<T1, T2> plugin)
         {
             var tweener = new ATweener<T1, T2>(default(T1), endValue, duration, getter, setter, plugin);
             tweeners.Add(tweener);

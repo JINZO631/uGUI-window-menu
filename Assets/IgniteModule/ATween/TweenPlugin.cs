@@ -22,9 +22,9 @@ namespace ATweening.Core
         T1 Lerp(T1 begin, T1 end, float t);
         T1 RelativeValue(T1 begin, T1 end);
         T1 IncrementalValue(T1 begin, T1 end);
-
         T1 Convert(T2 value);
         T2 Convert(T1 value);
+        bool Equals(T1 value1, T2 value2);
     }
 
     public struct FloatPlugin : ITweenPlugin<float, float>
@@ -48,6 +48,11 @@ namespace ATweening.Core
         {
             return value;
         }
+
+        public bool Equals(float value1, float value2)
+        {
+            return value1.Equals(value2);
+        }
     }
 
     public struct DoublePlugin : ITweenPlugin<double, double>
@@ -69,6 +74,11 @@ namespace ATweening.Core
         public double Convert(double value)
         {
             return value;
+        }
+
+        public bool Equals(double value1, double value2)
+        {
+            return value1.Equals(value2);
         }
     }
 
@@ -93,6 +103,11 @@ namespace ATweening.Core
         {
             return value;
         }
+
+        public bool Equals(int value1, int value2)
+        {
+            return value1.Equals(value2);
+        }
     }
 
     public struct UintPlugin : ITweenPlugin<uint, uint>
@@ -115,6 +130,11 @@ namespace ATweening.Core
         public uint Convert(uint value)
         {
             return value;
+        }
+
+        public bool Equals(uint value1, uint value2)
+        {
+            return value1.Equals(value2);
         }
     }
 
@@ -139,6 +159,11 @@ namespace ATweening.Core
         {
             return value;
         }
+
+        public bool Equals(long value1, long value2)
+        {
+            return value1.Equals(value2);
+        }
     }
 
     public struct UlongPlugin : ITweenPlugin<ulong, ulong>
@@ -161,6 +186,11 @@ namespace ATweening.Core
         public ulong Convert(ulong value)
         {
             return value;
+        }
+
+        public bool Equals(ulong value1, ulong value2)
+        {
+            return value1.Equals(value2);
         }
     }
 
@@ -185,6 +215,11 @@ namespace ATweening.Core
         {
             return value;
         }
+
+        public bool Equals(Vector2 value1, Vector2 value2)
+        {
+            return value1 == value2;
+        }
     }
 
     public struct Vector3Plugin : ITweenPlugin<Vector3, Vector3>
@@ -207,6 +242,11 @@ namespace ATweening.Core
         public Vector3 Convert(Vector3 value)
         {
             return value;
+        }
+
+        public bool Equals(Vector3 value1, Vector3 value2)
+        {
+            return value1 == value2;
         }
     }
 
@@ -231,6 +271,11 @@ namespace ATweening.Core
         {
             return value;
         }
+
+        public bool Equals(Vector4 value1, Vector4 value2)
+        {
+            return value1 == value2;
+        }
     }
 
     public struct ColorPlugin : ITweenPlugin<Color, Color>
@@ -253,6 +298,11 @@ namespace ATweening.Core
         public Color Convert(Color value)
         {
             return value;
+        }
+
+        public bool Equals(Color value1, Color value2)
+        {
+            return value1 == value2;
         }
     }
 
@@ -281,6 +331,11 @@ namespace ATweening.Core
         public Vector3 Convert(Quaternion value)
         {
             return value.eulerAngles;
+        }
+
+        public bool Equals(Vector3 value1, Quaternion value2)
+        {
+            return value1 == value2.eulerAngles;
         }
     }
 }

@@ -5,7 +5,7 @@ using ATweening.Core;
 
 namespace ATweening
 {
-    public class ATweener<T1, T2> : IATweener where T2 : IEquatable<T2>
+    public class ATweener<T1, T2> : IATweener
     {
         private Action onStart;
         private Action onUpdate;
@@ -309,7 +309,7 @@ namespace ATweening
         private void Snap(T2 current)
         {
             var snapValue = this.isBackwise ? begin : end;
-            if (!current.Equals(snapValue))
+            if (!plugin.Equals(snapValue, current))
             {
                 setter(plugin.Convert(snapValue));
             }
