@@ -63,14 +63,14 @@ namespace IgniteModule
 
     public static partial class IIgniteGUIGroupExtensions
     {
-        public static IIgniteGUIGroup AddInputFiled(this IIgniteGUIGroup group, Action<string> onValueChanged = null, Action<string> onEndEdit = null, string initialValue = null, string placeHolder = null, InputField.CharacterValidation characterValidation = InputField.CharacterValidation.None, bool readOnly = false)
+        public static IIgniteGUIGroup AddInputField(this IIgniteGUIGroup group, Action<string> onValueChanged = null, Action<string> onEndEdit = null, string initialValue = null, string placeHolder = null, InputField.CharacterValidation characterValidation = InputField.CharacterValidation.None, bool readOnly = false)
         {
             return group.Add(IgniteInputField.Create(onValueChanged, onEndEdit, initialValue, placeHolder, characterValidation, readOnly));
         }
 
-        public static IIgniteGUIGroup AddInputFiled(this IIgniteGUIGroup group, string label, Action<string> onValueChanged = null, Action<string> onEndEdit = null, string initialValue = null, string placeHolder = null, InputField.CharacterValidation characterValidation = InputField.CharacterValidation.None, bool readOnly = false)
+        public static IIgniteGUIGroup AddInputField(this IIgniteGUIGroup group, string label, Action<string> onValueChanged = null, Action<string> onEndEdit = null, string initialValue = null, string placeHolder = null, InputField.CharacterValidation characterValidation = InputField.CharacterValidation.None, bool readOnly = false)
         {
-            return group.Add(IgniteHorizontalGroup.Create().AddLabel(label).AddInputFiled(onValueChanged, onEndEdit, initialValue, placeHolder, characterValidation, readOnly) as IgniteHorizontalGroup);
+            return group.Add(IgniteHorizontalGroup.Create().AddLabel(label).AddInputField(onValueChanged, onEndEdit, initialValue, placeHolder, characterValidation, readOnly) as IgniteHorizontalGroup);
         }
 
         public static IIgniteGUIGroup AddInputFieldWithButton(this IIgniteGUIGroup group, string buttonName, Action<string> onButtonClick, Action<string> onValueChanged = null, Action<string> onEndEdit = null, string initialValue = null, string placeHolder = null, InputField.CharacterValidation characterValidation = InputField.CharacterValidation.None, bool readOnly = false)
