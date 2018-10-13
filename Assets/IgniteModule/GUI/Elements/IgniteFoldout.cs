@@ -103,6 +103,7 @@ namespace IgniteModule
             nameRect.SetSizeDelta(y: height);
             toggleRect.SetSizeDelta(height, height);
             textRect.SetSizeDelta(y: height);
+            viewRect.SetAnchoredPosition(y: -height);
             nameLayoutGroup.padding = new RectOffset((int)height, 0, 0, 0);
         }
 
@@ -115,6 +116,7 @@ namespace IgniteModule
             instance.nameText.font = IgniteGUISettings.Font;
             instance.nameText.fontSize = IgniteGUISettings.FontSize;
             instance.nameText.color = IgniteGUISettings.FontColor;
+            instance.layoutGroup.spacing = IgniteGUISettings.ElementSpacing;
             instance.SetHeight(IgniteGUISettings.ElementHeight);
             instance.Initialize();
 

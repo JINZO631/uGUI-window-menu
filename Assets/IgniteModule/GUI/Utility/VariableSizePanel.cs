@@ -9,12 +9,12 @@ namespace IgniteModule.GUICore
     {
         [SerializeField] DragEventComponent dragEvent = null;
         [SerializeField] Vector2 minSize = new Vector2(100, 100);
-        [SerializeField] Vector2 maxSize = new Vector2(1920, 1080);
-
         public SizeChangeEvent OnSizeChange { get; } = new SizeChangeEvent();
+        Vector2 maxSize;
 
         void Start()
         {
+            maxSize = new Vector2(Screen.width, Screen.height);
             dragEvent.OnDragEvent.AddListener(eventData =>
             {
                 var sizeDelta = eventData.delta;

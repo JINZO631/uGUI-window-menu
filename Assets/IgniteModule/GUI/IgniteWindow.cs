@@ -162,6 +162,9 @@ namespace IgniteModule
 
             window.gameObject.name = name + "(" + window.GetInstanceID() + ")";
             window.header.SetName(name);
+            window.contentLayoutGroup.spacing = IgniteGUISettings.ElementSpacing;
+            window.dragArea.GetComponent<RectTransform>().sizeDelta = new Vector2(IgniteGUISettings.ElementHeight, IgniteGUISettings.ElementHeight);
+            window.dragAreaImage.rectTransform.sizeDelta = new Vector2(IgniteGUISettings.ElementHeight, IgniteGUISettings.ElementHeight);
 
             // 座標設定
             if (anchoredPosition.HasValue)
