@@ -94,7 +94,10 @@ namespace IgniteModule.GUICore
 
             if (clickCount >= 2)
             {
-                toggle.isOn = !toggle.isOn;
+                if (toggle.enabled)
+                {
+                    toggle.isOn = !toggle.isOn;
+                }
                 clickCount = 0;
             }
         }

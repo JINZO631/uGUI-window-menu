@@ -31,18 +31,15 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
+/.vscode/
+
 Assets/TextMesh Pro/
-
 Assets/Resources/
-
 Assets/Plugins/
-
 Assets/Demigiant/
-
 Assets/Demigiant\.meta
-
 Assets/Plugins\.meta
-
 Assets/Resources\.meta
-
 Assets/TextMesh Pro\.meta
+WebGL
+Logs

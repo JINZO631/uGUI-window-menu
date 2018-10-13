@@ -28,6 +28,11 @@ namespace IgniteModule
 
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
         {
+            if (!toggle.enabled)
+            {
+                return;
+            }
+
             onSelected.Invoke();
             toggle.isOn = !toggle.isOn;
         }
@@ -90,21 +95,6 @@ namespace IgniteModule
                     Close();
                 }
             });
-        }
-
-        IEnumerator ContentFitCoroutine()
-        {
-            var wait = new WaitForSeconds(0.1f);
-            while (Window.isActiveAndEnabled)
-            {
-                if (!Window.IsSelected)
-                {
-                    yield return null;
-                }
-
-                yield return wait;
-                CalcContentHeight();
-            }
         }
 
         public void SetHeight(float height)
