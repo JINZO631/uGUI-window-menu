@@ -17,7 +17,7 @@ namespace IgniteModule.GUICore
         public static Color LabelHighlightColor { get; } = new Color(1, 1, 1, 0.5f);
         public static Color ButtonColor { get; } = new Color32(73, 79, 88, 255);
         public static Color SliderBackgroundColor { get; } = new Color32(9, 73, 151, 255);
-        public static Color SliderHandleColor { get; } = new Color32(73, 79, 88, 128);
+        public static Color SliderHandleColor { get; } = new Color32(103, 109, 118, 128);
         public static Color ToggleEnableColor { get; } = new Color32(13, 191, 102, 255);
         public static Color ToggleBackgroundColor { get; } = new Color32(73, 79, 88, 255);
         public static Color FoldoutColor { get; } = new Color32(9, 73, 151, 255);

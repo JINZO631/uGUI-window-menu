@@ -27,7 +27,7 @@ public class Example : MonoBehaviour
                     .AddLabel("Label")
                     .AddVector2Field(vec => logWindow.AddLabel(vec.ToString()), initialValue: new Vector2(123, 456))
                     .AddVector3Field("vector3", vec => logWindow.AddLabel(vec.ToString()), initialValue: new Vector2(123, 456))
-                    .AddEnumDropdown(v => logWindow.AddLabel(v.ToString()), typeof(ExampleEnum))
+                    .AddEnumDropdown<ExampleEnum>(v => logWindow.AddLabel(v.ToString()))
                     .AddButton("Clear LogWindow", () => logWindow.Clear())
                     .AddButton("CreateWindow", () => ExampleWindow())
                     .AddButton("ExampleButton", () => logWindow.AddLabel("Button Click"))

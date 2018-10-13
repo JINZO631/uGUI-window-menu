@@ -142,15 +142,9 @@ namespace IgniteModule
             return group.Add(horizontalGroup);
         }
 
-        public static IIgniteGUIGroup AddEnumDropdown(this IIgniteGUIGroup group, Action<int> onValueChanged, Type enumType)
+        public static IIgniteGUIGroup AddEnumDropdown<TEnum>(this IIgniteGUIGroup group, Action<int> onValueChanged)
         {
-            var list = new List<string>();
-            foreach (var i in Enum.GetValues(enumType))
-            {
-                list.Add(i.ToString());
-            }
-
-            return group.AddDropdown(onValueChanged, list.ToArray());
+            return group.AddDropdown(onValueChanged, Enum.GetNames(typeof(TEnum)));
         }
     }
 }
