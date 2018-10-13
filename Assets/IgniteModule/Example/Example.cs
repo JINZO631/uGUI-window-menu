@@ -5,11 +5,18 @@ using IgniteModule;
 
 public class Example : MonoBehaviour
 {
+    public enum ExampleEnum
+    {
+        OptionA,
+        OptionB,
+        OptionC,
+        OptionD
+    }
     IgniteWindow logWindow = null;
 
     void Start()
     {
-        logWindow = IgniteWindow.Create("Log")
+        logWindow = IgniteWindow.Create("Log", open: false)
                                 .SetRightTopPos();
         ExampleWindow();
     }
@@ -18,6 +25,9 @@ public class Example : MonoBehaviour
     {
         IgniteWindow.Create("Window")
                     .AddLabel("Label")
+                    .AddVector2Field(vec => logWindow.AddLabel(vec.ToString()), initialValue: new Vector2(123, 456))
+                    .AddVector3Field("vector3", vec => logWindow.AddLabel(vec.ToString()), initialValue: new Vector2(123, 456))
+                    .AddEnumDropdown(v => logWindow.AddLabel(v.ToString()), typeof(ExampleEnum))
                     .AddButton("Clear LogWindow", () => logWindow.Clear())
                     .AddButton("CreateWindow", () => ExampleWindow())
                     .AddButton("ExampleButton", () => logWindow.AddLabel("Button Click"))

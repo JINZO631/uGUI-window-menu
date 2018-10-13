@@ -23,6 +23,14 @@ namespace IgniteModule.GUICore
         public void SetToggleValue(bool isOn)
         {
             toggle.isOn = isOn;
+            if (isOn)
+            {
+                arrowImageRect.localRotation = Quaternion.Euler(0, 0, -90);
+            }
+            else
+            {
+                arrowImageRect.localRotation = Quaternion.Euler(0, 0, 0);
+            }
         }
 
         public void SetKillButtonActive(bool isActive)
