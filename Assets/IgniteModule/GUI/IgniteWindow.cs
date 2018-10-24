@@ -204,7 +204,11 @@ namespace IgniteModule
             {
                 window.OnInitialize.AddListener(() =>
                 {
+#if UNITY_IOS
+                    window.RectTransform.sizeDelta = new Vector2(Screen.safeArea.width, Screen.safeArea.height);
+#else
                     window.RectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
+#endif
                     window.scrollRect.SetSizeDelta(y: window.RectTransform.sizeDelta.y - IgniteGUISettings.ElementHeight);
                 });
             }

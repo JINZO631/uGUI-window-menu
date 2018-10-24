@@ -4,6 +4,7 @@ using IgniteModule.GUICore;
 using UnityEngine.EventSystems;
 using System;
 using UnityEngine.Events;
+using System.Collections;
 
 namespace IgniteModule
 {
@@ -52,6 +53,10 @@ namespace IgniteModule
 
             return instance;
         }
+
+        public class ValueChangeEvent : UnityEvent<float>
+        {
+        }
     }
 
     public static partial class IIgniteGUIGroupExtensions
@@ -64,6 +69,31 @@ namespace IgniteModule
         public static IIgniteGUIGroup AddSlider(this IIgniteGUIGroup group, string label, Action<float> onValueChanged, float minValue = 0f, float maxValue = 1f, bool wholeNumbers = false, UnityEvent<float> valueChangeEvent = null)
         {
             return group.Add(IgniteHorizontalGroup.Create().AddLabel(label).Add(IgniteSlider.Create(onValueChanged, minValue, maxValue, wholeNumbers, valueChangeEvent)) as IgniteHorizontalGroup);
+        }
+
+        public static IIgniteGUIGroup AddMonitoringSlider(this IIgniteGUIGroup group, Func<float> monitor, float minValue = 0f, float maxValue = 1f)
+        {
+            var behaviour = (MonoBehaviour)(group);
+            var valueChangeEvent = new IgniteSlider.ValueChangeEvent();
+            behaviour.StartCoroutine(MonitoringCoroutine(valueChangeEvent, monitor));
+            return group.AddSlider(v => { }, minValue: minValue, maxValue: maxValue, valueChangeEvent: valueChangeEvent);
+        }
+
+        public static IIgniteGUIGroup AddMonitoringSlider(this IIgniteGUIGroup group, string label, Func<float> monitor, float minValue = 0f, float maxValue = 1f)
+        {
+            var behaviour = (MonoBehaviour)(group);
+            var valueChangeEvent = new IgniteSlider.ValueChangeEvent();
+            behaviour.StartCoroutine(MonitoringCoroutine(valueChangeEvent, monitor));
+            return group.AddSlider(label, v => { }, minValue: minValue, maxValue: maxValue, valueChangeEvent: valueChangeEvent);
+        }
+
+        static IEnumerator MonitoringCoroutine(UnityEvent<float> valueChangeEvent, Func<float> monitor)
+        {
+            while (true)
+            {
+                valueChangeEvent.Invoke(monitor());
+                yield return null;
+            }
         }
     }
 }
