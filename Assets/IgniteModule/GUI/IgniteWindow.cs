@@ -122,7 +122,7 @@ namespace IgniteModule
 
         public void SetLayout()
         {
-            contentLayoutGroup.SetLayoutVertical();
+            content.sizeDelta = Vector2.zero;
         }
 
         public IIgniteGUIGroup Add(IIgniteGUIElement element)
