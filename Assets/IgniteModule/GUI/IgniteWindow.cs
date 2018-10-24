@@ -205,7 +205,7 @@ namespace IgniteModule
                 window.OnInitialize.AddListener(() =>
                 {
 #if UNITY_IOS
-                    window.RectTransform.sizeDelta = new Vector2(Screen.safeArea.width, Screen.safeArea.height);
+                    window.RectTransform.sizeDelta = new Vector2(Screen.safeArea.size.x, Screen.safeArea.size.y);
 #else
                     window.RectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
 #endif
