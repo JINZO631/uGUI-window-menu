@@ -18,13 +18,17 @@ public class Example : MonoBehaviour
     {
         logWindow = IgniteWindow.Create("Log", open: false)
                                 .SetRightTopPos();
+
+        ATweening.ATween.To(() => sliderValue, v => sliderValue = v, 1f, 1f).SetLoops(-1, ATweening.LoopType.Yoyo);
         ExampleWindow();
     }
 
+    float sliderValue = 0f;
     void ExampleWindow()
     {
         IgniteWindow.Create("Window")
                     .AddLabel("Label")
+                    .AddMonitoringSlider(() => sliderValue)
                     .AddVector2Field(vec => logWindow.AddLabel(vec.ToString()), initialValue: new Vector2(123, 456))
                     .AddVector3Field("vector3", vec => logWindow.AddLabel(vec.ToString()), initialValue: new Vector2(123, 456))
                     .AddEnumDropdown<ExampleEnum>(v => logWindow.AddLabel(v.ToString()))
