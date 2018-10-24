@@ -54,6 +54,12 @@ namespace IgniteModule
             }
         }
 
+        public string Title
+        {
+            get { return header.Title; }
+            set { header.Title = value; }
+        }
+
         public UnityEvent OnInitialize { get; } = new UnityEvent();
         public UnityEvent OnSelect { get; } = new UnityEvent();
         public UnityEvent OnDeselect { get; } = new UnityEvent();

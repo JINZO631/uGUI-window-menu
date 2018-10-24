@@ -20,6 +20,12 @@ namespace IgniteModule.GUICore
         int clickCount;
         float lastTime;
 
+        public string Title
+        {
+            get { return headerName.text; }
+            set { headerName.text = value; }
+        }
+
         public void SetToggleValue(bool isOn)
         {
             toggle.isOn = isOn;
