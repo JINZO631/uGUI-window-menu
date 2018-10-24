@@ -194,6 +194,15 @@ namespace IgniteModule
                 });
             }
 
+            if (stretch)
+            {
+                window.OnInitialize.AddListener(() =>
+                {
+                    window.RectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
+                    window.scrollRect.SetSizeDelta(y: window.RectTransform.sizeDelta.y - IgniteGUISettings.ElementHeight);
+                });
+            }
+
             // 初期折りたたみ設定
             if (!open)
             {
