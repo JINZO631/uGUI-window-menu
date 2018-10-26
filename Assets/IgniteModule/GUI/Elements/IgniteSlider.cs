@@ -30,7 +30,7 @@ namespace IgniteModule
             handleImage.rectTransform.SetSizeDelta(x: height);
         }
 
-        public static IgniteSlider Create(Action<float> onValueChanged, float minValue = 0f, float maxValue = 1f, bool wholeNumbers = false, UnityEvent<float> valueChangeEvent = null)
+        public static IgniteSlider Create(Action<float> onValueChanged, float minValue = 0f, float maxValue = 1f, bool wholeNumbers = false, UnityEvent<float> valueChangeEvent = null, float initialValue = 0f)
         {
             var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/Slider")).GetComponent<IgniteSlider>();
 
@@ -45,6 +45,7 @@ namespace IgniteModule
             instance.slider.wholeNumbers = wholeNumbers;
             instance.slider.onValueChanged.AddListener(new UnityAction<float>(onValueChanged));
             instance.slider.onValueChanged.AddListener(v => instance.sliderValueText.text = v.ToString("F"));
+            instance.slider.value = initialValue;
 
             if (valueChangeEvent != null)
             {
@@ -61,14 +62,14 @@ namespace IgniteModule
 
     public static partial class IIgniteGUIGroupExtensions
     {
-        public static IIgniteGUIGroup AddSlider(this IIgniteGUIGroup group, Action<float> onValueChanged, float minValue = 0f, float maxValue = 1f, bool wholeNumbers = false, UnityEvent<float> valueChangeEvent = null)
+        public static IIgniteGUIGroup AddSlider(this IIgniteGUIGroup group, Action<float> onValueChanged, float minValue = 0f, float maxValue = 1f, bool wholeNumbers = false, UnityEvent<float> valueChangeEvent = null, float initialValue = 0f)
         {
-            return group.Add(IgniteSlider.Create(onValueChanged, minValue, maxValue, wholeNumbers, valueChangeEvent));
+            return group.Add(IgniteSlider.Create(onValueChanged, minValue, maxValue, wholeNumbers, valueChangeEvent, initialValue));
         }
 
-        public static IIgniteGUIGroup AddSlider(this IIgniteGUIGroup group, string label, Action<float> onValueChanged, float minValue = 0f, float maxValue = 1f, bool wholeNumbers = false, UnityEvent<float> valueChangeEvent = null)
+        public static IIgniteGUIGroup AddSlider(this IIgniteGUIGroup group, string label, Action<float> onValueChanged, float minValue = 0f, float maxValue = 1f, bool wholeNumbers = false, UnityEvent<float> valueChangeEvent = null, float initialValue = 0f)
         {
-            return group.Add(IgniteHorizontalGroup.Create().AddLabel(label).Add(IgniteSlider.Create(onValueChanged, minValue, maxValue, wholeNumbers, valueChangeEvent)) as IgniteHorizontalGroup);
+            return group.Add(IgniteHorizontalGroup.Create().AddLabel(label).Add(IgniteSlider.Create(onValueChanged, minValue, maxValue, wholeNumbers, valueChangeEvent, initialValue)) as IgniteHorizontalGroup);
         }
 
         public static IIgniteGUIGroup AddMonitoringSlider(this IIgniteGUIGroup group, Func<float> monitor, float minValue = 0f, float maxValue = 1f)

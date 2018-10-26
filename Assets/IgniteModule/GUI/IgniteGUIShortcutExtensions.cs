@@ -146,5 +146,52 @@ namespace IgniteModule
         {
             return group.AddDropdown(onValueChanged, Enum.GetNames(typeof(TEnum)));
         }
+
+        public static IIgniteGUIGroup AddRGBSlider(this IIgniteGUIGroup group, Action<Color> onValueChanged, Color? initialValue = null)
+        {
+            var color = initialValue ?? Color.white;
+            return group
+            .AddSlider("R", r =>
+            {
+                color.r = r;
+                onValueChanged(color);
+            }, initialValue: color.r)
+            .AddSlider("G", g =>
+            {
+                color.g = g;
+                onValueChanged(color);
+            }, initialValue: color.g)
+            .AddSlider("B", b =>
+            {
+                color.b = b;
+                onValueChanged(color);
+            }, initialValue: color.b);
+        }
+
+        public static IIgniteGUIGroup AddRGBASlider(this IIgniteGUIGroup group, Action<Color> onValueChanged, Color? initialValue = null)
+        {
+            var color = initialValue ?? Color.white;
+            return group
+            .AddSlider("R", r =>
+            {
+                color.r = r;
+                onValueChanged(color);
+            }, initialValue: color.r)
+            .AddSlider("G", g =>
+            {
+                color.g = g;
+                onValueChanged(color);
+            }, initialValue: color.g)
+            .AddSlider("B", b =>
+            {
+                color.b = b;
+                onValueChanged(color);
+            }, initialValue: color.b)
+            .AddSlider("A", a =>
+            {
+                color.a = a;
+                onValueChanged(color);
+            }, initialValue: color.a);
+        }
     }
 }

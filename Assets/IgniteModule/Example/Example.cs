@@ -28,6 +28,7 @@ public class Example : MonoBehaviour
     {
         IgniteWindow.Create("Window")
                     .AddLabel("Label")
+                    .AddRGBSlider(color => Camera.main.backgroundColor = color, Camera.main.backgroundColor)
                     .AddMonitoringSlider(() => sliderValue)
                     .AddVector2Field(vec => logWindow.AddLabel(vec.ToString()), initialValue: new Vector2(123, 456))
                     .AddVector3Field("vector3", vec => logWindow.AddLabel(vec.ToString()), initialValue: new Vector2(123, 456))
