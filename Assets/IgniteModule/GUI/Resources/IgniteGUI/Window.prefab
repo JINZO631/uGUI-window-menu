@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -798,7 +798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1084,7 +1084,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragEvent: {fileID: 8019018208089743054}
   minSize: {x: 100, y: 100}
-  maxSize: {x: 1920, y: 1080}
 --- !u!1 &8708748055664994305
 GameObject:
   m_ObjectHideFlags: 0
