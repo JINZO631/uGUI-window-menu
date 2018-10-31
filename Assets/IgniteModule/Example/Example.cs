@@ -28,6 +28,8 @@ public class Example : MonoBehaviour
     {
         IgniteWindow.Create("Window")
                     .AddLabel("Label")
+                    .AddButton("Grid", () => Grid())
+                    .AddButton("SetPos", () => SetWindowPos())
                     .AddRGBSlider(color => Camera.main.backgroundColor = color, Camera.main.backgroundColor)
                     .AddMonitoringSlider(() => sliderValue)
                     .AddVector2Field(vec => logWindow.AddLabel(vec.ToString()), initialValue: new Vector2(123, 456))
@@ -60,5 +62,30 @@ public class Example : MonoBehaviour
                     .AddInputField("InputField", v => logWindow.AddLabel("InputField Value: " + v), v => logWindow.AddLabel("InptuField EndEdit:" + v), "Input", "PlaceHolder")
                     .AddInputFieldWithButton("OpenURL", url => Application.OpenURL(url), initialValue: "https://www.youtube.com/channel/UCmgWMQkenFc72QnYkdxdoKA")
         ;
+    }
+
+    void SetWindowPos()
+    {
+        IgniteWindow.Create("SetPos")
+                    .AddButton("LeftTop", () => IgniteWindow.Create("LeftTop").SetLeftTopPos())
+                    .AddButton("LeftBottom", () => IgniteWindow.Create("LeftBottom").SetLeftBottomPos())
+                    .AddButton("RightTop", () => IgniteWindow.Create("RightTop").SetRightTopPos())
+                    .AddButton("RightBottom", () => IgniteWindow.Create("RightBottom").SetRightBottomPos())
+                    ;
+    }
+
+    void Grid()
+    {
+        var grid = IgniteWindow.Create("Grid")
+                                .AddFoldout("Grid")
+                                .LastNestedGroup
+                                .AddGridGroup(new Vector2(100, 30))
+                                .LastNestedGroup;
+
+        for (int i = 0; i < 10; ++i)
+        {
+            var index = i;
+            grid.AddButton(i.ToString("D8"), () => Debug.Log("Grid: " + index));
+        }
     }
 }

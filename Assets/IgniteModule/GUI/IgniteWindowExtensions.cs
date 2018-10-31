@@ -17,7 +17,7 @@ namespace IgniteModule
         {
             window.StartCoroutine(DelayAction(() =>
             {
-                var pos = new Vector2(Screen.width * 0.5f, -Screen.height * 0.5f);
+                var pos = new Vector2(Screen.safeArea.size.x * 0.5f, -Screen.safeArea.size.y * 0.5f);
                 pos -= new Vector2(window.RectTransform.sizeDelta.x * 0.5f, window.RectTransform.sizeDelta.x * -0.5f);
                 window.RectTransform.anchoredPosition = pos;
             }));
@@ -39,7 +39,7 @@ namespace IgniteModule
         {
             window.StartCoroutine(DelayAction(() =>
             {
-                window.RectTransform.SetAnchoredPosition(Screen.width - window.RectTransform.sizeDelta.x, 0f);
+                window.RectTransform.SetAnchoredPosition(Screen.safeArea.size.x - window.RectTransform.sizeDelta.x, 0f);
             }));
 
             return window;
@@ -49,7 +49,7 @@ namespace IgniteModule
         {
             window.StartCoroutine(DelayAction(() =>
             {
-                window.RectTransform.SetAnchoredPosition(0f, window.RectTransform.sizeDelta.y - Screen.height);
+                window.RectTransform.SetAnchoredPosition(0f, window.RectTransform.sizeDelta.y - Screen.safeArea.size.y);
             }));
 
             return window;
@@ -59,7 +59,7 @@ namespace IgniteModule
         {
             window.StartCoroutine(DelayAction(() =>
             {
-                window.RectTransform.SetAnchoredPosition(Screen.width - window.RectTransform.sizeDelta.x, window.RectTransform.sizeDelta.y - Screen.height);
+                window.RectTransform.SetAnchoredPosition(Screen.safeArea.size.x - window.RectTransform.sizeDelta.x, window.RectTransform.sizeDelta.y - Screen.safeArea.size.y);
             }));
 
             return window;
