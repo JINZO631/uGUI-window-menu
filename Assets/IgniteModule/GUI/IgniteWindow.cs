@@ -183,7 +183,16 @@ namespace IgniteModule
             }
 
             // サイズ設定
-            if (windowSize.HasValue)
+            if (stretch)
+            {
+                window.OnInitialize.AddListener(() =>
+                {
+                    window.RectTransform.sizeDelta = Screen.safeArea.size;
+                    window.RectTransform.anchoredPosition = Vector2.zero;
+                    window.scrollRect.SetSizeDelta(y: window.RectTransform.sizeDelta.y - IgniteGUISettings.ElementHeight);
+                });
+            }
+            else if (windowSize.HasValue)
             {
                 window.OnInitialize.AddListener(() =>
                 {
@@ -200,18 +209,6 @@ namespace IgniteModule
                 });
             }
 
-            if (stretch)
-            {
-                window.OnInitialize.AddListener(() =>
-                {
-#if UNITY_IOS
-                    window.RectTransform.sizeDelta = Screen.safeArea.size;
-#else
-                    window.RectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
-#endif
-                    window.scrollRect.SetSizeDelta(y: window.RectTransform.sizeDelta.y - IgniteGUISettings.ElementHeight);
-                });
-            }
 
             // 初期折りたたみ設定
             if (!open)
