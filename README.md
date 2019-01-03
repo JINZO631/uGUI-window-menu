@@ -8,6 +8,7 @@ uGUIでシンプルなメニューを作成するライブラリ。
 
 ## 環境
 
+- Unity2017.4 or later
 - Scripting Runtime Version .NET 4.x Equivalent
 
 ## 導入
