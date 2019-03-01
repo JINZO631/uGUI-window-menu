@@ -55,9 +55,9 @@ namespace IgniteModule
                         .AddLabel("ToggleGroup")
                         .AddToggleGroup()
                             .LastNestedGroup
-                            .AddToggle("Toggle 1", v => logWindow.AddLabel("Toggle1: " + v))
-                            .AddToggle("Toggle 2", v => logWindow.AddLabel("Toggle2: " + v))
-                            .AddToggle("Toggle 3", v => logWindow.AddLabel("Toggle3: " + v))
+                            .AddToggle("Toggle 1", v => logWindow.AddLabel("Toggle1: " + v), defaultValue: true)
+                            .AddToggle("Toggle 2", v => logWindow.AddLabel("Toggle2: " + v), defaultValue: false)
+                            .AddToggle("Toggle 3", v => logWindow.AddLabel("Toggle3: " + v), defaultValue: false)
                         .Parent
                         .AddDropdown(v => logWindow.AddLabel("Dropdown Value: " + v), "option A", "option B", "option C")
                         .AddInputField(v => logWindow.AddLabel("InputField Value: " + v), v => logWindow.AddLabel("InptuField EndEdit:" + v), "Input", "PlaceHolder")

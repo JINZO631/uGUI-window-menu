@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f065e0e0d724a6c419c7b22ee8266b8d, type: 3}
+  m_Name: Settings
+  m_EditorClassIdentifier: 
+  font: {fileID: 12800000, guid: 73eb7211fbd90864c869f9212dabfacc, type: 3}
+  fontSize: 14
+  defaultWindowSize: {x: 400, y: 600}
+  elementSpacing: 5
+  elementHeight: 20
+  elementWidth: 300
+  fontColor: {r: 0.8784314, g: 0.91764706, b: 0.96862745, a: 1}
+  windowHeaderColor: {r: 0.047058824, g: 0.08627451, b: 0.12941177, a: 1}
+  windowContentColor: {r: 0.047058824, g: 0.08627451, b: 0.12941177, a: 0.5019608}
+  windowDragAreaColor: {r: 0.047058824, g: 0.08627451, b: 0.12941177, a: 1}
+  labelHighlightColor: {r: 1, g: 1, b: 1, a: 0.5}
+  buttonColor: {r: 0.28627452, g: 0.30980393, b: 0.34509805, a: 1}
+  sliderBackgroundColor: {r: 0.03529412, g: 0.28627452, b: 0.5921569, a: 1}
+  sliderHandleColor: {r: 0.40392157, g: 0.42745098, b: 0.4627451, a: 0.5019608}
+  toggleEnableColor: {r: 0.050980393, g: 0.7490196, b: 0.4, a: 1}
+  toggleBackgroundColor: {r: 0.28627452, g: 0.30980393, b: 0.34509805, a: 1}
+  foldoutColor: {r: 0.03529412, g: 0.28627452, b: 0.5921569, a: 1}
+  dropdownColor: {r: 0.03529412, g: 0.28627452, b: 0.5921569, a: 1}
+  inputFieldColor: {r: 0.03529412, g: 0.28627452, b: 0.5921569, a: 1}
