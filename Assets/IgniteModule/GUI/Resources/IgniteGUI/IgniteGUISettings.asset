@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f065e0e0d724a6c419c7b22ee8266b8d, type: 3}
-  m_Name: Settings
+  m_Name: IgniteGUISettings
   m_EditorClassIdentifier: 
   font: {fileID: 12800000, guid: 73eb7211fbd90864c869f9212dabfacc, type: 3}
   fontSize: 14
