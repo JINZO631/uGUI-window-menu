@@ -29,6 +29,9 @@ namespace IgniteModule
         void ExampleWindow()
         {
             IgniteWindow.Create("Window")
+                        .AddOperableMonitoringSlider("label", () => sliderValue, v => sliderValue = v)
+                        .AddOperableMonitoringSlider(() => sliderValue, v => sliderValue = v, "label")
+                        .AddMonitoringSlider(() => sliderValue)
                         .AddLabel("Label")
                         .AddButton("Grid", () => Grid())
                         .AddButton("SetPos", () => SetWindowPos())

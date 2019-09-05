@@ -62,21 +62,25 @@ namespace IgniteModule
 
     public static partial class IIgniteGUIGroupExtensions
     {
+        // slider
         public static IIgniteGUIGroup AddSlider(this IIgniteGUIGroup group, Action<float> onValueChanged, float minValue = 0f, float maxValue = 1f, bool wholeNumbers = false, UnityEvent<float> valueChangeEvent = null, float initialValue = 0f)
         {
             return group.Add(IgniteSlider.Create(onValueChanged, minValue, maxValue, wholeNumbers, valueChangeEvent, initialValue));
         }
 
+        // label, slider
         public static IIgniteGUIGroup AddSlider(this IIgniteGUIGroup group, string label, Action<float> onValueChanged, float minValue = 0f, float maxValue = 1f, bool wholeNumbers = false, UnityEvent<float> valueChangeEvent = null, float initialValue = 0f)
         {
             return group.Add(IgniteHorizontalGroup.Create().AddLabel(label).Add(IgniteSlider.Create(onValueChanged, minValue, maxValue, wholeNumbers, valueChangeEvent, initialValue)) as IgniteHorizontalGroup);
         }
 
+        // slider, label
         public static IIgniteGUIGroup AddSlider(this IIgniteGUIGroup group, Action<float> onValueChanged, string label, float minValue = 0f, float maxValue = 1f, bool wholeNumbers = false, UnityEvent<float> valueChangeEvent = null, float initialValue = 0f)
         {
             return group.Add(IgniteHorizontalGroup.Create().Add(IgniteSlider.Create(onValueChanged, minValue, maxValue, wholeNumbers, valueChangeEvent, initialValue)).AddLabel(label) as IgniteHorizontalGroup);
         }
 
+        // monitoring slider
         public static IIgniteGUIGroup AddMonitoringSlider(this IIgniteGUIGroup group, Func<float> monitor, float minValue = 0f, float maxValue = 1f)
         {
             var behaviour = (MonoBehaviour)(group);
@@ -85,6 +89,7 @@ namespace IgniteModule
             return group.AddSlider(v => { }, minValue: minValue, maxValue: maxValue, valueChangeEvent: valueChangeEvent);
         }
 
+        // label, monitoring slider
         public static IIgniteGUIGroup AddMonitoringSlider(this IIgniteGUIGroup group, string label, Func<float> monitor, float minValue = 0f, float maxValue = 1f)
         {
             var behaviour = (MonoBehaviour)(group);
@@ -93,12 +98,40 @@ namespace IgniteModule
             return group.AddSlider(label, v => { }, minValue: minValue, maxValue: maxValue, valueChangeEvent: valueChangeEvent);
         }
 
+        // monitoring slider, label
         public static IIgniteGUIGroup AddMonitoringSlider(this IIgniteGUIGroup group, Func<float> monitor, string label, float minValue = 0f, float maxValue = 1f)
         {
             var behaviour = (MonoBehaviour)(group);
             var valueChangeEvent = new IgniteSlider.ValueChangeEvent();
             behaviour.StartCoroutine(MonitoringCoroutine(valueChangeEvent, monitor));
             return group.AddSlider(v => { }, label, minValue: minValue, maxValue: maxValue, valueChangeEvent: valueChangeEvent);
+        }
+
+        // operable monitoring slider
+        public static IIgniteGUIGroup AddOperableMonitoringSlider(this IIgniteGUIGroup group, Func<float> monitor, Action<float> onValueChanged, float minValue = 0f, float maxValue = 1f)
+        {
+            var behaviour = (MonoBehaviour)(group);
+            var valueChangeEvent = new IgniteSlider.ValueChangeEvent();
+            behaviour.StartCoroutine(MonitoringCoroutine(valueChangeEvent, monitor));
+            return group.AddSlider(onValueChanged, minValue: minValue, maxValue: maxValue, valueChangeEvent: valueChangeEvent);
+        }
+
+        // operable monitoring slider
+        public static IIgniteGUIGroup AddOperableMonitoringSlider(this IIgniteGUIGroup group, string label, Func<float> monitor, Action<float> onValueChanged, float minValue = 0f, float maxValue = 1f)
+        {
+            var behaviour = (MonoBehaviour)(group);
+            var valueChangeEvent = new IgniteSlider.ValueChangeEvent();
+            behaviour.StartCoroutine(MonitoringCoroutine(valueChangeEvent, monitor));
+            return group.AddSlider(label, onValueChanged, minValue: minValue, maxValue: maxValue, valueChangeEvent: valueChangeEvent);
+        }
+
+        // operable monitoring slider
+        public static IIgniteGUIGroup AddOperableMonitoringSlider(this IIgniteGUIGroup group, Func<float> monitor, Action<float> onValueChanged, string label, float minValue = 0f, float maxValue = 1f)
+        {
+            var behaviour = (MonoBehaviour)(group);
+            var valueChangeEvent = new IgniteSlider.ValueChangeEvent();
+            behaviour.StartCoroutine(MonitoringCoroutine(valueChangeEvent, monitor));
+            return group.AddSlider(onValueChanged, label, minValue: minValue, maxValue: maxValue, valueChangeEvent: valueChangeEvent);
         }
 
         static IEnumerator MonitoringCoroutine(UnityEvent<float> valueChangeEvent, Func<float> monitor)
