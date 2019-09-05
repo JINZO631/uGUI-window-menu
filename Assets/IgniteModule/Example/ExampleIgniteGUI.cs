@@ -21,6 +21,19 @@ namespace IgniteModule
             logWindow = IgniteWindow.Create("Log", open: false)
                                     .SetRightTopPos();
 
+            var test = IgniteWindow.Create("base");
+            test.AddButton("create", () =>
+            {
+                var bottom = IgniteWindow.Create("bottom");
+                bottom.SetWindowBottom(test);
+                var top = IgniteWindow.Create("top");
+                top.SetWindowTop(test);
+                var left = IgniteWindow.Create("left");
+                left.SetWindowLeft(test);
+                var right = IgniteWindow.Create("right");
+                right.SetWindowRight(test);
+            });
+
             ATweening.ATween.To(() => sliderValue, v => sliderValue = v, 1f, 1f).SetLoops(-1, ATweening.LoopType.Yoyo);
             ExampleWindow();
         }

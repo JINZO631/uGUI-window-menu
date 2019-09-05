@@ -64,5 +64,71 @@ namespace IgniteModule
 
             return window;
         }
+
+        public static IgniteWindow SetWindowBottom(this IgniteWindow bottomWindow, IgniteWindow baseWindow)
+        {
+            bottomWindow.StartCoroutine(DelayAction(() =>
+            {
+                bottomWindow.RectTransform.SetAnchoredTopPosition(baseWindow.RectTransform.AnchoredBottom());
+                bottomWindow.RectTransform.SetAnchoredLeftPosition(baseWindow.RectTransform.AnchoredLeft());
+            }));
+
+            return bottomWindow;
+        }
+
+        public static IgniteWindow SetWindowTop(this IgniteWindow topWindow, IgniteWindow baseWindow)
+        {
+            topWindow.StartCoroutine(DelayAction(() =>
+            {
+                topWindow.RectTransform.SetAnchoredBottomPosition(baseWindow.RectTransform.AnchoredTop());
+                topWindow.RectTransform.SetAnchoredLeftPosition(baseWindow.RectTransform.AnchoredLeft());
+            }));
+
+            return topWindow;
+        }
+
+        public static IgniteWindow SetWindowLeft(this IgniteWindow leftWindow, IgniteWindow baseWindow)
+        {
+            leftWindow.StartCoroutine(DelayAction(() =>
+            {
+                leftWindow.RectTransform.SetAnchoredRightPosition(baseWindow.RectTransform.AnchoredLeft());
+                leftWindow.RectTransform.SetAnchoredTopPosition(baseWindow.RectTransform.AnchoredTop());
+            }));
+
+            return leftWindow;
+        }
+
+        public static IgniteWindow SetWindowRight(this IgniteWindow rightWindow, IgniteWindow baseWindow)
+        {
+            rightWindow.StartCoroutine(DelayAction(() =>
+            {
+                rightWindow.RectTransform.SetAnchoredLeftPosition(baseWindow.RectTransform.AnchoredRight());
+                rightWindow.RectTransform.SetAnchoredTopPosition(baseWindow.RectTransform.AnchoredTop());
+            }));
+
+            return rightWindow;
+        }
+
+        public static IgniteWindow CreateWindowBottom(this IgniteWindow window, string name, Vector2? anchoredPosition = null, Vector2? windowSize = null, bool open = true, bool hideCloseButton = false, bool fixedSize = false, bool fixedPosition = false, bool stretch = false)
+        {
+            var bottomWindow = IgniteWindow.Create(
+                name: name,
+                anchoredPosition: anchoredPosition,
+                windowSize: windowSize,
+                open: open,
+                hideCloseButton: hideCloseButton,
+                fixedSize: fixedSize,
+                fixedPosition: fixedPosition,
+                stretch: stretch
+            );
+
+            bottomWindow.StartCoroutine(DelayAction(() =>
+            {
+                bottomWindow.RectTransform.SetAnchoredTopPosition(window.RectTransform.AnchoredBottom());
+                bottomWindow.RectTransform.SetAnchoredLeftPosition(window.RectTransform.AnchoredLeft());
+            }));
+
+            return bottomWindow;
+        }
     }
 }

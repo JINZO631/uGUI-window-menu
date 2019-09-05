@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace IgniteModule.GUICore
 {
-    public static class RectTransformExtensions
+    public static partial class RectTransformExtensions
     {
         public static void SetSizeDelta(this RectTransform rectTransform, float? x = null, float? y = null)
         {
