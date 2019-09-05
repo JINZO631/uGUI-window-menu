@@ -44,6 +44,11 @@ namespace IgniteModule.GUICore
             killButton.gameObject.SetActive(isActive);
         }
 
+        public void SetFoldToggleActive(bool isActive)
+        {
+            toggle.gameObject.SetActive(isActive);
+        }
+
         public void SetHeight(float height)
         {
             this.RectTransform.SetSizeDelta(y: height);

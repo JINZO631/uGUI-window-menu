@@ -108,7 +108,8 @@ namespace IgniteModule
 
         public void Open()
         {
-            dragArea.SetActive(true);
+            // サイズ固定windowかどうかを見て、dragAreaのアクティブを切り替える
+            dragArea.SetActive(variableSizePanel.enabled);
             RectTransform.DoSizeDeltaY(height, 0.3f);
         }
 
@@ -160,7 +161,7 @@ namespace IgniteModule
             return this;
         }
 
-        public static IgniteWindow Create(string name, Vector2? anchoredPosition = null, Vector2? windowSize = null, bool open = true, bool hideCloseButton = false, bool fixedSize = false, bool fixedPosition = false, bool stretch = false)
+        public static IgniteWindow Create(string name, Vector2? anchoredPosition = null, Vector2? windowSize = null, bool open = true, bool hideCloseButton = false, bool hideFoldToggle = false, bool fixedSize = false, bool fixedPosition = false, bool stretch = false)
         {
             var window = Instantiate(Resources.Load<GameObject>("IgniteGUI/Window")).GetComponent<IgniteWindow>();
 
@@ -225,11 +226,15 @@ namespace IgniteModule
             // 閉じるボタンを隠すか
             window.header.SetKillButtonActive(!hideCloseButton);
 
+            // 折りたたみボタンを隠すか
+            window.header.SetFoldToggleActive(!hideFoldToggle);
+
             // 座標を固定するか
             window.draggable.enabled = !fixedPosition;
 
             // サイズを固定するか
             window.variableSizePanel.enabled = !fixedSize;
+            window.dragArea.SetActive(!fixedSize);
 
             return window;
         }
