@@ -20,6 +20,7 @@ namespace IgniteModule
         [SerializeField] VariableSizePanel variableSizePanel = null;
         [SerializeField] Image backgroundImage = null;
         [SerializeField] Image dragAreaImage = null;
+        [SerializeField] Image viewportImage = null;
 
         public IIgniteGUIGroup Parent => null;
 
@@ -172,6 +173,7 @@ namespace IgniteModule
             foreach (var i in layouts)
             {
                 var layoutGroupRectTransform = i.GetComponent<RectTransform>();
+
                 i.StartCoroutine(IgniteGUIUtility.DelayedAction(() =>
                 {
                     LayoutRebuilder.MarkLayoutForRebuild(layoutGroupRectTransform);
@@ -181,7 +183,18 @@ namespace IgniteModule
             return this;
         }
 
-        public static IgniteWindow Create(string name, Vector2? anchoredPosition = null, Vector2? windowSize = null, bool open = true, bool hideCloseButton = false, bool hideFoldToggle = false, bool hideHeader = false, bool fixedSize = false, bool fixedPosition = false, bool stretch = false)
+        public static IgniteWindow Create(
+            string name,
+            Vector2? anchoredPosition = null,
+            Vector2? windowSize = null,
+            bool open = true,
+            bool hideCloseButton = false,
+            bool hideFoldToggle = false,
+            bool hideHeader = false,
+            bool viewportRaycast = false,
+            bool fixedSize = false,
+            bool fixedPosition = false,
+            bool stretch = false)
         {
             var window = Instantiate(Resources.Load<GameObject>("IgniteGUI/Window")).GetComponent<IgniteWindow>();
 
@@ -258,6 +271,9 @@ namespace IgniteModule
 
             // ヘッダーを隠すか
             window.header.gameObject.SetActive(!hideHeader);
+
+            // viewportのImageのRaycastTarget設定(要素部分以外をドラッグしてスクロールできるようにするか)
+            window.viewportImage.raycastTarget = viewportRaycast;
 
             return window;
         }
