@@ -168,6 +168,16 @@ namespace IgniteModule
             RectTransform.SetSizeDelta(y: height);
             scrollRect.SetSizeDelta(y: height);
 
+            var layouts = Content.GetComponentsInChildren<LayoutGroup>();
+            foreach (var i in layouts)
+            {
+                var layoutGroupRectTransform = i.GetComponent<RectTransform>();
+                i.StartCoroutine(IgniteGUIUtility.DelayedAction(() =>
+                {
+                    LayoutRebuilder.MarkLayoutForRebuild(layoutGroupRectTransform);
+                }));
+            }
+
             return this;
         }
 
