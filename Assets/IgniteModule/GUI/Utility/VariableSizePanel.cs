@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
-using System;
 using UnityEngine.Events;
 
 namespace IgniteModule.GUICore

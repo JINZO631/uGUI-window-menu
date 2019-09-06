@@ -4,8 +4,6 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using IgniteModule.GUICore;
-using System;
-using System.Collections;
 
 namespace IgniteModule
 {

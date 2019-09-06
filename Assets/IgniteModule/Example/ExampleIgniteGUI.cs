@@ -22,6 +22,12 @@ namespace IgniteModule
                                     .SetRightTopPos();
 
             var test = IgniteWindow.Create("base");
+            test
+            .AddButton("fit", () => test.Fit())
+            .AddButton("add", () =>
+            {
+                test.AddLabel("add");
+            });
             test.AddButton("create", () =>
             {
                 var bottom = IgniteWindow.Create("bottom");
@@ -33,6 +39,8 @@ namespace IgniteModule
                 var right = IgniteWindow.Create("right");
                 right.SetWindowRight(test);
             });
+
+            var fixedWindow = IgniteWindow.Create("fixed", fixedSize: true);
 
             ATweening.ATween.To(() => sliderValue, v => sliderValue = v, 1f, 1f).SetLoops(-1, ATweening.LoopType.Yoyo);
             ExampleWindow();

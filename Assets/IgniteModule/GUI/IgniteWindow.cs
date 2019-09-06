@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using IgniteModule.GUICore;
-using System;
 using System.Linq;
 using UnityEngine.EventSystems;
 using ATweening;

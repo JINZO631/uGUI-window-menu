@@ -3,8 +3,6 @@ using IgniteModule.GUICore;
 using UnityEngine.UI;
 using System;
 using UnityEngine.Events;
-using ATweening;
-using UnityEngine.EventSystems;
 using System.Collections;
 
 namespace IgniteModule

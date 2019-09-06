@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using IgniteModule.GUICore;
 using System.Collections;
 
 namespace IgniteModule
