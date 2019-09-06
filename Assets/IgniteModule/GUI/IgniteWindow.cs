@@ -143,6 +143,8 @@ namespace IgniteModule
 
         public IgniteWindow ContentFit()
         {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(Content);
+
             var children = Content.GetComponentsInChildren<RectTransform>()
                                 .Where(c => c.parent == this.Transform)
                                 .Select(c => c.sizeDelta.y)
@@ -150,6 +152,9 @@ namespace IgniteModule
             var height = children.Sum();
             var space = (children.Length + 1) * contentLayoutGroup.spacing;
             RectTransform.SetSizeDelta(y: height + space);
+
+            LayoutRebuilder.ForceRebuildLayoutImmediate(Content);
+
             return this;
         }
 
