@@ -156,8 +156,13 @@ namespace IgniteModule
         public IgniteWindow Fit()
         {
             ContentFit();
-            var height = Mathf.Min(Content.sizeDelta.y + IgniteGUISettings.ElementHeight, Screen.height);
+
+            var headerHeight = header.gameObject.activeSelf ? IgniteGUISettings.ElementHeight : 0f;
+            var height = Mathf.Min(Content.sizeDelta.y + headerHeight, Screen.height);
+
             RectTransform.SetSizeDelta(y: height);
+            scrollRect.SetSizeDelta(y: height);
+
             return this;
         }
 
