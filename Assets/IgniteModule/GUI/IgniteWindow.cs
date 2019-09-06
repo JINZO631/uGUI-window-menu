@@ -161,7 +161,7 @@ namespace IgniteModule
             return this;
         }
 
-        public static IgniteWindow Create(string name, Vector2? anchoredPosition = null, Vector2? windowSize = null, bool open = true, bool hideCloseButton = false, bool hideFoldToggle = false, bool fixedSize = false, bool fixedPosition = false, bool stretch = false)
+        public static IgniteWindow Create(string name, Vector2? anchoredPosition = null, Vector2? windowSize = null, bool open = true, bool hideCloseButton = false, bool hideFoldToggle = false, bool hideHeader = false, bool fixedSize = false, bool fixedPosition = false, bool stretch = false)
         {
             var window = Instantiate(Resources.Load<GameObject>("IgniteGUI/Window")).GetComponent<IgniteWindow>();
 
@@ -235,6 +235,9 @@ namespace IgniteModule
             // サイズを固定するか
             window.variableSizePanel.enabled = !fixedSize;
             window.dragArea.SetActive(!fixedSize);
+
+            // ヘッダーを隠すか
+            window.header.gameObject.SetActive(!hideHeader);
 
             return window;
         }
