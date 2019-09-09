@@ -100,27 +100,5 @@ namespace IgniteModule
 
             return rightWindow;
         }
-
-        public static IgniteWindow CreateWindowBottom(this IgniteWindow window, string name, Vector2? anchoredPosition = null, Vector2? windowSize = null, bool open = true, bool hideCloseButton = false, bool fixedSize = false, bool fixedPosition = false, bool stretch = false)
-        {
-            var bottomWindow = IgniteWindow.Create(
-                name: name,
-                anchoredPosition: anchoredPosition,
-                windowSize: windowSize,
-                open: open,
-                hideCloseButton: hideCloseButton,
-                fixedSize: fixedSize,
-                fixedPosition: fixedPosition,
-                stretch: stretch
-            );
-
-            bottomWindow.StartCoroutine(IgniteGUIUtility.DelayedAction(() =>
-            {
-                bottomWindow.RectTransform.SetAnchoredTopPosition(window.RectTransform.AnchoredBottom());
-                bottomWindow.RectTransform.SetAnchoredLeftPosition(window.RectTransform.AnchoredLeft());
-            }));
-
-            return bottomWindow;
-        }
     }
 }
