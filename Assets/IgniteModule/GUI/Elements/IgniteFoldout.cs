@@ -114,6 +114,7 @@ namespace IgniteModule
             instance.nameText.text = name;
             instance.nameText.font = IgniteGUISettings.Font;
             instance.nameText.fontSize = IgniteGUISettings.FontSize;
+            instance.nameText.resizeTextMaxSize = IgniteGUISettings.FontSize;
             instance.nameText.color = IgniteGUISettings.FontColor;
             instance.layoutGroup.spacing = IgniteGUISettings.ElementSpacing;
             instance.SetHeight(IgniteGUISettings.ElementHeight);

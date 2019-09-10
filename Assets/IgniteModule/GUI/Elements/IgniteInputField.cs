@@ -35,9 +35,11 @@ namespace IgniteModule
             instance.SetSize(width ?? IgniteGUISettings.ElementWidth, IgniteGUISettings.ElementHeight);
             instance.inputField.textComponent.font = IgniteGUISettings.Font;
             instance.inputField.textComponent.fontSize = IgniteGUISettings.FontSize;
+            instance.inputField.textComponent.resizeTextMaxSize = IgniteGUISettings.FontSize;
             instance.inputField.textComponent.color = IgniteGUISettings.FontColor;
             instance.placeHolderText.font = IgniteGUISettings.Font;
             instance.placeHolderText.fontSize = IgniteGUISettings.FontSize;
+            instance.placeHolderText.resizeTextMaxSize = IgniteGUISettings.FontSize;
             instance.placeHolderText.color = new Color(IgniteGUISettings.FontColor.r, IgniteGUISettings.FontColor.g, IgniteGUISettings.FontColor.b, 0.5f);
 
             if (onValueChanged != null)

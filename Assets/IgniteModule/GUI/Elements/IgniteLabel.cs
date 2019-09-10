@@ -28,14 +28,15 @@ namespace IgniteModule
             backgroundImage.color = Color.clear;
         }
 
-        public static IgniteLabel Create(string label, UnityEvent<string> labelChangeEvent = null)
+        public static IgniteLabel Create(string label, UnityEvent<string> labelChangeEvent = null, Color? fontColor = null)
         {
             var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/Label")).GetComponent<IgniteLabel>();
 
             instance.labelText.text = label;
             instance.labelText.font = IgniteGUISettings.Font;
             instance.labelText.fontSize = IgniteGUISettings.FontSize;
-            instance.labelText.color = IgniteGUISettings.FontColor;
+            instance.labelText.resizeTextMaxSize = IgniteGUISettings.FontSize;
+            instance.labelText.color = fontColor ?? IgniteGUISettings.FontColor;
 
             if (labelChangeEvent != null)
             {
@@ -52,16 +53,16 @@ namespace IgniteModule
 
     public static partial class IIgniteGUIGroupExtensions
     {
-        public static IIgniteGUIGroup AddLabel(this IIgniteGUIGroup group, string label, UnityEvent<string> labelChangeEvent = null)
+        public static IIgniteGUIGroup AddLabel(this IIgniteGUIGroup group, string label, UnityEvent<string> labelChangeEvent = null, Color? fontColor = null)
         {
-            return group.Add(IgniteLabel.Create(label, labelChangeEvent));
+            return group.Add(IgniteLabel.Create(label, labelChangeEvent, fontColor));
         }
 
         public static IIgniteGUIGroup AddMonitoringLabel(this IIgniteGUIGroup group, Func<string> monitor)
         {
-            var behaviour = (MonoBehaviour)group;
             var labelChangeEvent = new IgniteLabel.LabelChangeEvent();
-            behaviour.StartCoroutine(MonitoringCoroutine(labelChangeEvent, monitor));
+            var label = IgniteLabel.Create("", labelChangeEvent);
+            label.StartCoroutine(MonitoringCoroutine(labelChangeEvent, monitor));
             return group.AddLabel("", labelChangeEvent);
         }
 

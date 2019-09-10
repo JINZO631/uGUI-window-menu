@@ -77,6 +77,7 @@ namespace IgniteModule.GUICore
         {
             headerName.font = IgniteGUISettings.Font;
             headerName.fontSize = IgniteGUISettings.FontSize;
+            headerName.resizeTextMaxSize = IgniteGUISettings.FontSize;
             headerName.color = IgniteGUISettings.FontColor;
             headerImage.color = IgniteGUISettings.WindowHeaderColor;
             SetHeight(IgniteGUISettings.ElementHeight);

@@ -45,9 +45,11 @@ namespace IgniteModule
             instance.backgroundImage.color = IgniteGUISettings.DropdownColor;
             instance.dropdown.captionText.font = IgniteGUISettings.Font;
             instance.dropdown.captionText.fontSize = IgniteGUISettings.FontSize;
+            instance.dropdown.captionText.resizeTextMaxSize = IgniteGUISettings.FontSize;
             instance.dropdown.captionText.color = IgniteGUISettings.FontColor;
             instance.templateLabel.font = IgniteGUISettings.Font;
             instance.templateLabel.fontSize = IgniteGUISettings.FontSize;
+            instance.templateLabel.resizeTextMaxSize = IgniteGUISettings.FontSize;
             instance.templateLabel.color = IgniteGUISettings.FontColor;
             instance.dropdown.AddOptions(options.ToList());
             instance.dropdown.onValueChanged.AddListener(new UnityAction<int>(onValueChanged));
