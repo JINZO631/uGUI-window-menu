@@ -118,7 +118,7 @@ namespace IgniteModule
         public static IIgniteGUIGroup AddOperableMonitoringSlider(this IIgniteGUIGroup group, Func<float> monitor, Action<float> onValueChanged, float minValue = 0f, float maxValue = 1f)
         {
             var valueChangeEvent = new IgniteSlider.ValueChangeEvent();
-            var slider = IgniteSlider.Create(v => { }, minValue, maxValue, valueChangeEvent: valueChangeEvent);
+            var slider = IgniteSlider.Create(onValueChanged, minValue, maxValue, valueChangeEvent: valueChangeEvent);
             slider.StartCoroutine(MonitoringCoroutine(valueChangeEvent, monitor));
             return group.Add(slider);
         }
@@ -127,7 +127,7 @@ namespace IgniteModule
         public static IIgniteGUIGroup AddOperableMonitoringSlider(this IIgniteGUIGroup group, string label, Func<float> monitor, Action<float> onValueChanged, float minValue = 0f, float maxValue = 1f)
         {
             var valueChangeEvent = new IgniteSlider.ValueChangeEvent();
-            var slider = IgniteSlider.Create(v => { }, minValue, maxValue, valueChangeEvent: valueChangeEvent);
+            var slider = IgniteSlider.Create(onValueChanged, minValue, maxValue, valueChangeEvent: valueChangeEvent);
             slider.StartCoroutine(MonitoringCoroutine(valueChangeEvent, monitor));
             return group.Add(IgniteHorizontalGroup.Create().AddLabel(label).Add(slider) as IgniteHorizontalGroup);
         }
@@ -136,7 +136,7 @@ namespace IgniteModule
         public static IIgniteGUIGroup AddOperableMonitoringSlider(this IIgniteGUIGroup group, Func<float> monitor, Action<float> onValueChanged, string label, float minValue = 0f, float maxValue = 1f)
         {
             var valueChangeEvent = new IgniteSlider.ValueChangeEvent();
-            var slider = IgniteSlider.Create(v => { }, minValue, maxValue, valueChangeEvent: valueChangeEvent);
+            var slider = IgniteSlider.Create(onValueChanged, minValue, maxValue, valueChangeEvent: valueChangeEvent);
             slider.StartCoroutine(MonitoringCoroutine(valueChangeEvent, monitor));
             return group.Add(IgniteHorizontalGroup.Create().Add(slider).AddLabel(label) as IgniteHorizontalGroup);
         }
