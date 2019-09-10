@@ -40,7 +40,13 @@ namespace IgniteModule
 
             if (labelChangeEvent != null)
             {
-                labelChangeEvent.AddListener(latestLabel => instance.labelText.text = latestLabel);
+                labelChangeEvent.AddListener(latestLabel =>
+                {
+                    if (instance != null)
+                    {
+                        instance.labelText.text = latestLabel;
+                    }
+                });
             }
 
             return instance;

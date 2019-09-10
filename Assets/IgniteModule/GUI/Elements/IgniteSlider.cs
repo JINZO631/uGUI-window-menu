@@ -50,7 +50,13 @@ namespace IgniteModule
 
             if (valueChangeEvent != null)
             {
-                valueChangeEvent.AddListener(v => instance.slider.value = v);
+                valueChangeEvent.AddListener(v =>
+                {
+                    if (instance != null)
+                    {
+                        instance.slider.value = v;
+                    }
+                });
             }
 
             return instance;
