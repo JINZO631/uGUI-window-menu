@@ -69,7 +69,7 @@ namespace IgniteModule
             var labelChangeEvent = new IgniteLabel.LabelChangeEvent();
             var label = IgniteLabel.Create("", labelChangeEvent);
             label.StartCoroutine(MonitoringCoroutine(labelChangeEvent, monitor));
-            return group.AddLabel("", labelChangeEvent);
+            return group.Add(label);
         }
 
         static IEnumerator MonitoringCoroutine(UnityEvent<string> labelChangeEvent, Func<string> monitor)
