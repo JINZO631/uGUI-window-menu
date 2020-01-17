@@ -1,5 +1,5 @@
 {
-    "name": "jinzo.ignitemodule.ignitegui",
+    "name": "jp.jinzo.ignitegui",
     "displayName": "IgniteGUI",
     "version": "1.0.0",
     "unity": "2018.3",
@@ -8,5 +8,7 @@
         "Script",
         "gui"
     ],
-    "dependencies": {}
+    "dependencies": {
+        "com.unity.ugui": "1.0.0"
+    }
 }
