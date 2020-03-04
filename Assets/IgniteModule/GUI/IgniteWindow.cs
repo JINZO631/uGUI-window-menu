@@ -20,6 +20,8 @@ namespace IgniteModule
         [SerializeField] Image backgroundImage = null;
         [SerializeField] Image dragAreaImage = null;
         [SerializeField] Image viewportImage = null;
+        [SerializeField] Scrollbar scrollbar = null;
+        [SerializeField] RectTransform scrollbarRect = null;
 
         public IIgniteGUIGroup Parent => null;
 
@@ -86,6 +88,7 @@ namespace IgniteModule
             variableSizePanel.OnSizeChange.AddListener(sizeDelta => scrollRect.SetSizeDelta(y: sizeDelta.y - IgniteGUISettings.ElementHeight));
             backgroundImage.color = IgniteGUISettings.WindowContentColor;
             dragAreaImage.color = IgniteGUISettings.WindowDragAreaColor;
+            scrollbarRect.SetSizeDelta(x: IgniteGUISettings.ElementHeight);
         }
 
         void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
@@ -189,6 +192,7 @@ namespace IgniteModule
             bool open = true,
             bool hideCloseButton = false,
             bool hideFoldToggle = false,
+            bool hideScrollbar = false,
             bool hideHeader = false,
             bool viewportRaycast = false,
             bool fixedSize = false,
@@ -260,6 +264,9 @@ namespace IgniteModule
 
             // 折りたたみボタンを隠すか
             window.header.SetFoldToggleActive(!hideFoldToggle);
+
+            // スクロールバーを隠すか
+            window.scrollbar.gameObject.SetActive(!hideScrollbar);
 
             // 座標を固定するか
             window.draggable.enabled = !fixedPosition;
