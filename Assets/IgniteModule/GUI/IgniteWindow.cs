@@ -226,7 +226,7 @@ namespace IgniteModule
                 {
                     window.RectTransform.sizeDelta = Screen.safeArea.size;
                     window.RectTransform.anchoredPosition = Vector2.zero;
-                    window.scrollRect.SetSizeDelta(y: window.RectTransform.sizeDelta.y - IgniteGUISettings.ElementHeight);
+                    window.scrollRect.SetSizeDelta(y: window.RectTransform.sizeDelta.y - (hideHeader ? 0 : IgniteGUISettings.ElementHeight));
                 });
             }
             else if (windowSize.HasValue)
@@ -234,7 +234,7 @@ namespace IgniteModule
                 window.OnInitialize.AddListener(() =>
                 {
                     window.RectTransform.sizeDelta = windowSize.Value;
-                    window.scrollRect.SetSizeDelta(y: window.RectTransform.sizeDelta.y - IgniteGUISettings.ElementHeight);
+                    window.scrollRect.SetSizeDelta(y: window.RectTransform.sizeDelta.y - (hideHeader ? 0 : IgniteGUISettings.ElementHeight));
                 });
             }
             else
@@ -242,7 +242,7 @@ namespace IgniteModule
                 window.OnInitialize.AddListener(() =>
                 {
                     window.RectTransform.sizeDelta = IgniteGUISettings.DefaultWindowSize;
-                    window.scrollRect.SetSizeDelta(y: window.RectTransform.sizeDelta.y - IgniteGUISettings.ElementHeight);
+                    window.scrollRect.SetSizeDelta(y: window.RectTransform.sizeDelta.y - (hideHeader ? 0 : IgniteGUISettings.ElementHeight));
                 });
             }
 
