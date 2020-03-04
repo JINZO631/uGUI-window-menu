@@ -39,6 +39,7 @@ namespace IgniteModule.GUICore
             UnityEditor.Selection.activeObject = instance;
         }
 
+        [ContextMenu("reset")]
         void Reset()
         {
             font = Resources.Load<Font>("IgniteGUI/Fonts/SourceHanCodeJP-Normal");

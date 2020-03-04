@@ -7,7 +7,7 @@ using IgniteModule.GUICore;
 
 namespace IgniteModule
 {
-    public static class IgniteGUI
+    public static partial class IgniteGUI
     {
         static RectTransform panelTransform;
         public static Dictionary<int, IgniteWindow> ActiveWindow { get; } = new Dictionary<int, IgniteWindow>();
@@ -98,13 +98,6 @@ namespace IgniteModule
                     i.Value.IsSelected = false;
                 }
             });
-        }
-
-        static Vector2 nextWindowPos = Vector2.zero;
-        public static void SetWindowPos(IgniteWindow window)
-        {
-            window.RectTransform.anchoredPosition = nextWindowPos;
-            nextWindowPos += new Vector2(IgniteGUISettings.ElementHeight, -IgniteGUISettings.ElementHeight);
         }
     }
 }
