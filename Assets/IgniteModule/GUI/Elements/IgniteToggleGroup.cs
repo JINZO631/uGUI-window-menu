@@ -1,12 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 namespace IgniteModule
 {
     public class IgniteToggleGroup : IgniteGUIElementGroup
     {
-        [SerializeField] ToggleGroup toggleGroup = null;
+        [SerializeField]
+        ToggleGroup toggleGroup = null;
 
         public override RectTransform Content => this.Parent.Content;
 
@@ -54,7 +55,8 @@ namespace IgniteModule
 
         public static IgniteToggleGroup Create(bool allowSwitchOff = false)
         {
-            var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/ToggleGroup")).GetComponent<IgniteToggleGroup>();
+            var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/ToggleGroup"))
+                .GetComponent<IgniteToggleGroup>();
 
             instance.toggleGroup.allowSwitchOff = allowSwitchOff;
             return instance;
@@ -63,7 +65,10 @@ namespace IgniteModule
 
     public static partial class IIgniteGUIGroupExtensions
     {
-        public static IIgniteGUIGroup AddToggleGroup(this IIgniteGUIGroup group, bool allowSwitchOff = false)
+        public static IIgniteGUIGroup AddToggleGroup(
+            this IIgniteGUIGroup group,
+            bool allowSwitchOff = false
+        )
         {
             return group.Add(IgniteToggleGroup.Create(allowSwitchOff));
         }

@@ -6,8 +6,11 @@ namespace IgniteModule
 {
     public class IgniteGridGroup : IgniteGUIElementGroup
     {
-        [SerializeField] RectTransform content = null;
-        [SerializeField] GridLayoutGroup layoutGroup = null;
+        [SerializeField]
+        RectTransform content = null;
+
+        [SerializeField]
+        GridLayoutGroup layoutGroup = null;
 
         public override RectTransform Content => content;
 
@@ -23,7 +26,8 @@ namespace IgniteModule
 
         public static IgniteGridGroup Create(Vector2 cellSize)
         {
-            var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/GridGroup")).GetComponent<IgniteGridGroup>();
+            var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/GridGroup"))
+                .GetComponent<IgniteGridGroup>();
 
             instance.layoutGroup.cellSize = cellSize;
             instance.RectTransform.SetSizeDelta(y: IgniteGUISettings.ElementHeight);
@@ -34,7 +38,11 @@ namespace IgniteModule
 
     public static partial class IIgniteGUIGroupExtensions
     {
-        public static IIgniteGUIGroup AddGridGroup(this IIgniteGUIGroup group, Vector2 cellSize, params IIgniteGUIElement[] elements)
+        public static IIgniteGUIGroup AddGridGroup(
+            this IIgniteGUIGroup group,
+            Vector2 cellSize,
+            params IIgniteGUIElement[] elements
+        )
         {
             var grid = IgniteGridGroup.Create(cellSize);
 

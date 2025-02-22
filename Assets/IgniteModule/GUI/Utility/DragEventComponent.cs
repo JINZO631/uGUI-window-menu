@@ -20,6 +20,7 @@ namespace IgniteModule.GUICore
         }
 
         public class DragEvent : UnityEvent<PointerEventData> { }
+
         public class EndDragEvent : UnityEvent<PointerEventData> { }
     }
 }

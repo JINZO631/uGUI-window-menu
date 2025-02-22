@@ -8,10 +8,17 @@ namespace IgniteModule
 {
     public class IgniteToggle : IgniteGUIElement
     {
-        [SerializeField] Toggle toggle = null;
-        [SerializeField] Image backgroundImage = null;
-        [SerializeField] Image checkmarkImage = null;
-        [SerializeField] LayoutElement layoutElement = null;
+        [SerializeField]
+        Toggle toggle = null;
+
+        [SerializeField]
+        Image backgroundImage = null;
+
+        [SerializeField]
+        Image checkmarkImage = null;
+
+        [SerializeField]
+        LayoutElement layoutElement = null;
 
         public bool IsOn => toggle.isOn;
 
@@ -23,9 +30,14 @@ namespace IgniteModule
             backgroundImage.rectTransform.SetSizeDelta(height, height);
         }
 
-        public static IgniteToggle Create(Action<bool> onValueChanged, bool defaultValue, bool readOnly)
+        public static IgniteToggle Create(
+            Action<bool> onValueChanged,
+            bool defaultValue,
+            bool readOnly
+        )
         {
-            var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/Toggle")).GetComponent<IgniteToggle>();
+            var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/Toggle"))
+                .GetComponent<IgniteToggle>();
 
             instance.SetHeight(IgniteGUISettings.ElementHeight);
             instance.backgroundImage.color = IgniteGUISettings.ToggleBackgroundColor;
@@ -42,21 +54,52 @@ namespace IgniteModule
 
     public static partial class IIgniteGUIGroupExtensions
     {
-        public static IIgniteGUIGroup AddToggle(this IIgniteGUIGroup group, Action<bool> onValueChanged, bool defaultValue = true, bool readOnly = false)
+        public static IIgniteGUIGroup AddToggle(
+            this IIgniteGUIGroup group,
+            Action<bool> onValueChanged,
+            bool defaultValue = true,
+            bool readOnly = false
+        )
         {
             return group.Add(IgniteToggle.Create(onValueChanged, defaultValue, readOnly));
         }
 
-        public static IIgniteGUIGroup AddToggle(this IIgniteGUIGroup group, string label, Action<bool> onValueChanged, bool defaultValue = true, bool readOnly = false)
+        public static IIgniteGUIGroup AddToggle(
+            this IIgniteGUIGroup group,
+            string label,
+            Action<bool> onValueChanged,
+            bool defaultValue = true,
+            bool readOnly = false
+        )
         {
-            return group.Add(IgniteHorizontalGroup.Create().AddToggle(onValueChanged, defaultValue, readOnly).AddLabel(label) as IgniteHorizontalGroup);
+            return group.Add(
+                IgniteHorizontalGroup
+                    .Create()
+                    .AddToggle(onValueChanged, defaultValue, readOnly)
+                    .AddLabel(label) as IgniteHorizontalGroup
+            );
         }
 
-        public static IIgniteGUIGroup AddToggleWithButton(this IIgniteGUIGroup group, string buttonName, Action<bool> onClick, Action<bool> onValueChanged = null, bool defaultValue = true, bool readOnly = false)
+        public static IIgniteGUIGroup AddToggleWithButton(
+            this IIgniteGUIGroup group,
+            string buttonName,
+            Action<bool> onClick,
+            Action<bool> onValueChanged = null,
+            bool defaultValue = true,
+            bool readOnly = false
+        )
         {
-            var toggle = IgniteToggle.Create(onValueChanged ?? delegate { }, defaultValue, readOnly);
+            var toggle = IgniteToggle.Create(
+                onValueChanged ?? delegate { },
+                defaultValue,
+                readOnly
+            );
 
-            var horizontalGroup = IgniteHorizontalGroup.Create().Add(toggle).AddButton(buttonName, () => onClick(toggle.IsOn)) as IgniteHorizontalGroup;
+            var horizontalGroup =
+                IgniteHorizontalGroup
+                    .Create()
+                    .Add(toggle)
+                    .AddButton(buttonName, () => onClick(toggle.IsOn)) as IgniteHorizontalGroup;
 
             return group.Add(horizontalGroup);
         }

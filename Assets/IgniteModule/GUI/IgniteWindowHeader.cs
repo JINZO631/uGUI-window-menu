@@ -1,21 +1,36 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System;
 using ATweening;
-using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace IgniteModule.GUICore
 {
     public class IgniteWindowHeader : GUIMonoBehaviour, IPointerClickHandler
     {
-        [SerializeField] Toggle toggle = null;
-        [SerializeField] Text headerName = null;
-        [SerializeField] Image headerImage = null;
-        [SerializeField] Button killButton = null;
-        [SerializeField] RectTransform arrowImageRect = null;
-        [SerializeField] RectTransform toggleRect = null;
-        [SerializeField] RectTransform killButtonRect = null;
-        [SerializeField] HorizontalLayoutGroup headerLayoutGroup = null;
+        [SerializeField]
+        Toggle toggle = null;
+
+        [SerializeField]
+        Text headerName = null;
+
+        [SerializeField]
+        Image headerImage = null;
+
+        [SerializeField]
+        Button killButton = null;
+
+        [SerializeField]
+        RectTransform arrowImageRect = null;
+
+        [SerializeField]
+        RectTransform toggleRect = null;
+
+        [SerializeField]
+        RectTransform killButtonRect = null;
+
+        [SerializeField]
+        HorizontalLayoutGroup headerLayoutGroup = null;
 
         int clickCount;
         float lastTime;
@@ -87,16 +102,18 @@ namespace IgniteModule.GUICore
                 if (v)
                 {
                     toggle.enabled = false;
-                    arrowImageRect.DoLocalRotate(new Vector3(0f, 0f, -90f), 0.3f)
-                            .OnComplete(() => toggle.enabled = true)
-                            .SetRelative();
+                    arrowImageRect
+                        .DoLocalRotate(new Vector3(0f, 0f, -90f), 0.3f)
+                        .OnComplete(() => toggle.enabled = true)
+                        .SetRelative();
                 }
                 else
                 {
                     toggle.enabled = false;
-                    arrowImageRect.DoLocalRotate(new Vector3(0f, 0f, 90f), 0.3f)
-                            .OnComplete(() => toggle.enabled = true)
-                            .SetRelative();
+                    arrowImageRect
+                        .DoLocalRotate(new Vector3(0f, 0f, 90f), 0.3f)
+                        .OnComplete(() => toggle.enabled = true)
+                        .SetRelative();
                 }
             });
         }

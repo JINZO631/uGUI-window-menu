@@ -1,16 +1,17 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Collections.Generic;
-using UnityEngine.EventSystems;
 using IgniteModule.GUICore;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace IgniteModule
 {
     public static partial class IgniteGUI
     {
         static RectTransform panelTransform;
-        public static Dictionary<int, IgniteWindow> ActiveWindow { get; } = new Dictionary<int, IgniteWindow>();
+        public static Dictionary<int, IgniteWindow> ActiveWindow { get; } =
+            new Dictionary<int, IgniteWindow>();
 
         public static RectTransform WindowRoot
         {
@@ -58,8 +59,14 @@ namespace IgniteModule
 #if UNITY_IOS
                 // iPhoneX対応
                 var safeArea = Screen.safeArea;
-                var anchorMin = new Vector2(safeArea.position.x / Screen.width, safeArea.position.y / Screen.height);
-                var anchorMax = new Vector2((safeArea.position.x + safeArea.size.x) / Screen.width, (safeArea.position.y + safeArea.size.y) / Screen.height);
+                var anchorMin = new Vector2(
+                    safeArea.position.x / Screen.width,
+                    safeArea.position.y / Screen.height
+                );
+                var anchorMax = new Vector2(
+                    (safeArea.position.x + safeArea.size.x) / Screen.width,
+                    (safeArea.position.y + safeArea.size.y) / Screen.height
+                );
                 panelTransform.anchorMin = anchorMin;
                 panelTransform.anchorMax = anchorMax;
 #endif

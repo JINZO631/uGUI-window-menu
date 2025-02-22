@@ -1,17 +1,24 @@
-﻿using UnityEngine;
-using IgniteModule.GUICore;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using System;
-using UnityEngine.Events;
+﻿using System;
 using System.Collections;
+using IgniteModule.GUICore;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace IgniteModule
 {
-    public class IgniteLabel : IgniteGUIElement, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+    public class IgniteLabel
+        : IgniteGUIElement,
+            IPointerClickHandler,
+            IPointerEnterHandler,
+            IPointerExitHandler
     {
-        [SerializeField] public Image backgroundImage = null;
-        [SerializeField] public Text labelText = null;
+        [SerializeField]
+        public Image backgroundImage = null;
+
+        [SerializeField]
+        public Text labelText = null;
 
         public Color defaultBackgroundColor = default(Color);
         public Color highlightBackgroundColor = default(Color);
@@ -31,9 +38,15 @@ namespace IgniteModule
             backgroundImage.color = defaultBackgroundColor;
         }
 
-        public static IgniteLabel Create(string label, Color? fontColor = null, Color? defaultBackgroundColor = null, Color? highlightBackgroundColor = null)
+        public static IgniteLabel Create(
+            string label,
+            Color? fontColor = null,
+            Color? defaultBackgroundColor = null,
+            Color? highlightBackgroundColor = null
+        )
         {
-            var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/Label")).GetComponent<IgniteLabel>();
+            var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/Label"))
+                .GetComponent<IgniteLabel>();
 
             instance.labelText.text = label;
             instance.labelText.font = IgniteGUISettings.Font;
@@ -41,64 +54,96 @@ namespace IgniteModule
             instance.labelText.resizeTextMaxSize = IgniteGUISettings.FontSize;
             instance.labelText.color = fontColor ?? IgniteGUISettings.FontColor;
             instance.defaultBackgroundColor = defaultBackgroundColor ?? Color.clear;
-            instance.highlightBackgroundColor = highlightBackgroundColor ?? IgniteGUISettings.LabelHighlightColor;
+            instance.highlightBackgroundColor =
+                highlightBackgroundColor ?? IgniteGUISettings.LabelHighlightColor;
 
             instance.backgroundImage.color = instance.defaultBackgroundColor;
 
             return instance;
         }
 
-        public class LabelChangeEvent : UnityEvent<string>
-        {
-        }
+        public class LabelChangeEvent : UnityEvent<string> { }
     }
 
     public static partial class IIgniteGUIGroupExtensions
     {
-        public static IIgniteGUIGroup AddLabel(this IIgniteGUIGroup group, string label, Color? fontColor = null, Color? defaultBackgroundColor = null, Color? highlightBackgroundColor = null)
+        public static IIgniteGUIGroup AddLabel(
+            this IIgniteGUIGroup group,
+            string label,
+            Color? fontColor = null,
+            Color? defaultBackgroundColor = null,
+            Color? highlightBackgroundColor = null
+        )
         {
-            return group.Add(IgniteLabel.Create(label, fontColor, defaultBackgroundColor, highlightBackgroundColor));
+            return group.Add(
+                IgniteLabel.Create(
+                    label,
+                    fontColor,
+                    defaultBackgroundColor,
+                    highlightBackgroundColor
+                )
+            );
         }
 
-        public static IIgniteGUIGroup AddHighlightedLabel(this IIgniteGUIGroup group, string label, Color highlightColor)
+        public static IIgniteGUIGroup AddHighlightedLabel(
+            this IIgniteGUIGroup group,
+            string label,
+            Color highlightColor
+        )
         {
-            return group.AddLabel(label, LuminanceUtility.ChooseFontColor(highlightColor), highlightColor, highlightColor);
+            return group.AddLabel(
+                label,
+                LuminanceUtility.ChooseFontColor(highlightColor),
+                highlightColor,
+                highlightColor
+            );
         }
 
-        public static IIgniteGUIGroup AddMonitoringLabel(this IIgniteGUIGroup group, Func<string> monitor)
+        public static IIgniteGUIGroup AddMonitoringLabel(
+            this IIgniteGUIGroup group,
+            Func<string> monitor
+        )
         {
             var labelChangeEvent = new IgniteLabel.LabelChangeEvent();
             var label = IgniteLabel.Create("");
-            label.StartCoroutine(MonitoringCoroutine(() =>
-            {
-                if (label == null)
+            label.StartCoroutine(
+                MonitoringCoroutine(() =>
                 {
-                    return;
-                }
+                    if (label == null)
+                    {
+                        return;
+                    }
 
-                label.labelText.text = monitor();
-            }));
+                    label.labelText.text = monitor();
+                })
+            );
             return group.Add(label);
         }
 
-        public static IIgniteGUIGroup AddMonitoringHighligtedLabel(this IIgniteGUIGroup group, Func<string> monitor, Func<Color> colorMonitor)
+        public static IIgniteGUIGroup AddMonitoringHighligtedLabel(
+            this IIgniteGUIGroup group,
+            Func<string> monitor,
+            Func<Color> colorMonitor
+        )
         {
             var labelChangeEvent = new IgniteLabel.LabelChangeEvent();
             var label = IgniteLabel.Create("");
-            label.StartCoroutine(MonitoringCoroutine(() =>
-            {
-                if (label == null)
+            label.StartCoroutine(
+                MonitoringCoroutine(() =>
                 {
-                    return;
-                }
+                    if (label == null)
+                    {
+                        return;
+                    }
 
-                var color = colorMonitor();
-                label.labelText.text = monitor();
-                label.labelText.color = LuminanceUtility.ChooseFontColor(color);
-                label.backgroundImage.color = color;
-                label.highlightBackgroundColor = color;
-                label.defaultBackgroundColor = color;
-            }));
+                    var color = colorMonitor();
+                    label.labelText.text = monitor();
+                    label.labelText.color = LuminanceUtility.ChooseFontColor(color);
+                    label.backgroundImage.color = color;
+                    label.highlightBackgroundColor = color;
+                    label.defaultBackgroundColor = color;
+                })
+            );
             return group.Add(label);
         }
 

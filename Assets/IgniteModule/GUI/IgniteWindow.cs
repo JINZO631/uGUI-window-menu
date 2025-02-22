@@ -1,27 +1,50 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using IgniteModule.GUICore;
-using System.Linq;
-using UnityEngine.EventSystems;
+﻿using System.Linq;
 using ATweening;
+using IgniteModule.GUICore;
+using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace IgniteModule
 {
     public class IgniteWindow : GUIMonoBehaviour, IIgniteGUIGroup, IBeginDragHandler
     {
-        [SerializeField] IgniteWindowHeader header = null;
-        [SerializeField] RectTransform content = null;
-        [SerializeField] RectTransform scrollRect = null;
-        [SerializeField] VerticalLayoutGroup contentLayoutGroup = null;
-        [SerializeField] GameObject dragArea = null;
-        [SerializeField] DraggableUI draggable = null;
-        [SerializeField] VariableSizePanel variableSizePanel = null;
-        [SerializeField] Image backgroundImage = null;
-        [SerializeField] Image dragAreaImage = null;
-        [SerializeField] Image viewportImage = null;
-        [SerializeField] Scrollbar scrollbar = null;
-        [SerializeField] RectTransform scrollbarRect = null;
+        [SerializeField]
+        IgniteWindowHeader header = null;
+
+        [SerializeField]
+        RectTransform content = null;
+
+        [SerializeField]
+        RectTransform scrollRect = null;
+
+        [SerializeField]
+        VerticalLayoutGroup contentLayoutGroup = null;
+
+        [SerializeField]
+        GameObject dragArea = null;
+
+        [SerializeField]
+        DraggableUI draggable = null;
+
+        [SerializeField]
+        VariableSizePanel variableSizePanel = null;
+
+        [SerializeField]
+        Image backgroundImage = null;
+
+        [SerializeField]
+        Image dragAreaImage = null;
+
+        [SerializeField]
+        Image viewportImage = null;
+
+        [SerializeField]
+        Scrollbar scrollbar = null;
+
+        [SerializeField]
+        RectTransform scrollbarRect = null;
 
         public IIgniteGUIGroup Parent => null;
 
@@ -35,10 +58,7 @@ namespace IgniteModule
         bool isSelected;
         public bool IsSelected
         {
-            get
-            {
-                return isSelected;
-            }
+            get { return isSelected; }
             set
             {
                 if (isSelected != value)
@@ -85,7 +105,9 @@ namespace IgniteModule
             header.OnClickKillButton(() => Kill());
 
             OnSelect.AddListener(() => Transform.SetAsLastSibling());
-            variableSizePanel.OnSizeChange.AddListener(sizeDelta => scrollRect.SetSizeDelta(y: sizeDelta.y - IgniteGUISettings.ElementHeight));
+            variableSizePanel.OnSizeChange.AddListener(sizeDelta =>
+                scrollRect.SetSizeDelta(y: sizeDelta.y - IgniteGUISettings.ElementHeight)
+            );
             backgroundImage.color = IgniteGUISettings.WindowContentColor;
             dragAreaImage.color = IgniteGUISettings.WindowDragAreaColor;
             scrollbarRect.SetSizeDelta(x: IgniteGUISettings.ElementHeight);
@@ -148,10 +170,11 @@ namespace IgniteModule
         {
             LayoutRebuilder.ForceRebuildLayoutImmediate(Content);
 
-            var children = Content.GetComponentsInChildren<RectTransform>()
-                                .Where(c => c.parent == this.Transform)
-                                .Select(c => c.sizeDelta.y)
-                                .ToArray();
+            var children = Content
+                .GetComponentsInChildren<RectTransform>()
+                .Where(c => c.parent == this.Transform)
+                .Select(c => c.sizeDelta.y)
+                .ToArray();
             var height = children.Sum();
             var space = (children.Length + 1) * contentLayoutGroup.spacing;
             RectTransform.SetSizeDelta(y: height + space);
@@ -176,10 +199,12 @@ namespace IgniteModule
             {
                 var layoutGroupRectTransform = i.GetComponent<RectTransform>();
 
-                i.StartCoroutine(IgniteGUIUtility.DelayedAction(() =>
-                {
-                    LayoutRebuilder.MarkLayoutForRebuild(layoutGroupRectTransform);
-                }));
+                i.StartCoroutine(
+                    IgniteGUIUtility.DelayedAction(() =>
+                    {
+                        LayoutRebuilder.MarkLayoutForRebuild(layoutGroupRectTransform);
+                    })
+                );
             }
 
             return this;
@@ -197,22 +222,32 @@ namespace IgniteModule
             bool viewportRaycast = false,
             bool fixedSize = false,
             bool fixedPosition = false,
-            bool stretch = false)
+            bool stretch = false
+        )
         {
-            var window = Instantiate(Resources.Load<GameObject>("IgniteGUI/Window")).GetComponent<IgniteWindow>();
+            var window = Instantiate(Resources.Load<GameObject>("IgniteGUI/Window"))
+                .GetComponent<IgniteWindow>();
 
             IgniteGUI.AddWindow(window.GetInstanceID(), window);
 
             window.gameObject.name = name + "(" + window.GetInstanceID() + ")";
             window.header.SetName(name);
             window.contentLayoutGroup.spacing = IgniteGUISettings.ElementSpacing;
-            window.dragArea.GetComponent<RectTransform>().sizeDelta = new Vector2(IgniteGUISettings.ElementHeight, IgniteGUISettings.ElementHeight);
-            window.dragAreaImage.rectTransform.sizeDelta = new Vector2(IgniteGUISettings.ElementHeight, IgniteGUISettings.ElementHeight);
+            window.dragArea.GetComponent<RectTransform>().sizeDelta = new Vector2(
+                IgniteGUISettings.ElementHeight,
+                IgniteGUISettings.ElementHeight
+            );
+            window.dragAreaImage.rectTransform.sizeDelta = new Vector2(
+                IgniteGUISettings.ElementHeight,
+                IgniteGUISettings.ElementHeight
+            );
 
             // 座標設定
             if (anchoredPosition.HasValue)
             {
-                window.OnInitialize.AddListener(() => window.RectTransform.anchoredPosition = anchoredPosition.Value);
+                window.OnInitialize.AddListener(
+                    () => window.RectTransform.anchoredPosition = anchoredPosition.Value
+                );
             }
             else
             {
@@ -226,7 +261,10 @@ namespace IgniteModule
                 {
                     window.RectTransform.sizeDelta = Screen.safeArea.size;
                     window.RectTransform.anchoredPosition = Vector2.zero;
-                    window.scrollRect.SetSizeDelta(y: window.RectTransform.sizeDelta.y - (hideHeader ? 0 : IgniteGUISettings.ElementHeight));
+                    window.scrollRect.SetSizeDelta(
+                        y: window.RectTransform.sizeDelta.y
+                            - (hideHeader ? 0 : IgniteGUISettings.ElementHeight)
+                    );
                 });
             }
             else if (windowSize.HasValue)
@@ -234,7 +272,10 @@ namespace IgniteModule
                 window.OnInitialize.AddListener(() =>
                 {
                     window.RectTransform.sizeDelta = windowSize.Value;
-                    window.scrollRect.SetSizeDelta(y: window.RectTransform.sizeDelta.y - (hideHeader ? 0 : IgniteGUISettings.ElementHeight));
+                    window.scrollRect.SetSizeDelta(
+                        y: window.RectTransform.sizeDelta.y
+                            - (hideHeader ? 0 : IgniteGUISettings.ElementHeight)
+                    );
                 });
             }
             else
@@ -242,10 +283,12 @@ namespace IgniteModule
                 window.OnInitialize.AddListener(() =>
                 {
                     window.RectTransform.sizeDelta = IgniteGUISettings.DefaultWindowSize;
-                    window.scrollRect.SetSizeDelta(y: window.RectTransform.sizeDelta.y - (hideHeader ? 0 : IgniteGUISettings.ElementHeight));
+                    window.scrollRect.SetSizeDelta(
+                        y: window.RectTransform.sizeDelta.y
+                            - (hideHeader ? 0 : IgniteGUISettings.ElementHeight)
+                    );
                 });
             }
-
 
             // 初期折りたたみ設定
             if (!open)

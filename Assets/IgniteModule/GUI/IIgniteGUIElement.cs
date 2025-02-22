@@ -1,5 +1,5 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
 namespace IgniteModule
 {
@@ -12,7 +12,5 @@ namespace IgniteModule
         void OnSelected(Action onSelected);
     }
 
-    public interface IIgniteGUIElementGroup : IIgniteGUIElement, IIgniteGUIGroup
-    {
-    }
+    public interface IIgniteGUIElementGroup : IIgniteGUIElement, IIgniteGUIGroup { }
 }

@@ -1,5 +1,5 @@
-using UnityEngine;
 using IgniteModule.GUICore;
+using UnityEngine;
 
 namespace IgniteModule
 {
@@ -7,10 +7,14 @@ namespace IgniteModule
     {
         private static Vector2 nextWindowPos = Vector2.zero;
         private static int setWindowCount = 0;
+
         public static void SetWindowPos(IgniteWindow window)
         {
             window.RectTransform.anchoredPosition = nextWindowPos;
-            nextWindowPos += new Vector2(IgniteGUISettings.ElementHeight, -IgniteGUISettings.ElementHeight);
+            nextWindowPos += new Vector2(
+                IgniteGUISettings.ElementHeight,
+                -IgniteGUISettings.ElementHeight
+            );
             setWindowCount++;
 
             if (setWindowCount >= 10)

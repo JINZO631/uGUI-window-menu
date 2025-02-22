@@ -1,17 +1,22 @@
-﻿using UnityEngine;
-using IgniteModule.GUICore;
-using UnityEngine.UI;
-using System;
-using UnityEngine.Events;
+﻿using System;
 using System.Collections;
+using IgniteModule.GUICore;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace IgniteModule
 {
     public class IgniteButton : IgniteGUIElement
     {
-        [SerializeField] Button button = null;
-        [SerializeField] Text buttonNameText = null;
-        [SerializeField] Image backgroundImage = null;
+        [SerializeField]
+        Button button = null;
+
+        [SerializeField]
+        Text buttonNameText = null;
+
+        [SerializeField]
+        Image backgroundImage = null;
 
         IEnumerator Fit()
         {
@@ -21,7 +26,8 @@ namespace IgniteModule
 
         public static IgniteButton Create(string buttonName, Action onClick)
         {
-            var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/Button")).GetComponent<IgniteButton>();
+            var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/Button"))
+                .GetComponent<IgniteButton>();
 
             instance.buttonNameText.text = buttonName;
             instance.buttonNameText.font = IgniteGUISettings.Font;
@@ -40,14 +46,26 @@ namespace IgniteModule
 
     public static partial class IIgniteGUIGroupExtensions
     {
-        public static IIgniteGUIGroup AddButton(this IIgniteGUIGroup group, string buttonName, Action onClick)
+        public static IIgniteGUIGroup AddButton(
+            this IIgniteGUIGroup group,
+            string buttonName,
+            Action onClick
+        )
         {
             return group.Add(IgniteButton.Create(buttonName, onClick));
         }
 
-        public static IIgniteGUIGroup AddButton(this IIgniteGUIGroup group, string label, string buttonName, Action onClick)
+        public static IIgniteGUIGroup AddButton(
+            this IIgniteGUIGroup group,
+            string label,
+            string buttonName,
+            Action onClick
+        )
         {
-            return group.Add(IgniteHorizontalGroup.Create().AddButton(buttonName, onClick).AddLabel(label) as IgniteHorizontalGroup);
+            return group.Add(
+                IgniteHorizontalGroup.Create().AddButton(buttonName, onClick).AddLabel(label)
+                    as IgniteHorizontalGroup
+            );
         }
     }
 }

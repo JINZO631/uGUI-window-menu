@@ -1,24 +1,41 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using UnityEngine.Events;
-using System;
+﻿using System;
 using System.Linq;
 using IgniteModule.GUICore;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace IgniteModule
 {
     public class IgniteDropdown : IgniteGUIElement, IPointerClickHandler
     {
-        [SerializeField] Dropdown dropdown = null;
-        [SerializeField] RectTransform arrowRect = null;
-        [SerializeField] RectTransform templateItem = null;
-        [SerializeField] Text templateLabel = null;
-        [SerializeField] RectTransform templateToggleRect = null;
-        [SerializeField] RectTransform templateCheckmarkRect = null;
-        [SerializeField] RectTransform templateContentRect = null;
-        [SerializeField] HorizontalLayoutGroup templateItemLayoutGroup = null;
-        [SerializeField] Image backgroundImage = null;
+        [SerializeField]
+        Dropdown dropdown = null;
+
+        [SerializeField]
+        RectTransform arrowRect = null;
+
+        [SerializeField]
+        RectTransform templateItem = null;
+
+        [SerializeField]
+        Text templateLabel = null;
+
+        [SerializeField]
+        RectTransform templateToggleRect = null;
+
+        [SerializeField]
+        RectTransform templateCheckmarkRect = null;
+
+        [SerializeField]
+        RectTransform templateContentRect = null;
+
+        [SerializeField]
+        HorizontalLayoutGroup templateItemLayoutGroup = null;
+
+        [SerializeField]
+        Image backgroundImage = null;
 
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
         {
@@ -38,9 +55,14 @@ namespace IgniteModule
             dropdown.template.SetSizeDelta(y: height * dropdown.options.Count);
         }
 
-        public static IgniteDropdown Create(Action<int> onValueChanged, params string[] options)
+        public static IgniteDropdown Create(
+            Action<int> onValueChanged,
+            int initialValue,
+            params string[] options
+        )
         {
-            var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/Dropdown")).GetComponent<IgniteDropdown>();
+            var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/Dropdown"))
+                .GetComponent<IgniteDropdown>();
 
             instance.backgroundImage.color = IgniteGUISettings.DropdownColor;
             instance.dropdown.captionText.font = IgniteGUISettings.Font;
@@ -52,6 +74,7 @@ namespace IgniteModule
             instance.templateLabel.resizeTextMaxSize = IgniteGUISettings.FontSize;
             instance.templateLabel.color = IgniteGUISettings.FontColor;
             instance.dropdown.AddOptions(options.ToList());
+            instance.dropdown.value = initialValue;
             instance.dropdown.onValueChanged.AddListener(new UnityAction<int>(onValueChanged));
             instance.SetHeight(IgniteGUISettings.ElementHeight);
 
@@ -61,9 +84,14 @@ namespace IgniteModule
 
     public static partial class IIgniteGUIGroupExtensions
     {
-        public static IIgniteGUIGroup AddDropdown(this IIgniteGUIGroup group, Action<int> onValueChanged, params string[] options)
+        public static IIgniteGUIGroup AddDropdown(
+            this IIgniteGUIGroup group,
+            Action<int> onValueChanged,
+            int initialValue,
+            params string[] options
+        )
         {
-            return group.Add(IgniteDropdown.Create(onValueChanged, options));
+            return group.Add(IgniteDropdown.Create(onValueChanged, initialValue, options));
         }
     }
 }

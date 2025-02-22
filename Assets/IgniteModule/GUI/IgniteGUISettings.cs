@@ -4,25 +4,62 @@ namespace IgniteModule.GUICore
 {
     public partial class IgniteGUISettings : ScriptableObject
     {
-        [SerializeField] Font font;
-        [SerializeField] int fontSize;
-        [SerializeField] Vector2 defaultWindowSize;
-        [SerializeField] float elementSpacing;
-        [SerializeField] float elementHeight;
-        [SerializeField] float elementWidth;
-        [SerializeField] Color fontColor;
-        [SerializeField] Color windowHeaderColor;
-        [SerializeField] Color windowContentColor;
-        [SerializeField] Color windowDragAreaColor;
-        [SerializeField] Color labelHighlightColor;
-        [SerializeField] Color buttonColor;
-        [SerializeField] Color sliderBackgroundColor;
-        [SerializeField] Color sliderHandleColor;
-        [SerializeField] Color toggleEnableColor;
-        [SerializeField] Color toggleBackgroundColor;
-        [SerializeField] Color foldoutColor;
-        [SerializeField] Color dropdownColor;
-        [SerializeField] Color inputFieldColor;
+        [SerializeField]
+        Font font;
+
+        [SerializeField]
+        int fontSize;
+
+        [SerializeField]
+        Vector2 defaultWindowSize;
+
+        [SerializeField]
+        float elementSpacing;
+
+        [SerializeField]
+        float elementHeight;
+
+        [SerializeField]
+        float elementWidth;
+
+        [SerializeField]
+        Color fontColor;
+
+        [SerializeField]
+        Color windowHeaderColor;
+
+        [SerializeField]
+        Color windowContentColor;
+
+        [SerializeField]
+        Color windowDragAreaColor;
+
+        [SerializeField]
+        Color labelHighlightColor;
+
+        [SerializeField]
+        Color buttonColor;
+
+        [SerializeField]
+        Color sliderBackgroundColor;
+
+        [SerializeField]
+        Color sliderHandleColor;
+
+        [SerializeField]
+        Color toggleEnableColor;
+
+        [SerializeField]
+        Color toggleBackgroundColor;
+
+        [SerializeField]
+        Color foldoutColor;
+
+        [SerializeField]
+        Color dropdownColor;
+
+        [SerializeField]
+        Color inputFieldColor;
 
 #if UNITY_EDITOR
         [UnityEditor.MenuItem("Tools/IgniteGUI/CreateDefaultSettings")]
@@ -35,7 +72,10 @@ namespace IgniteModule.GUICore
                 System.IO.Directory.CreateDirectory(Application.dataPath + "/Resources/IgniteGUI");
             }
 
-            UnityEditor.AssetDatabase.CreateAsset(instance, "Assets/Resources/IgniteGUI/IgniteGUISettings.asset");
+            UnityEditor.AssetDatabase.CreateAsset(
+                instance,
+                "Assets/Resources/IgniteGUI/IgniteGUISettings.asset"
+            );
             UnityEditor.Selection.activeObject = instance;
         }
 

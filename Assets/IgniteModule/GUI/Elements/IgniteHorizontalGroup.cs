@@ -6,8 +6,11 @@ namespace IgniteModule
 {
     public class IgniteHorizontalGroup : IgniteGUIElementGroup
     {
-        [SerializeField] RectTransform content = null;
-        [SerializeField] HorizontalLayoutGroup layoutGroup = null;
+        [SerializeField]
+        RectTransform content = null;
+
+        [SerializeField]
+        HorizontalLayoutGroup layoutGroup = null;
 
         public override RectTransform Content => content;
 
@@ -23,7 +26,8 @@ namespace IgniteModule
 
         public static IgniteHorizontalGroup Create()
         {
-            var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/HorizontalGroup")).GetComponent<IgniteHorizontalGroup>();
+            var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/HorizontalGroup"))
+                .GetComponent<IgniteHorizontalGroup>();
 
             instance.RectTransform.SetSizeDelta(y: IgniteGUISettings.ElementHeight);
 
@@ -33,7 +37,10 @@ namespace IgniteModule
 
     public static partial class IIgniteGUIGroupExtensions
     {
-        public static IIgniteGUIGroup AddHorizontalGroup(this IIgniteGUIGroup group, params IIgniteGUIElement[] elements)
+        public static IIgniteGUIGroup AddHorizontalGroup(
+            this IIgniteGUIGroup group,
+            params IIgniteGUIElement[] elements
+        )
         {
             var horizontal = IgniteHorizontalGroup.Create();
 

@@ -1,25 +1,48 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using ATweening;
 using IgniteModule.GUICore;
+using UnityEngine;
 using UnityEngine.EventSystems;
-using ATweening;
+using UnityEngine.UI;
 
 namespace IgniteModule
 {
     public class IgniteFoldout : IgniteGUIElementGroup, IPointerClickHandler
     {
-        [SerializeField] RectTransform content = null;
-        [SerializeField] RectTransform nameRect = null;
-        [SerializeField] RectTransform toggleRect = null;
-        [SerializeField] RectTransform textRect = null;
-        [SerializeField] HorizontalLayoutGroup nameLayoutGroup = null;
-        [SerializeField] Text nameText = null;
-        [SerializeField] Toggle toggle = null;
-        [SerializeField] RectTransform viewRect = null;
-        [SerializeField] RectTransform arrowRect = null;
-        [SerializeField] ContentSizeFitter sizeFitter = null;
-        [SerializeField] VerticalLayoutGroup layoutGroup = null;
-        [SerializeField] Image backgroundImage = null;
+        [SerializeField]
+        RectTransform content = null;
+
+        [SerializeField]
+        RectTransform nameRect = null;
+
+        [SerializeField]
+        RectTransform toggleRect = null;
+
+        [SerializeField]
+        RectTransform textRect = null;
+
+        [SerializeField]
+        HorizontalLayoutGroup nameLayoutGroup = null;
+
+        [SerializeField]
+        Text nameText = null;
+
+        [SerializeField]
+        Toggle toggle = null;
+
+        [SerializeField]
+        RectTransform viewRect = null;
+
+        [SerializeField]
+        RectTransform arrowRect = null;
+
+        [SerializeField]
+        ContentSizeFitter sizeFitter = null;
+
+        [SerializeField]
+        VerticalLayoutGroup layoutGroup = null;
+
+        [SerializeField]
+        Image backgroundImage = null;
 
         public override RectTransform Content => content;
 
@@ -40,38 +63,38 @@ namespace IgniteModule
         {
             CalcContentHeight();
             toggle.enabled = false;
-            viewRect.DoSizeDeltaY(height, 0.3f)
-                    .OnUpdate(() =>
-                    {
-                        Window.SetLayout();
-                    })
-                    .OnComplete(() =>
-                    {
-                        Window.SetLayout();
-                        CalcContentHeight();
-                        sizeFitter.enabled = true;
-                        toggle.enabled = true;
-                    });
+            viewRect
+                .DoSizeDeltaY(height, 0.3f)
+                .OnUpdate(() =>
+                {
+                    Window.SetLayout();
+                })
+                .OnComplete(() =>
+                {
+                    Window.SetLayout();
+                    CalcContentHeight();
+                    sizeFitter.enabled = true;
+                    toggle.enabled = true;
+                });
             RectTransform.DoSizeDeltaY(height + IgniteGUISettings.ElementHeight, 0.3f);
-            arrowRect.DoLocalRotate(new Vector3(0f, 0f, -90f), 0.3f)
-                    .SetRelative();
+            arrowRect.DoLocalRotate(new Vector3(0f, 0f, -90f), 0.3f).SetRelative();
         }
 
         public void Close()
         {
             sizeFitter.enabled = false;
             toggle.enabled = false;
-            viewRect.DoSizeDeltaY(0f, 0.3f)
-                    .OnUpdate(() => Window.SetLayout())
-                    .OnComplete(() =>
-                    {
-                        Window.SetLayout();
-                        CalcContentHeight();
-                        toggle.enabled = true;
-                    });
+            viewRect
+                .DoSizeDeltaY(0f, 0.3f)
+                .OnUpdate(() => Window.SetLayout())
+                .OnComplete(() =>
+                {
+                    Window.SetLayout();
+                    CalcContentHeight();
+                    toggle.enabled = true;
+                });
             RectTransform.DoSizeDeltaY(IgniteGUISettings.ElementHeight, 0.3f);
-            arrowRect.DoLocalRotate(new Vector3(0f, 0f, 90f), 0.3f)
-                    .SetRelative();
+            arrowRect.DoLocalRotate(new Vector3(0f, 0f, 90f), 0.3f).SetRelative();
         }
 
         void CalcContentHeight()
@@ -108,7 +131,8 @@ namespace IgniteModule
 
         public static IgniteFoldout Create(string name)
         {
-            var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/Foldout")).GetComponent<IgniteFoldout>();
+            var instance = Instantiate(Resources.Load<GameObject>("IgniteGUI/Foldout"))
+                .GetComponent<IgniteFoldout>();
 
             instance.backgroundImage.color = IgniteGUISettings.FoldoutColor;
             instance.nameText.text = name;

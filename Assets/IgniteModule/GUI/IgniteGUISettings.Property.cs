@@ -15,10 +15,7 @@ namespace IgniteModule.GUICore
                 }
                 return instance;
             }
-            set
-            {
-                instance = value;
-            }
+            set { instance = value; }
         }
 
         public static Font Font => Instance.font;

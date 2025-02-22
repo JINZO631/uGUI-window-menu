@@ -25,13 +25,13 @@
     For more information, please refer to <http://unlicense.org>
  */
 
-using UnityEngine;
-using UnityEngine.UI;
 using System;
-using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using ATweening.Core;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace ATweening
 {
@@ -71,7 +71,8 @@ namespace ATweening
 
         public static void Initialize()
         {
-            if (initialized) return;
+            if (initialized)
+                return;
 
             instance = new GameObject("[ATween]").AddComponent<ATween>();
 
@@ -142,64 +143,162 @@ namespace ATweening
             return sequence;
         }
 
-        public static ATweener<float, float> To(Func<float> getter, Action<float> setter, float endValue, float duration)
+        public static ATweener<float, float> To(
+            Func<float> getter,
+            Action<float> setter,
+            float endValue,
+            float duration
+        )
         {
             return TweenCore<float, float>(endValue, duration, getter, setter, TweenPlugin.Float);
         }
 
-        public static ATweener<double, double> To(Func<double> getter, Action<double> setter, double endValue, float duration)
+        public static ATweener<double, double> To(
+            Func<double> getter,
+            Action<double> setter,
+            double endValue,
+            float duration
+        )
         {
-            return TweenCore<double, double>(endValue, duration, getter, setter, TweenPlugin.Double);
+            return TweenCore<double, double>(
+                endValue,
+                duration,
+                getter,
+                setter,
+                TweenPlugin.Double
+            );
         }
 
-        public static ATweener<int, int> To(Func<int> getter, Action<int> setter, int endValue, float duration)
+        public static ATweener<int, int> To(
+            Func<int> getter,
+            Action<int> setter,
+            int endValue,
+            float duration
+        )
         {
             return TweenCore<int, int>(endValue, duration, getter, setter, TweenPlugin.Int);
         }
 
-        public static ATweener<uint, uint> To(Func<uint> getter, Action<uint> setter, uint endValue, float duration)
+        public static ATweener<uint, uint> To(
+            Func<uint> getter,
+            Action<uint> setter,
+            uint endValue,
+            float duration
+        )
         {
             return TweenCore<uint, uint>(endValue, duration, getter, setter, TweenPlugin.Uint);
         }
 
-        public static ATweener<long, long> To(Func<long> getter, Action<long> setter, long endValue, float duration)
+        public static ATweener<long, long> To(
+            Func<long> getter,
+            Action<long> setter,
+            long endValue,
+            float duration
+        )
         {
             return TweenCore<long, long>(endValue, duration, getter, setter, TweenPlugin.Long);
         }
 
-        public static ATweener<ulong, ulong> To(Func<ulong> getter, Action<ulong> setter, ulong endValue, float duration)
+        public static ATweener<ulong, ulong> To(
+            Func<ulong> getter,
+            Action<ulong> setter,
+            ulong endValue,
+            float duration
+        )
         {
             return TweenCore<ulong, ulong>(endValue, duration, getter, setter, TweenPlugin.Ulong);
         }
 
-        public static ATweener<Vector2, Vector2> To(Func<Vector2> getter, Action<Vector2> setter, Vector2 endValue, float duration)
+        public static ATweener<Vector2, Vector2> To(
+            Func<Vector2> getter,
+            Action<Vector2> setter,
+            Vector2 endValue,
+            float duration
+        )
         {
-            return TweenCore<Vector2, Vector2>(endValue, duration, getter, setter, TweenPlugin.Vector2);
+            return TweenCore<Vector2, Vector2>(
+                endValue,
+                duration,
+                getter,
+                setter,
+                TweenPlugin.Vector2
+            );
         }
 
-        public static ATweener<Vector3, Vector3> To(Func<Vector3> getter, Action<Vector3> setter, Vector3 endValue, float duration)
+        public static ATweener<Vector3, Vector3> To(
+            Func<Vector3> getter,
+            Action<Vector3> setter,
+            Vector3 endValue,
+            float duration
+        )
         {
-            return TweenCore<Vector3, Vector3>(endValue, duration, getter, setter, TweenPlugin.Vector3);
+            return TweenCore<Vector3, Vector3>(
+                endValue,
+                duration,
+                getter,
+                setter,
+                TweenPlugin.Vector3
+            );
         }
 
-        public static ATweener<Vector4, Vector4> To(Func<Vector4> getter, Action<Vector4> setter, Vector4 endValue, float duration)
+        public static ATweener<Vector4, Vector4> To(
+            Func<Vector4> getter,
+            Action<Vector4> setter,
+            Vector4 endValue,
+            float duration
+        )
         {
-            return TweenCore<Vector4, Vector4>(endValue, duration, getter, setter, TweenPlugin.Vector4);
+            return TweenCore<Vector4, Vector4>(
+                endValue,
+                duration,
+                getter,
+                setter,
+                TweenPlugin.Vector4
+            );
         }
 
-        public static ATweener<Color, Color> To(Func<Color> getter, Action<Color> setter, Color endValue, float duration)
+        public static ATweener<Color, Color> To(
+            Func<Color> getter,
+            Action<Color> setter,
+            Color endValue,
+            float duration
+        )
         {
             return TweenCore<Color, Color>(endValue, duration, getter, setter, TweenPlugin.Color);
         }
 
-        public static ATweener<Vector3, Quaternion> To(Func<Quaternion> getter, Action<Quaternion> setter, Vector3 endValue, float duration)
+        public static ATweener<Vector3, Quaternion> To(
+            Func<Quaternion> getter,
+            Action<Quaternion> setter,
+            Vector3 endValue,
+            float duration
+        )
         {
-            return TweenCore<Vector3, Quaternion>(endValue, duration, getter, setter, TweenPlugin.Quaternion);
+            return TweenCore<Vector3, Quaternion>(
+                endValue,
+                duration,
+                getter,
+                setter,
+                TweenPlugin.Quaternion
+            );
         }
 
-        private static ATweener<T1, T2> TweenCore<T1, T2>(T1 endValue, float duration, Func<T2> getter, Action<T2> setter, ITweenPlugin<T1, T2> plugin)
+        private static ATweener<T1, T2> TweenCore<T1, T2>(
+            T1 endValue,
+            float duration,
+            Func<T2> getter,
+            Action<T2> setter,
+            ITweenPlugin<T1, T2> plugin
+        )
         {
-            var tweener = new ATweener<T1, T2>(default(T1), endValue, duration, getter, setter, plugin);
+            var tweener = new ATweener<T1, T2>(
+                default(T1),
+                endValue,
+                duration,
+                getter,
+                setter,
+                plugin
+            );
             tweeners.Add(tweener);
             return tweener;
         }
@@ -256,7 +355,14 @@ namespace ATweening
         private int loops;
         private LoopType loopType;
 
-        public ATweener(T1 begin, T1 end, float duration, Func<T2> getter, Action<T2> setter, ITweenPlugin<T1, T2> plugin)
+        public ATweener(
+            T1 begin,
+            T1 end,
+            float duration,
+            Func<T2> getter,
+            Action<T2> setter,
+            ITweenPlugin<T1, T2> plugin
+        )
         {
             ATween.Initialize();
 
@@ -270,9 +376,15 @@ namespace ATweening
             this.ignoreTimeScale = ATween.IgnoreTimeScale;
         }
 
-        public bool IsJoined() { return false; }
+        public bool IsJoined()
+        {
+            return false;
+        }
 
-        public bool IsPlaying() { return isPlaying; }
+        public bool IsPlaying()
+        {
+            return isPlaying;
+        }
 
         public ATweener<T1, T2> OnStart(Action onStart)
         {
@@ -444,7 +556,8 @@ namespace ATweening
         {
             Setup();
 
-            if (onStart != null) onStart();
+            if (onStart != null)
+                onStart();
 
             yield return TweenCoroutineCore();
 
@@ -467,7 +580,8 @@ namespace ATweening
                 yield return TweenCoroutineCore();
             }
 
-            if (onComplete != null) onComplete();
+            if (onComplete != null)
+                onComplete();
 
             isPlaying = false;
         }
@@ -481,7 +595,8 @@ namespace ATweening
             {
                 if (this.kill)
                 {
-                    if (onKill != null) onKill();
+                    if (onKill != null)
+                        onKill();
                     yield break;
                 }
 
@@ -500,13 +615,15 @@ namespace ATweening
                 var t = ease.Invoke(elapsedTime / duration);
                 current = plugin.Lerp(begin, end, t);
                 setter(plugin.Convert(current));
-                if (onUpdate != null) onUpdate();
+                if (onUpdate != null)
+                    onUpdate();
                 yield return null;
             }
 
             Snap(plugin.Convert(current));
 
-            if (onStepComplete != null) onStepComplete();
+            if (onStepComplete != null)
+                onStepComplete();
 
             if (loops > 0)
             {
@@ -562,7 +679,7 @@ namespace ATweening
     {
         Restart,
         Yoyo,
-        Incremental
+        Incremental,
     }
 
     public class Sequence : IATween
@@ -749,7 +866,8 @@ namespace ATweening
 
         public IEnumerator TweenCoroutine()
         {
-            if (onStart != null) onStart();
+            if (onStart != null)
+                onStart();
 
             yield return TweenCoroutineCore();
 
@@ -758,7 +876,8 @@ namespace ATweening
                 yield return TweenCoroutineCore();
             }
 
-            if (onComplete != null) onComplete();
+            if (onComplete != null)
+                onComplete();
 
             isPlaying = false;
         }
@@ -786,7 +905,8 @@ namespace ATweening
                 {
                     if (this.kill)
                     {
-                        if (onKill != null) onKill();
+                        if (onKill != null)
+                            onKill();
                         yield break;
                     }
 
@@ -801,12 +921,14 @@ namespace ATweening
                         break;
                     }
 
-                    if (onUpdate != null) onUpdate();
+                    if (onUpdate != null)
+                        onUpdate();
                     yield return null;
                 }
             }
 
-            if (onStepComplete != null) onStepComplete();
+            if (onStepComplete != null)
+                onStepComplete();
 
             if (loops > 0)
             {
@@ -819,9 +941,7 @@ namespace ATweening
         public void Flip()
         {
             this.isBackwise = !this.isBackwise;
-            foreach (var i in playingList)
-            {
-            }
+            foreach (var i in playingList) { }
         }
 
         private class SequenceableTween : ISequenceable
@@ -833,11 +953,20 @@ namespace ATweening
                 this.tween = tween;
             }
 
-            public bool IsJoined() { return false; }
+            public bool IsJoined()
+            {
+                return false;
+            }
 
-            public bool IsPlaying() { return tween.IsPlaying(); }
+            public bool IsPlaying()
+            {
+                return tween.IsPlaying();
+            }
 
-            public void Play() { tween.Play(); }
+            public void Play()
+            {
+                tween.Play();
+            }
         }
 
         private class SequenceableAction : ISequenceable
@@ -849,11 +978,20 @@ namespace ATweening
                 this.action = action;
             }
 
-            public bool IsJoined() { return false; }
+            public bool IsJoined()
+            {
+                return false;
+            }
 
-            public bool IsPlaying() { return false; }
+            public bool IsPlaying()
+            {
+                return false;
+            }
 
-            public void Play() { action(); }
+            public void Play()
+            {
+                action();
+            }
         }
 
         private class SequenceableInterval : ISequenceable
@@ -868,7 +1006,10 @@ namespace ATweening
                 this.parent = parent;
             }
 
-            public bool IsJoined() { return false; }
+            public bool IsJoined()
+            {
+                return false;
+            }
 
             public bool IsPlaying()
             {
@@ -876,7 +1017,10 @@ namespace ATweening
                 return elapsedTime < interval;
             }
 
-            public void Play() { elapsedTime = 0f; }
+            public void Play()
+            {
+                elapsedTime = 0f;
+            }
         }
 
         private class JoinedSequenceable : ISequenceable
@@ -888,11 +1032,20 @@ namespace ATweening
                 this.source = source;
             }
 
-            public bool IsJoined() { return true; }
+            public bool IsJoined()
+            {
+                return true;
+            }
 
-            public bool IsPlaying() { return source.IsPlaying(); }
+            public bool IsPlaying()
+            {
+                return source.IsPlaying();
+            }
 
-            public void Play() { source.Play(); }
+            public void Play()
+            {
+                source.Play();
+            }
         }
     }
 
@@ -924,189 +1077,391 @@ namespace ATweening
 
     public static class ShortcutExtensions
     {
-        public static ATweener<Vector3, Vector3> DoMove(this Transform transform, Vector3 endValue, float duration)
+        public static ATweener<Vector3, Vector3> DoMove(
+            this Transform transform,
+            Vector3 endValue,
+            float duration
+        )
         {
-            return ATween.To(() => transform.position, v => transform.position = v, endValue, duration);
+            return ATween.To(
+                () => transform.position,
+                v => transform.position = v,
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<float, float> DoMoveX(this Transform transform, float endValue, float duration)
+        public static ATweener<float, float> DoMoveX(
+            this Transform transform,
+            float endValue,
+            float duration
+        )
         {
-            return ATween.To(() => transform.position.x, v =>
-            {
-                var pos = transform.position;
-                pos.x = v;
-                transform.position = pos;
-            }, endValue, duration);
+            return ATween.To(
+                () => transform.position.x,
+                v =>
+                {
+                    var pos = transform.position;
+                    pos.x = v;
+                    transform.position = pos;
+                },
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<float, float> DoMoveY(this Transform transform, float endValue, float duration)
+        public static ATweener<float, float> DoMoveY(
+            this Transform transform,
+            float endValue,
+            float duration
+        )
         {
-            return ATween.To(() => transform.position.y, v =>
-            {
-                var pos = transform.position;
-                pos.y = v;
-                transform.position = pos;
-            }, endValue, duration);
+            return ATween.To(
+                () => transform.position.y,
+                v =>
+                {
+                    var pos = transform.position;
+                    pos.y = v;
+                    transform.position = pos;
+                },
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<float, float> DoMoveZ(this Transform transform, float endValue, float duration)
+        public static ATweener<float, float> DoMoveZ(
+            this Transform transform,
+            float endValue,
+            float duration
+        )
         {
-            return ATween.To(() => transform.position.z, v =>
-            {
-                var pos = transform.position;
-                pos.z = v;
-                transform.position = pos;
-            }, endValue, duration);
+            return ATween.To(
+                () => transform.position.z,
+                v =>
+                {
+                    var pos = transform.position;
+                    pos.z = v;
+                    transform.position = pos;
+                },
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<Vector3, Vector3> DoLocalMove(this Transform transform, Vector3 endValue, float duration)
+        public static ATweener<Vector3, Vector3> DoLocalMove(
+            this Transform transform,
+            Vector3 endValue,
+            float duration
+        )
         {
-            return ATween.To(() => transform.localPosition, v => transform.localPosition = v, endValue, duration);
+            return ATween.To(
+                () => transform.localPosition,
+                v => transform.localPosition = v,
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<float, float> DoLocalMoveX(this Transform transform, float endValue, float duration)
+        public static ATweener<float, float> DoLocalMoveX(
+            this Transform transform,
+            float endValue,
+            float duration
+        )
         {
-            return ATween.To(() => transform.localPosition.x, v =>
-            {
-                var pos = transform.localPosition;
-                pos.x = v;
-                transform.localPosition = pos;
-            }, endValue, duration);
+            return ATween.To(
+                () => transform.localPosition.x,
+                v =>
+                {
+                    var pos = transform.localPosition;
+                    pos.x = v;
+                    transform.localPosition = pos;
+                },
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<float, float> DoLocalMoveY(this Transform transform, float endValue, float duration)
+        public static ATweener<float, float> DoLocalMoveY(
+            this Transform transform,
+            float endValue,
+            float duration
+        )
         {
-            return ATween.To(() => transform.localPosition.y, v =>
-            {
-                var pos = transform.localPosition;
-                pos.y = v;
-                transform.localPosition = pos;
-            }, endValue, duration);
+            return ATween.To(
+                () => transform.localPosition.y,
+                v =>
+                {
+                    var pos = transform.localPosition;
+                    pos.y = v;
+                    transform.localPosition = pos;
+                },
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<float, float> DoLocalMoveZ(this Transform transform, float endValue, float duration)
+        public static ATweener<float, float> DoLocalMoveZ(
+            this Transform transform,
+            float endValue,
+            float duration
+        )
         {
-            return ATween.To(() => transform.localPosition.z, v =>
-            {
-                var pos = transform.localPosition;
-                pos.z = v;
-                transform.localPosition = pos;
-            }, endValue, duration);
+            return ATween.To(
+                () => transform.localPosition.z,
+                v =>
+                {
+                    var pos = transform.localPosition;
+                    pos.z = v;
+                    transform.localPosition = pos;
+                },
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<Vector3, Quaternion> DoRotate(this Transform transform, Vector3 endValue, float duration)
+        public static ATweener<Vector3, Quaternion> DoRotate(
+            this Transform transform,
+            Vector3 endValue,
+            float duration
+        )
         {
-            return ATween.To(() => transform.rotation, v => transform.rotation = v, endValue, duration);
+            return ATween.To(
+                () => transform.rotation,
+                v => transform.rotation = v,
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<Vector3, Quaternion> DoLocalRotate(this Transform transform, Vector3 endValue, float duration)
+        public static ATweener<Vector3, Quaternion> DoLocalRotate(
+            this Transform transform,
+            Vector3 endValue,
+            float duration
+        )
         {
-            return ATween.To(() => transform.localRotation, v => transform.localRotation = v, endValue, duration);
+            return ATween.To(
+                () => transform.localRotation,
+                v => transform.localRotation = v,
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<Vector3, Vector3> DoScale(this Transform transform, Vector3 endValue, float duration)
+        public static ATweener<Vector3, Vector3> DoScale(
+            this Transform transform,
+            Vector3 endValue,
+            float duration
+        )
         {
-            return ATween.To(() => transform.localScale, v => transform.localScale = v, endValue, duration);
+            return ATween.To(
+                () => transform.localScale,
+                v => transform.localScale = v,
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<Vector3, Vector3> DoScale(this Transform transform, float endValue, float duration)
+        public static ATweener<Vector3, Vector3> DoScale(
+            this Transform transform,
+            float endValue,
+            float duration
+        )
         {
-            return ATween.To(() => transform.localScale, v => transform.localScale = v, new Vector3(endValue, endValue, endValue), duration);
+            return ATween.To(
+                () => transform.localScale,
+                v => transform.localScale = v,
+                new Vector3(endValue, endValue, endValue),
+                duration
+            );
         }
 
-        public static ATweener<float, float> DoScaleX(this Transform transform, float endValue, float duration)
+        public static ATweener<float, float> DoScaleX(
+            this Transform transform,
+            float endValue,
+            float duration
+        )
         {
-            return ATween.To(() => transform.localScale.x, v =>
-            {
-                var scale = transform.localScale;
-                scale.x = v;
-                transform.localScale = scale;
-            }, endValue, duration);
+            return ATween.To(
+                () => transform.localScale.x,
+                v =>
+                {
+                    var scale = transform.localScale;
+                    scale.x = v;
+                    transform.localScale = scale;
+                },
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<float, float> DoScaleY(this Transform transform, float endValue, float duration)
+        public static ATweener<float, float> DoScaleY(
+            this Transform transform,
+            float endValue,
+            float duration
+        )
         {
-            return ATween.To(() => transform.localScale.y, v =>
-            {
-                var scale = transform.localScale;
-                scale.y = v;
-                transform.localScale = scale;
-            }, endValue, duration);
+            return ATween.To(
+                () => transform.localScale.y,
+                v =>
+                {
+                    var scale = transform.localScale;
+                    scale.y = v;
+                    transform.localScale = scale;
+                },
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<float, float> DoScaleZ(this Transform transform, float endValue, float duration)
+        public static ATweener<float, float> DoScaleZ(
+            this Transform transform,
+            float endValue,
+            float duration
+        )
         {
-            return ATween.To(() => transform.localScale.z, v =>
-            {
-                var scale = transform.localScale;
-                scale.z = v;
-                transform.localScale = scale;
-            }, endValue, duration);
+            return ATween.To(
+                () => transform.localScale.z,
+                v =>
+                {
+                    var scale = transform.localScale;
+                    scale.z = v;
+                    transform.localScale = scale;
+                },
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<Vector2, Vector2> DoAnchorPos(this RectTransform rectTransform, Vector2 endValue, float duration)
+        public static ATweener<Vector2, Vector2> DoAnchorPos(
+            this RectTransform rectTransform,
+            Vector2 endValue,
+            float duration
+        )
         {
-            return ATween.To(() => rectTransform.anchoredPosition, v => rectTransform.anchoredPosition = v, endValue, duration);
+            return ATween.To(
+                () => rectTransform.anchoredPosition,
+                v => rectTransform.anchoredPosition = v,
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<float, float> DoAnchorPosX(this RectTransform rectTransform, float endValue, float duration)
+        public static ATweener<float, float> DoAnchorPosX(
+            this RectTransform rectTransform,
+            float endValue,
+            float duration
+        )
         {
-            return ATween.To(() => rectTransform.anchoredPosition.x, v =>
-            {
-                var vec = rectTransform.anchoredPosition;
-                vec.x = v;
-                rectTransform.anchoredPosition = vec;
-            }, endValue, duration);
+            return ATween.To(
+                () => rectTransform.anchoredPosition.x,
+                v =>
+                {
+                    var vec = rectTransform.anchoredPosition;
+                    vec.x = v;
+                    rectTransform.anchoredPosition = vec;
+                },
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<float, float> DoAnchorPosY(this RectTransform rectTransform, float endValue, float duration)
+        public static ATweener<float, float> DoAnchorPosY(
+            this RectTransform rectTransform,
+            float endValue,
+            float duration
+        )
         {
-            return ATween.To(() => rectTransform.anchoredPosition.y, v =>
-            {
-                var vec = rectTransform.anchoredPosition;
-                vec.y = v;
-                rectTransform.anchoredPosition = vec;
-            }, endValue, duration);
+            return ATween.To(
+                () => rectTransform.anchoredPosition.y,
+                v =>
+                {
+                    var vec = rectTransform.anchoredPosition;
+                    vec.y = v;
+                    rectTransform.anchoredPosition = vec;
+                },
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<Vector2, Vector2> DoSizeDelta(this RectTransform rectTransform, Vector2 endValue, float duration)
+        public static ATweener<Vector2, Vector2> DoSizeDelta(
+            this RectTransform rectTransform,
+            Vector2 endValue,
+            float duration
+        )
         {
-            return ATween.To(() => rectTransform.sizeDelta, v => rectTransform.sizeDelta = v, endValue, duration);
+            return ATween.To(
+                () => rectTransform.sizeDelta,
+                v => rectTransform.sizeDelta = v,
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<float, float> DoSizeDeltaX(this RectTransform rectTransform, float endValue, float duration)
+        public static ATweener<float, float> DoSizeDeltaX(
+            this RectTransform rectTransform,
+            float endValue,
+            float duration
+        )
         {
-            return ATween.To(() => rectTransform.sizeDelta.x, v =>
-            {
-                var size = rectTransform.sizeDelta;
-                size.x = v;
-                rectTransform.sizeDelta = size;
-            }, endValue, duration);
+            return ATween.To(
+                () => rectTransform.sizeDelta.x,
+                v =>
+                {
+                    var size = rectTransform.sizeDelta;
+                    size.x = v;
+                    rectTransform.sizeDelta = size;
+                },
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<float, float> DoSizeDeltaY(this RectTransform rectTransform, float endValue, float duration)
+        public static ATweener<float, float> DoSizeDeltaY(
+            this RectTransform rectTransform,
+            float endValue,
+            float duration
+        )
         {
-            return ATween.To(() => rectTransform.sizeDelta.y, v =>
-            {
-                var size = rectTransform.sizeDelta;
-                size.y = v;
-                rectTransform.sizeDelta = size;
-            }, endValue, duration);
+            return ATween.To(
+                () => rectTransform.sizeDelta.y,
+                v =>
+                {
+                    var size = rectTransform.sizeDelta;
+                    size.y = v;
+                    rectTransform.sizeDelta = size;
+                },
+                endValue,
+                duration
+            );
         }
 
-        public static ATweener<Color, Color> DoColor(this Graphic graphic, Color endValue, float duration)
+        public static ATweener<Color, Color> DoColor(
+            this Graphic graphic,
+            Color endValue,
+            float duration
+        )
         {
             return ATween.To(() => graphic.color, v => graphic.color = v, endValue, duration);
         }
 
-        public static ATweener<float, float> DoFade(this Graphic graphic, float endValue, float duration)
+        public static ATweener<float, float> DoFade(
+            this Graphic graphic,
+            float endValue,
+            float duration
+        )
         {
-            return ATween.To(() => graphic.color.a, v =>
-            {
-                var c = graphic.color;
-                c.a = v;
-                graphic.color = c;
-            }, endValue, duration);
+            return ATween.To(
+                () => graphic.color.a,
+                v =>
+                {
+                    var c = graphic.color;
+                    c.a = v;
+                    graphic.color = c;
+                },
+                endValue,
+                duration
+            );
         }
     }
 
@@ -1371,7 +1726,8 @@ namespace ATweening
             public static readonly ITweenPlugin<Vector3, Vector3> Vector3 = new Vector3Plugin();
             public static readonly ITweenPlugin<Vector4, Vector4> Vector4 = new Vector4Plugin();
             public static readonly ITweenPlugin<Color, Color> Color = new ColorPlugin();
-            public static readonly ITweenPlugin<Vector3, Quaternion> Quaternion = new QuaternionPlugin();
+            public static readonly ITweenPlugin<Vector3, Quaternion> Quaternion =
+                new QuaternionPlugin();
         }
 
         public interface ITweenPlugin<T1, T2>
@@ -1428,6 +1784,7 @@ namespace ATweening
             {
                 return end + RelativeValue(begin, end);
             }
+
             public double Convert(double value)
             {
                 return value;

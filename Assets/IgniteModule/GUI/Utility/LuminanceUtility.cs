@@ -1,5 +1,5 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
 namespace IgniteModule.GUICore
 {
@@ -13,11 +13,12 @@ namespace IgniteModule.GUICore
         public static Color ChooseFontColor(Color backgroundColor)
         {
             var backgroundLuminance = ToLuminance(backgroundColor);
-            var whiteContrast = Mathf.Max(1, backgroundLuminance) / Mathf.Min(1, backgroundLuminance);
-            var blackContrast = Mathf.Max(0, backgroundLuminance) / Mathf.Min(0, backgroundLuminance);
+            var whiteContrast =
+                Mathf.Max(1, backgroundLuminance) / Mathf.Min(1, backgroundLuminance);
+            var blackContrast =
+                Mathf.Max(0, backgroundLuminance) / Mathf.Min(0, backgroundLuminance);
 
             return whiteContrast < blackContrast ? Color.black : Color.white;
         }
-
     }
 }
