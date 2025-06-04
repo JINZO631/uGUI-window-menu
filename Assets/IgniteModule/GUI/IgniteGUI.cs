@@ -50,7 +50,7 @@ namespace IgniteModule
                 raycaster.blockingObjects = GraphicRaycaster.BlockingObjects.None;
 
                 // WindowRootRectTransform
-                var panelGameObject = new GameObject("IgntieGUICanvasPanel");
+                var panelGameObject = new GameObject("IgniteGUICanvasPanel");
                 panelTransform = panelGameObject.AddComponent<RectTransform>();
                 panelTransform.SetParent(canvasGameObject.transform);
                 panelTransform.SetAnchorPreset(AnchorPresets.StretchAll, true, true);
